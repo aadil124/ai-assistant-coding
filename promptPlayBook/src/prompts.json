@@ -1,0 +1,542 @@
+[
+  {
+    "id": "kickstart-project-scaffold",
+    "category": "Project Kickstart Prompts",
+    "tag": "Kickstart",
+    "title": "Project Scaffold",
+    "description": "Generate a clean, modular directory structure and production-ready configuration files for a new project.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Senior Software Architect. Scaffold a new project named [PROJECT_NAME] using the following tech stack: [TECH_STACK].\n\nRequirements:\n1. Design a clean, modular directory structure following modern best practices for [TECH_STACK].\n2. List all required configuration files (e.g., eslint, prettier, package.json, dockerfile, tsconfig, etc.) and write the complete, production-ready code/content for the most important configuration files.\n3. Provide a clear separation of concerns (e.g., controllers, services, repositories, routes, components, styles).\n4. Explain the architectural decisions behind this folder layout.\n5. Identify potential scaling bottlenecks or security risks with this layout and suggest mitigations.\n6. Suggest improvements for developer experience (DX) such as hot reloading, linting on commit, or debug configurations."
+  },
+  {
+    "id": "kickstart-prd-generator",
+    "category": "Project Kickstart Prompts",
+    "tag": "Kickstart",
+    "title": "PRD Generator",
+    "description": "Create a comprehensive, production-grade Product Requirement Document (PRD) with user stories and UI/UX flows.",
+    "placeholders": ["[FEATURE_NAME]", "[PROJECT_NAME]"],
+    "content": "Act as a Principal Product Engineer. Write a comprehensive, production-grade Product Requirement Document (PRD) for [FEATURE_NAME] in the project [PROJECT_NAME].\n\nYour PRD must include:\n1. Executive Summary & Objective: What problem are we solving?\n2. User Personas & Use Cases: Who is this for and how will they use it?\n3. Detailed Functional Requirements (in a table format, prioritized by MoSCoW method: Must, Should, Could, Won't).\n4. Non-Functional Requirements (Performance, Security, Reliability, Scalability).\n5. User Flow & Key UI/UX states (success, error, empty, loading).\n6. Data Model / Schema changes required.\n7. Risks, edge cases (e.g., network failures, concurrent modifications), and mitigation strategies.\n8. Suggestions for phase-2 features and metrics to measure success.\nExplain the rationale behind your prioritization choices and non-functional requirements."
+  },
+  {
+    "id": "kickstart-context-generator",
+    "category": "Project Kickstart Prompts",
+    "tag": "Kickstart",
+    "title": "Context.md Generator",
+    "description": "Generate a context.md or .cursorrules file to guide AI coding assistants with custom architecture and style rules.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as an AI Coding Assistant Expert. Create a production-grade `context.md` (or `.cursorrules`) file for the repository [PROJECT_NAME] built with [TECH_STACK].\n\nThe context file must include:\n1. Project overview and primary goals.\n2. Tech stack specifications, including versions, design system, and key dependencies.\n3. Explicit architectural rules, patterns (e.g., functional programming, hooks, service-repository), and code style guidelines.\n4. File naming and directory conventions.\n5. Specific instructions for code generation (e.g., \"always add type safety\", \"never use default exports\").\n6. Common commands (build, run, test, lint).\n7. Identify potential pitfalls where LLMs typically make mistakes in [TECH_STACK] and specify instructions to avoid them.\nExplain why you structured the rules this way for optimal LLM context parsing."
+  },
+  {
+    "id": "kickstart-architecture-planner",
+    "category": "Project Kickstart Prompts",
+    "tag": "Kickstart",
+    "title": "Architecture Planner",
+    "description": "Plan high-level cloud architectures with Mermaid.js diagrams, data flows, and performance evaluations.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]", "[EXPECTED_TRAFFIC]"],
+    "content": "Act as a Staff Systems Architect. Design a production-grade, highly available system architecture for [PROJECT_NAME] using [TECH_STACK]. The system must handle [EXPECTED_TRAFFIC] (e.g., 10k daily active users, 1000 requests/sec).\n\nYour plan must cover:\n1. High-level architecture diagram (described in Mermaid.js syntax).\n2. Data flow and communication protocols (e.g., REST, GraphQL, WebSockets, gRPC).\n3. Database strategy (primary databases, caching layers, read replicas, partitioning).\n4. Infrastructure components (load balancers, CDN, API gateways, queues, serverless vs. containerized hosting).\n5. Detailed explanations of architectural decisions (e.g., why choosing a SQL over NoSQL database for this use case).\n6. Identification of single points of failure (SPOFs), scaling bottlenecks, security vulnerabilities, and their mitigations.\n7. Cost-optimization suggestions and alternative approaches."
+  },
+  {
+    "id": "kickstart-feature-roadmap",
+    "category": "Project Kickstart Prompts",
+    "tag": "Kickstart",
+    "title": "Feature Roadmap",
+    "description": "Break down complex feature implementations into structured logical phases and milestones.",
+    "placeholders": ["[FEATURE_NAME]", "[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Lead Product Engineer. Create a detailed technical feature roadmap for implementing [FEATURE_NAME] in [PROJECT_NAME] using [TECH_STACK].\n\nThe roadmap must include:\n1. Break down of the implementation into distinct logical phases (e.g., Phase 1: Core API & Schema, Phase 2: Core UI & Authentication, Phase 3: Edge Cases & Optimization).\n2. For each phase, list the specific tasks, deliverables, and estimated level of effort (e.g., Low, Medium, High).\n3. Dependencies between tasks and critical path mapping.\n4. Technical risks for each phase (e.g., third-party API limits, migration downtime) and mitigation strategies.\n5. Verification steps for each milestone to ensure production readiness.\n6. Explain the logic behind the ordering of your phases and how it minimizes time-to-value."
+  },
+  {
+    "id": "planning-prd-generator",
+    "category": "Requirement & Planning Prompts",
+    "tag": "Planning",
+    "title": "Product Requirement Document",
+    "description": "Generate a detailed requirement document directly from an initial unstructured feature request.",
+    "placeholders": ["[FEATURE_REQUEST]", "[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Senior Product Manager. Generate a detailed Product Requirement Document (PRD) based on this feature request: [FEATURE_REQUEST] for the app [PROJECT_NAME] built on [TECH_STACK].\n\nThe PRD must include:\n1. Problem statement, value proposition, and success metrics.\n2. Detailed user stories and user journeys.\n3. Functional and technical requirements.\n4. Out of scope items.\n5. Security, privacy, and compliance requirements (e.g., GDPR, SOC2).\n6. Explanation of how this feature integrates with the existing system architecture.\n7. Detailed risk analysis, listing potential edge cases, edge-case failure modes, and fallback strategies.\n8. Ideas to improve the user onboarding flow for this feature."
+  },
+  {
+    "id": "planning-user-stories",
+    "category": "Requirement & Planning Prompts",
+    "tag": "Planning",
+    "title": "User Stories Generator",
+    "description": "Create estimation-ready agile user stories with acceptance rules and dependency charts.",
+    "placeholders": ["[FEATURE_NAME]", "[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Scrum Master. Generate a set of production-grade Agile User Stories for the feature [FEATURE_NAME] within the project [PROJECT_NAME] using [TECH_STACK].\n\nEach User Story must follow the standard template: \"As a [role], I want to [action], so that [benefit].\"\nFor each story, provide:\n1. Clear description and business value.\n2. Technical notes and implementation hints for developers.\n3. Rough estimation in Story Points (using Fibonacci scale) with rationales.\n4. Identify dependencies on other stories or external systems.\n5. Risk factors and edge cases (e.g., offline behavior, validation failures).\n6. Suggestions for splitting large stories (epics) into smaller, deliverable units."
+  },
+  {
+    "id": "planning-acceptance-criteria",
+    "category": "Requirement & Planning Prompts",
+    "tag": "Planning",
+    "title": "Acceptance Criteria",
+    "description": "Generate Behavior Driven Development (BDD) style Given-When-Then criteria.",
+    "placeholders": ["[FEATURE_NAME]", "[PROJECT_NAME]"],
+    "content": "Act as a Lead QA Engineer. Write comprehensive, production-grade Acceptance Criteria for [FEATURE_NAME] in [PROJECT_NAME].\n\nRequirements:\n1. Use the BDD (Behavior-Driven Development) Given-When-Then format.\n2. Cover all happy paths, sad paths (e.g., invalid inputs, authorization errors), and extreme edge cases (e.g., rapid double-clicks, session expiration).\n3. Define clear UI states (loading, disabled, empty, validation errors).\n4. Explain the rationale behind the selected edge cases and error bounds.\n5. Highlight potential security vulnerabilities (e.g., input injection, IDOR) that must be prevented.\n6. Suggest automated testing strategies (unit, integration, E2E) for these criteria."
+  },
+  {
+    "id": "planning-sprint-planning",
+    "category": "Requirement & Planning Prompts",
+    "tag": "Planning",
+    "title": "Sprint Planning",
+    "description": "Plan engineering sprints with velocity, resource allocation, and team dependencies.",
+    "placeholders": ["[TEAM_SIZE]", "[MILESTONE_GOAL]", "[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as an Engineering Manager. Plan a 2-week sprint for a team of [TEAM_SIZE] developers to deliver [MILESTONE_GOAL] for [PROJECT_NAME] using [TECH_STACK].\n\nProvide:\n1. Sprint Goal and definition of done (DoD).\n2. Task allocation breakdown with tasks categorized by frontend, backend, devops, and QA.\n3. Velocity assumptions and capacity planning.\n4. Dependency matrix showing which tasks block others.\n5. Potential sprint risks (e.g., scope creep, external dependencies) and proactive mitigation plans.\n6. Explain the reasoning behind your task grouping and sequencing.\n7. Recommend team-wide processes (e.g., daily standup focus, code review SLA) to ensure success."
+  },
+  {
+    "id": "planning-mvp-planning",
+    "category": "Requirement & Planning Prompts",
+    "tag": "Planning",
+    "title": "MVP Planning",
+    "description": "Define product scope boundaries to launch quickly while keeping architecture scalable.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]", "[FULL_VISION]"],
+    "content": "Act as a Product Engineer. Define the MVP (Minimum Viable Product) scope for [PROJECT_NAME] using [TECH_STACK]. The overall vision is [FULL_VISION].\n\nYour MVP plan must:\n1. List the absolute minimum features required to launch and gather feedback, separated from the post-MVP backlog.\n2. Justify why each MVP feature is critical and why each backlog feature is deferred.\n3. Provide a simplified database schema and architectural plan suited for quick delivery but designed to scale later.\n4. List technical compromises/debts being made in the MVP and how they will be resolved.\n5. Identify critical risks that could delay the MVP launch and how to prevent them.\n6. Suggest metrics and analytics events to track to validate the product hypotheses."
+  },
+  {
+    "id": "dev-build-feature",
+    "category": "Feature Development Prompts",
+    "tag": "Dev",
+    "title": "Build Feature",
+    "description": "Write comprehensive backend models, endpoints, schemas, and UI components in one go.",
+    "placeholders": ["[FEATURE_NAME]", "[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Staff Software Engineer. Write clean, production-ready, and well-documented code to implement [FEATURE_NAME] in the project [PROJECT_NAME] using [TECH_STACK].\n\nCode Requirements:\n1. Write complete, copy-paste ready code files for the model, database schema/migration, API routes, controller logic, and frontend component. Avoid using placeholders or ellipses (`// ...`).\n2. Ensure strict error handling, validation, logging, and typing (e.g., TypeScript or strong types if applicable).\n3. Implement proper security measures (e.g., authorization checks, SQL injection prevention, CSRF mitigation).\n4. Explain the key architectural and design pattern choices made in the code.\n5. Identify edge cases (e.g., database transaction failures, concurrent requests, race conditions) and explain how the code handles them.\n6. Suggest performance optimizations (e.g., database indexing, caching) and general improvements."
+  },
+  {
+    "id": "dev-api-development",
+    "category": "Feature Development Prompts",
+    "tag": "Dev",
+    "title": "API Development",
+    "description": "Build high-performance REST/GraphQL backend controllers with rate limiting and verification.",
+    "placeholders": ["[API_NAME]", "[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Senior Backend Engineer. Create a production-grade, secure, and optimized API endpoint for [API_NAME] in [PROJECT_NAME] using [TECH_STACK].\n\nThe implementation must include:\n1. Input validation schema and request body parsing.\n2. Controller logic with proper status codes (e.g., 200, 201, 400, 401, 403, 404, 429, 500).\n3. Authentication and authorization check middleware.\n4. Rate limiting and CORS configuration.\n5. Complete database query logic (using ORM or raw SQL) handling transactions if needed.\n6. Detailed explanation of your response structure, error payloads, and choice of status codes.\n7. Analysis of potential security threats (e.g., replay attacks, parameter pollution) and performance concerns (e.g., database connection pool exhaustion), along with mitigations.\n8. Suggest improvements like API versioning or caching strategies."
+  },
+  {
+    "id": "dev-database-design",
+    "category": "Feature Development Prompts",
+    "tag": "Dev",
+    "title": "Database Design",
+    "description": "Model production database schemas, indexing schemes, and database migration scripts.",
+    "placeholders": ["[FEATURE_NAME]", "[PROJECT_NAME]", "[DATABASE_TYPE]"],
+    "content": "Act as a Lead Database Architect. Design a highly optimized database schema for [FEATURE_NAME] in the project [PROJECT_NAME] using [DATABASE_TYPE] (e.g., PostgreSQL, MongoDB).\n\nThe deliverable must contain:\n1. Complete SQL DDL or NoSQL schemas with correct data types, constraints (e.g., NOT NULL, UNIQUE, FOREIGN KEY, CHECK), and cascade rules.\n2. Concrete indexes (e.g., B-Tree, GIN, composite indexes) optimized for read/write queries.\n3. A database migration script (up and down migrations) that is safe to run in production.\n4. Diagram of tables and relationships (using Mermaid.js syntax).\n5. Explain the rationale for database type selection, schema normalization level, and indexing choices.\n6. Identify potential scaling bottlenecks (e.g., write locks, table scans, high cardinality indexes) and suggest mitigation plans (e.g., partitioning, sharding, replication)."
+  },
+  {
+    "id": "dev-auth-flow",
+    "category": "Feature Development Prompts",
+    "tag": "Dev",
+    "title": "Authentication Flow",
+    "description": "Construct bulletproof OAuth2, session, or JWT auth integrations with role security.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]", "[AUTH_METHOD]"],
+    "content": "Act as a Principal Security Engineer. Implement a secure, production-ready authentication and authorization flow for [PROJECT_NAME] using [TECH_STACK] and [AUTH_METHOD] (e.g., JWT, Sessions, OAuth2, Auth0).\n\nYour implementation must include:\n1. Signup, login, password hashing (e.g., bcrypt/argon2), and email verification.\n2. Token generation, rotation, expiration, and secure cookie/storage handling (e.g., HttpOnly, SameSite, Secure).\n3. Role-Based Access Control (RBAC) or Attribute-Based Access Control (ABAC) middleware.\n4. Password reset (with secure short-lived tokens) and multi-factor authentication (MFA) hooks.\n5. Explain the security architecture decisions (e.g., token lifetime, storage choices) and potential attack vectors (e.g., CSRF, XSS, brute-force).\n6. Identify edge cases like simultaneous logins, token revocation, or user account lockout, and detail how to handle them.\n7. Suggest UX enhancements (e.g., magic links, social login buttons)."
+  },
+  {
+    "id": "dev-dashboard",
+    "category": "Feature Development Prompts",
+    "tag": "Dev",
+    "title": "Dashboard Creation",
+    "description": "Build dynamic frontend charts, stats cards, filtering components, and responsive panels.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Lead Frontend Engineer. Build a high-performance, responsive analytics dashboard component for [PROJECT_NAME] using [TECH_STACK].\n\nThe code must include:\n1. Clean layouts with sidebars, headers, and dynamic widgets (charts, metrics, tables).\n2. State management for filters (date ranges, categories, search queries) and pagination.\n3. Integration with placeholder API endpoints using loading skeletons, error boundaries, and empty states.\n4. Responsive grid layout using modern CSS methods (Flexbox, CSS Grid) that looks perfect on mobile, tablet, and desktop.\n5. Explanation of data-fetching libraries and rendering choices (e.g., Server-Side Rendering vs Client-Side Hydration).\n6. Identification of performance bottlenecks (e.g., heavy chart re-renders, layout shifts) and optimization techniques (e.g., virtualization, debounce).\n7. Accessibility (a11y) improvements (ARIA roles, keyboard navigation)."
+  },
+  {
+    "id": "ui-build-component",
+    "category": "UI / Design Prompts",
+    "tag": "UI",
+    "title": "Build Component",
+    "description": "Generate clean, reusable, fully-accessible components with complete variants and hover layouts.",
+    "placeholders": ["[COMPONENT_NAME]", "[TECH_STACK]", "[STYLING_METHOD]"],
+    "content": "Act as a Senior UI/UX Frontend Developer. Create a highly reusable, accessible, and themeable [COMPONENT_NAME] component in [TECH_STACK] using [STYLING_METHOD] (e.g., Tailwind CSS, CSS Modules).\n\nThe component code must:\n1. Contain complete, self-contained TypeScript/JavaScript code, styles, and typing definitions.\n2. Support multiple variants (e.g., sizes, colors, outlines, states like loading/disabled).\n3. Adhere to WAI-ARIA guidelines, including proper keyboard navigation, focus trap (if modal), and screen reader attributes.\n4. Include interactive hover, focus, active, and transitions/animations.\n5. Explain the API design of the component properties and state management strategy.\n6. Outline risks like layout shifts (CLS), accessibility failures, or paint bottlenecks, and detail how they are prevented.\n7. Suggest unit testing cases using Jest/React Testing Library."
+  },
+  {
+    "id": "ui-convert-design",
+    "category": "UI / Design Prompts",
+    "tag": "UI",
+    "title": "Convert Design to Code",
+    "description": "Convert specs, screenshots, or design tokens into responsive, interactive frontend layouts.",
+    "placeholders": ["[PASTE_DESIGN_SPEC]", "[TECH_STACK]", "[CSS_LIBRARY]"],
+    "content": "Act as a Creative Frontend Engineer. Convert the following UI design description and specs into pixel-perfect, interactive code using [TECH_STACK] and [CSS_LIBRARY]:\n\nDesign Spec: [PASTE_DESIGN_SPEC]\n\nRequirements:\n1. Build the complete page or component with precise layouts, paddings, colors, fonts, shadows, and spacing.\n2. Ensure interactive states are fully implemented (hover transitions, clicks, inputs, validation visual feedback).\n3. Ensure responsiveness across mobile (375px), tablet (768px), and desktop (1440px) screen widths.\n4. Explain how you translated structural layouts (e.g., grid vs flexbox) and color/typography tokens.\n5. Identify design edge cases (e.g., extremely long text overflowing, images loading slowly, zoom factors) and how they are handled.\n6. Suggest micro-interactions or animations to improve the premium feel of the interface."
+  },
+  {
+    "id": "ui-responsive-layout",
+    "category": "UI / Design Prompts",
+    "tag": "UI",
+    "title": "Responsive Layout",
+    "description": "Refactor legacy or rigid layouts to responsive grid environments with container queries.",
+    "placeholders": ["[PASTE_CODE]", "[TECH_STACK]", "[CSS_METHOD]"],
+    "content": "Act as a Staff CSS Architect. Refactor the following non-responsive or poorly responsive code: [PASTE_CODE] into a modern, fluid, responsive layout using [TECH_STACK] and [CSS_METHOD].\n\nRequirements:\n1. The layout must handle mobile, tablet, desktop, and ultra-wide screens perfectly.\n2. Use modern CSS capabilities like container queries, clamp(), CSS Grid, and custom properties for fluid typography/spacing.\n3. Eliminate any layout shifts (CLS) and horizontal scrolling bugs.\n4. Explain the responsive design system and breakpoints utilized in the refactored code.\n5. Identify potential cross-browser rendering quirks (e.g., Safari iOS 100vh bug, grid inconsistencies) and write fallbacks.\n6. Suggest performance improvements regarding layout painting and DOM complexity."
+  },
+  {
+    "id": "ui-improve-ux",
+    "category": "UI / Design Prompts",
+    "tag": "UI",
+    "title": "Improve UX",
+    "description": "Audit component files and insert loading structures, transitions, and performance enhancements.",
+    "placeholders": ["[PASTE_CODE]"],
+    "content": "Act as a Senior UX Architect. Analyze the following component/user flow code: [PASTE_CODE] and rewrite it to significantly improve the User Experience (UX), perceived performance, and visual feedback.\n\nYour refactored code must incorporate:\n1. Micro-animations and transitions to guide user attention and feel snappy.\n2. Optimistic UI updates, skeleton screens, clear loading/disabled states, and context-aware error boundaries.\n3. Prevention of double-submitting forms and user input validation in real-time.\n4. Clear feedback on success, warning, and failure states.\n5. Explain the UX principles (e.g., Fitts's Law, Jacob's Law, Hick's Law) applied in your refactoring.\n6. Identify accessibility, localization, or usability risks, and explain your solutions.\n7. Suggest metrics (e.g., Task Completion Rate, Time on Task) to track to validate UX improvements."
+  },
+  {
+    "id": "ui-accessibility",
+    "category": "UI / Design Prompts",
+    "tag": "UI",
+    "title": "Accessibility Review",
+    "description": "Inject compliance attributes, screen reader helpers, and keyboard control into components.",
+    "placeholders": ["[PASTE_CODE]"],
+    "content": "Act as a Certified Accessibility Specialist. Audit and rewrite the following code: [PASTE_CODE] to achieve full compliance with WCAG 2.2 AA (and AAA where applicable) guidelines in [TECH_STACK].\n\nYour rewrite must resolve:\n1. Missing semantic elements, incorrect ARIA attributes, and lack of screen reader announcements.\n2. Missing focus indicators, incorrect tab order, and lack of keyboard navigation controls.\n3. Color contrast issues, screen reader-only text, and dynamic updates notification (using `aria-live`).\n4. Explain every accessibility issue identified in the original code and how your changes fix it.\n5. Identify potential risks of over-engineering ARIA and explain why your semantic approach is safer.\n6. Suggest testing methods using screen readers (e.g., VoiceOver, NVDA) or automated tools (e.g., axe-core)."
+  },
+  {
+    "id": "debug-error",
+    "category": "Debugging Prompts",
+    "tag": "Debug",
+    "title": "Error Debug",
+    "description": "Parse error traces, isolate causes, and build defensive exception handling code blocks.",
+    "placeholders": ["[ERROR_MESSAGE]", "[STACK_TRACE]", "[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as a Principal Debugging Engineer. Resolve the following error:\n\nError Message: [ERROR_MESSAGE]\nError Stack Trace: [STACK_TRACE]\nRelevant Code: [PASTE_CODE]\nTech Stack: [TECH_STACK]\n\nYour solution must include:\n1. Detailed root cause analysis explaining exactly why and under what conditions this error occurs.\n2. Production-grade, refactored code that fixes the bug and prevents similar errors.\n3. Defensive coding patterns (e.g., null checks, try-catch blocks, fallback values) to make the code resilient.\n4. Explain the trade-offs of your fix compared to alternative quick-fixes.\n5. Identify adjacent functions or components that might be impacted by this bug or its fix.\n6. Suggest a unit test case that replicates the bug and validates the solution."
+  },
+  {
+    "id": "debug-logic",
+    "category": "Debugging Prompts",
+    "tag": "Debug",
+    "title": "Logic Bug Hunt",
+    "description": "Trace logical inconsistencies or data mutation errors in complex algorithms.",
+    "placeholders": ["[EXPECTED_BEHAVIOR]", "[ACTUAL_BEHAVIOR]", "[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as a Senior QA Analyst and Staff Engineer. Investigate the logical bug in the following code block:\n\nExpected Behavior: [EXPECTED_BEHAVIOR]\nActual Behavior: [ACTUAL_BEHAVIOR]\nCode Block: [PASTE_CODE]\nTech Stack: [TECH_STACK]\n\nYour response must include:\n1. Trace of the code execution showing exactly where the logic diverges from the expected behavior.\n2. Clean, refactored, and commented code fixing the logical flaw.\n3. Identification of edge cases (e.g., boundary inputs, empty arrays, null values, rapid state updates) where this logic could break.\n4. Explanation of code readability and design pattern improvements made to prevent future logic bugs.\n5. Suggest linting rules or static analysis configurations that could catch this error automatically."
+  },
+  {
+    "id": "debug-performance",
+    "category": "Debugging Prompts",
+    "tag": "Debug",
+    "title": "Performance Issue",
+    "description": "Investigate CPU freezes or page lags, proposing optimized caching and asynchronous execution.",
+    "placeholders": ["[SYMPTOM]", "[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as a Lead Performance Engineer. Analyze and resolve the performance bottleneck in the following code snippet:\n\nSymptom: [SYMPTOM] (e.g., slow response time, UI freezes, high CPU utilization)\nCode Snippet: [PASTE_CODE]\nTech Stack: [TECH_STACK]\n\nYour solution must include:\n1. Quantitative profiling hypothesis explaining the complexity (Big O time/space) of the current code.\n2. Optimized, production-ready refactored code that resolves the bottleneck.\n3. Demonstrations of optimizations (e.g., algorithm replacement, memoization, batching, lazy loading, debouncing).\n4. Detailed explanation of the trade-offs of the optimized code (e.g., code readability vs raw performance).\n5. Risks associated with the change (e.g., concurrency issues, stale caches, memory consumption changes).\n6. Instructions on how to measure and verify the performance improvement in production."
+  },
+  {
+    "id": "debug-api",
+    "category": "Debugging Prompts",
+    "tag": "Debug",
+    "title": "API Failure Investigation",
+    "description": "Examine networking exceptions, timeout boundaries, and input CORS problems.",
+    "placeholders": ["[API_NAME]", "[REQUEST_DETAILS]", "[RESPONSE_ERROR]", "[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as a Senior DevOps and Backend Engineer. Debug the API failure based on the following integration context:\n\nEndpoint URI: [API_NAME]\nRequest Details: [REQUEST_DETAILS]\nResponse/Error: [RESPONSE_ERROR]\nIntegration Code: [PASTE_CODE]\nTech Stack: [TECH_STACK]\n\nYour response must include:\n1. Root cause analysis (e.g., CORS, network timeout, payload format mismatch, authentication expiration, rate limits).\n2. Refactored integration code containing robust network resilience patterns (e.g., exponential backoff retries, circuit breakers, timeout limits).\n3. Proper error handling, user notifications, and telemetry logging for API failures.\n4. Explanation of decisions regarding HTTP clients, headers, and payload serialization.\n5. Identification of risks when the third-party API is down completely and how to implement a graceful fallback."
+  },
+  {
+    "id": "debug-memory",
+    "category": "Debugging Prompts",
+    "tag": "Debug",
+    "title": "Memory Leak Detection",
+    "description": "Diagnose garbage collector issues, event listeners leaks, and persistent backend memory growth.",
+    "placeholders": ["[TECH_STACK]", "[MEM_LEAK_SYMPTOMS]", "[PASTE_CODE]"],
+    "content": "Act as an Infrastructure & Core Platform Engineer. Investigate the memory leak described below:\n\nEnvironment: [TECH_STACK] (e.g., Node.js backend, React frontend)\nLeak Symptoms: [MEM_LEAK_SYMPTOMS] (e.g., heap size continuously growing, out-of-memory crashes)\nSuspected Code: [PASTE_CODE]\n\nYour solution must include:\n1. Identification of the leak source (e.g., unclosed database connections, dangling event listeners, global variables, closure captures).\n2. Refactored, leak-free code that properly cleans up resources (using destructors, clean-up hooks, correct scope lifetimes).\n3. Explanation of how garbage collection works in [TECH_STACK] and how this code interacts with it.\n4. Diagnostic steps using developer tools (e.g., Chrome DevTools Heap Snapshot, Node.js inspector) to verify the leak is resolved.\n5. Suggestions for setting up automated regression tests or alerts for memory consumption anomalies."
+  },
+  {
+    "id": "refactor-clean-code",
+    "category": "Refactoring Prompts",
+    "tag": "Refactor",
+    "title": "Clean Up Code",
+    "description": "Rewrite legacy functions to reduce complexity, deduplicate elements, and improve naming standard scripts.",
+    "placeholders": ["[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as a Senior Refactoring Advocate. Clean up the following legacy, messy code:\n\nCode Block: [PASTE_CODE]\nTech Stack: [TECH_STACK]\n\nRequirements:\n1. Simplify complex structures, eliminate duplication (DRY), reduce cognitive complexity, and improve variable/function naming.\n2. Split large functions into single-responsibility, testable units.\n3. Retain the exact same external API and functional behavior (no regressions).\n4. Add clean, JSDoc/Docstring comments for non-obvious code paths.\n5. Explain the refactoring principles (e.g., SOLID, Clean Code guidelines) applied in this rewrite.\n6. Identify any latent edge cases or bugs uncovered during refactoring.\n7. Provide a testing strategy to verify functional equivalence."
+  },
+  {
+    "id": "refactor-extract-logic",
+    "category": "Refactoring Prompts",
+    "tag": "Refactor",
+    "title": "Extract Reusable Logic",
+    "description": "Separate logic blocks into clean helpers, hooks, utilities, or isolated service wrappers.",
+    "placeholders": ["[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as a Principal Software Engineer. Extract the inline logic from the following component/function:\n\nTarget Code: [PASTE_CODE]\nTech Stack: [TECH_STACK]\n\nRequirements:\n1. Extract the logic into a reusable hook, helper function, or modular class (e.g., React custom hook, utility class).\n2. Write the complete, production-ready code for both the extracted helper and the refactored target code calling it.\n3. Provide full type definitions and proper abstraction boundaries.\n4. Explain why this extraction method was chosen and how it improves code reusability.\n5. Outline risks associated with state sync or performance impacts due to the extraction.\n6. Detail unit tests for the extracted helper."
+  },
+  {
+    "id": "refactor-type-safety",
+    "category": "Refactoring Prompts",
+    "tag": "Refactor",
+    "title": "Add Type Safety",
+    "description": "Migrate JavaScript to TypeScript, resolving interfaces, compile parameters, and union typings.",
+    "placeholders": ["[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as a Lead TypeScript Engineer. Add strict type safety to the following untyped or poorly-typed code:\n\nCode Block: [PASTE_CODE]\nTarget Environment: [TECH_STACK]\n\nYour refactoring must:\n1. Replace `any` or loose types with precise interfaces, types, generics, and union types.\n2. Use TypeScript advanced features (e.g., utility types, type guards, discriminated unions) where appropriate.\n3. Ensure compile-time validation is strictly enforced with no compiler warnings.\n4. Explain your choices of types, generics, and interface structures.\n5. Identify runtime data risks (e.g., API payloads not matching compile-time types) and add validation strategies (e.g., Zod schemas, type assertions).\n6. Suggest build and configuration changes (tsconfig.json flags) to enforce type safety."
+  },
+  {
+    "id": "refactor-folder-structure",
+    "category": "Refactoring Prompts",
+    "tag": "Refactor",
+    "title": "Improve Folder Structure",
+    "description": "Restructure project file structures for scalability, resolving imports, and resolving references.",
+    "placeholders": ["[PASTE_FOLDER_LAYOUT]", "[TECH_STACK]"],
+    "content": "Act as a Senior Architect. Refactor the folder structure of the following codebase module to improve scalability and maintainability:\n\nCurrent Layout: [PASTE_FOLDER_LAYOUT]\nTech Stack: [TECH_STACK]\n\nYour plan must include:\n1. New folder layout (using clear tree visualization) following modern architecture (e.g., feature-based, monorepo, clean architecture).\n2. Relocation guide specifying which files move where, and how import paths must change.\n3. Code example of a refactored entry-point file showing clean relative imports.\n4. Rationale for this reorganization, detailing how it helps multi-developer teams work in parallel.\n5. Risk assessment of breaking import paths, circular dependency issues, and build configuration issues.\n6. Suggest tools (e.g., dependency cruisers, ESLint import rules) to prevent import pollution."
+  },
+  {
+    "id": "refactor-modernize",
+    "category": "Refactoring Prompts",
+    "tag": "Refactor",
+    "title": "Modernize Legacy Code",
+    "description": "Convert old ES5 functions, async patterns, or hook architectures into state-of-the-art implementations.",
+    "placeholders": ["[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as a Staff Software Engineer. Modernize the following legacy code snippet to use modern language features and APIs:\n\nLegacy Code: [PASTE_CODE]\nTech Stack: [TECH_STACK] (e.g., ES5 to ES6+, callbacks to async/await, class components to hooks)\n\nRequirements:\n1. Rewrite the code using the latest language standards, syntaxes (e.g., destructuring, spread, modules), and standard libraries.\n2. Improve performance, memory footprint, and exception handling during modernization.\n3. Ensure complete compatibility with modern runtimes and dependency versions.\n4. Explain the advantages of the modernized patterns over the legacy implementation.\n5. Identify backward-compatibility risks, deprecation issues, and potential edge-case regressions.\n6. Provide a verification plan to guarantee behavior consistency."
+  },
+  {
+    "id": "review-security",
+    "category": "Code Review Prompts",
+    "tag": "Review",
+    "title": "Security Review",
+    "description": "Audit scripts against OWASP Top 10 vulnerabilities, highlighting severity classifications.",
+    "placeholders": ["[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as a Senior AppSec Engineer. Perform a comprehensive security review on the following codebase:\n\nCode Block: [PASTE_CODE]\nTech Stack: [TECH_STACK]\n\nYour security report must include:\n1. Identification of security vulnerabilities matching OWASP Top 10 (e.g., SQL injection, XSS, CSRF, IDOR, sensitive data exposure, broken auth).\n2. Severity rating for each vulnerability (Low, Medium, High, Critical) using CVSS criteria.\n3. Corrected, secure refactored code that eliminates each vulnerability.\n4. Explanations of why the original code was vulnerable and how the secure version mitigates the risk.\n5. Recommendations for automated security scanning tools (SAST/DAST) in the CI/CD pipeline."
+  },
+  {
+    "id": "review-edge-case",
+    "category": "Code Review Prompts",
+    "tag": "Review",
+    "title": "Edge Case Hunt",
+    "description": "Trace concurrency risks, race variables, boundaries, and exceptional application states.",
+    "placeholders": ["[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as a Principal QA Engineer and Edge Case Specialist. Conduct an exhaustive code review of the following code to identify hidden edge cases, logic flaws, and operational risks:\n\nCode Block: [PASTE_CODE]\nTech Stack: [TECH_STACK]\n\nYour review must cover:\n1. Edge cases related to data boundaries (e.g., integer overflows, empty inputs, nulls, array index bounds).\n2. Concurrency edge cases (e.g., race conditions, thread safety, database locking, state updates out of order).\n3. Environmental edge cases (e.g., network failure, timeouts, disk space exhaustion, system clock drift).\n4. Rewritten code with robust validations, error checking, and recovery flows to handle all identified edge cases.\n5. Detailed explanations of why these edge cases occur and how the fixes resolve them.\n6. Test cases (unit/integration) explicitly targetting these edge-case scenarios."
+  },
+  {
+    "id": "review-write-tests",
+    "category": "Code Review Prompts",
+    "tag": "Review",
+    "title": "Write Tests",
+    "description": "Write comprehensive unit testing code, setting up mocks, assertions, and inputs.",
+    "placeholders": ["[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as a Senior Software Engineer in Test (SDET). Write a comprehensive, production-grade test suite for the following code:\n\nSource Code: [PASTE_CODE]\nTech Stack & Test Framework: [TECH_STACK] (e.g., Jest, PyTest, Mocha, Go Test)\n\nYour test code must include:\n1. Complete test files with imports, setups, mocks (for databases or external APIs), assertions, and teardowns. No placeholders.\n2. High test coverage covering happy paths, error states, invalid input validations, and complex edge cases.\n3. Clear, descriptive test names explaining what is being tested and the expected outcome.\n4. Explanation of your mocking strategy and assertion choices.\n5. Identification of parts of the source code that were hard to test and recommendations to make the source code more testable."
+  },
+  {
+    "id": "review-best-practices",
+    "category": "Code Review Prompts",
+    "tag": "Review",
+    "title": "Best Practices Audit",
+    "description": "Review naming compliance, architectural layout standards, coupling levels, and SOLID patterns.",
+    "placeholders": ["[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as an Engineering Lead. Perform a strict, production-grade Best Practices Audit on the following code snippet:\n\nCode Snippet: [PASTE_CODE]\nTech Stack: [TECH_STACK]\n\nProvide:\n1. Detailed code review feedback highlighting violations of industry standards (e.g., naming conventions, code duplication, too many parameters, coupling, violation of SOLID).\n2. A completely refactored version of the code that implements all best practices.\n3. Line-by-line justification of the changes made and how they improve code quality.\n4. Risks or effort levels associated with refactoring legacy systems to match these standards.\n5. ESLint, Prettier, or static analysis rules to automatically catch these violations."
+  },
+  {
+    "id": "review-performance",
+    "category": "Code Review Prompts",
+    "tag": "Review",
+    "title": "Performance Review",
+    "description": "Evaluate computational complexity, slow database calls, and sync execution dependencies.",
+    "placeholders": ["[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as a Principal Platform Performance Architect. Review the following code for performance bottlenecks:\n\nCode Block: [PASTE_CODE]\nTech Stack: [TECH_STACK]\n\nYour performance review must evaluate:\n1. Time and Space complexity (Big O) of algorithms, identifying CPU-bound and memory-bound operations.\n2. Database call efficiency (e.g., N+1 query problem, unindexed joins, large payloads).\n3. Network and IO blocking (e.g., lack of concurrency, missing connections reuse).\n4. A fully optimized, refactored version of the code implementing your performance suggestions.\n5. Technical explanation of why the optimized code is faster and how it behaves under load.\n6. Suggestions for performance regression tests to run in staging or CI."
+  },
+  {
+    "id": "test-unit-test",
+    "category": "Testing & QA Prompts",
+    "tag": "Test",
+    "title": "Unit Test Generation",
+    "description": "Generate isolated component unit test modules using mock data layers and expected error cases.",
+    "placeholders": ["[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as a Senior Test Engineer. Generate a comprehensive unit test file for the following class/function:\n\nTarget Code: [PASTE_CODE]\nTech Stack & Test Runner: [TECH_STACK] (e.g., Jest, JUnit, PyTest)\n\nThe unit test file must:\n1. Mock all external dependencies (e.g., file system, database, HTTP clients) to ensure the test is fully isolated.\n2. Test boundaries, null values, invalid parameters, and extreme inputs, verifying expected exceptions are thrown.\n3. Aim for 100% branch and statement coverage.\n4. Explain the test structure and the mock design pattern used.\n5. Identify potential risks of fragile tests (e.g., over-mocking implementation details) and how to avoid them."
+  },
+  {
+    "id": "test-integration",
+    "category": "Testing & QA Prompts",
+    "tag": "Test",
+    "title": "Integration Testing",
+    "description": "Build tests tracing execution flows, schemas, and state integrations between service systems.",
+    "placeholders": ["[COMPONENT_A]", "[COMPONENT_B]", "[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Senior SDET. Create a production-ready integration test suite to verify the interaction between [COMPONENT_A] and [COMPONENT_B] in [PROJECT_NAME] using [TECH_STACK].\n\nIntegration Test Requirements:\n1. Set up a testing environment state (e.g., test database transactions, in-memory caches).\n2. Simulate a complete, multi-step flow of data from Component A to Component B and verify results in the database or response.\n3. Handle data cleanup/teardown between tests to prevent test pollution.\n4. Include complete imports, setups, and assertions in the code block.\n5. Explain your integration testing strategy and how it handles external system dependencies safely.\n6. Outline risks like test flakes, slow runs, or environmental changes, and suggest mitigations."
+  },
+  {
+    "id": "test-e2e",
+    "category": "Testing & QA Prompts",
+    "tag": "Test",
+    "title": "E2E Testing",
+    "description": "Write Playwright or Cypress automation test scripts executing full user flows.",
+    "placeholders": ["[USER_FLOW_DESCRIPTION]", "[TECH_STACK]"],
+    "content": "Act as a Lead E2E Test Architect. Write a production-grade E2E test script using [TESTING_TOOL] (e.g., Playwright, Cypress) for the following user flow:\n\nUser Flow Description: [USER_FLOW_DESCRIPTION]\nTech Stack: [TECH_STACK]\n\nRequirements:\n1. Generate the complete test code using standard selectors, handling dynamic loading, animations, network waits, and redirects.\n2. Test for error screens, successful form submissions, session storage, and cookie updates.\n3. Implement page object models (POM) if applicable to ensure test clean-up and reusability.\n4. Explain selector choices (e.g., test-ids vs text content) and wait strategies to prevent test flakiness.\n5. Analyze potential failure points in E2E runs (e.g., slow third-party elements) and suggest handling.\n6. Provide instructions for running tests headlessly and generating visual report artifacts."
+  },
+  {
+    "id": "test-cases",
+    "category": "Testing & QA Prompts",
+    "tag": "Test",
+    "title": "Test Case Creation",
+    "description": "Compile structured manual QA tables covering boundaries, roles, and preconditions.",
+    "placeholders": ["[FEATURE_NAME]", "[PROJECT_NAME]"],
+    "content": "Act as a Lead QA Analyst. Design a detailed, production-grade manual test suite for [FEATURE_NAME] in [PROJECT_NAME].\n\nThe test suite must contain a Markdown table with:\n1. Test Case ID, Description, Pre-conditions, Step-by-Step Execution Steps, Expected Result, and Actual Result template.\n2. Coverage of happy paths, validation errors, localized formats, permission roles, and edge-cases.\n3. Explicit instructions on test data requirements.\n4. Rationale for selecting these test cases and priority categorization.\n5. Risks of missed regressions and how to automate these tests in subsequent sprints."
+  },
+  {
+    "id": "test-regression",
+    "category": "Testing & QA Prompts",
+    "tag": "Test",
+    "title": "Regression Testing",
+    "description": "Generate validation matrices preventing regressions in related systems after hotfixes.",
+    "placeholders": ["[BUG_CONTEXT]", "[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as a Staff Quality Engineer. Create a regression testing plan and code suite to prevent future regressions after fixing the following critical bug:\n\nBug Context: [BUG_CONTEXT]\nFix Implemented: [PASTE_CODE]\nTech Stack: [TECH_STACK]\n\nYour response must include:\n1. Analysis of what dependencies, modules, or features are at risk of breaking due to this fix.\n2. Automated regression tests that cover the exact bug scenario and its collateral zones.\n3. Guidelines for executing these tests automatically before release gates.\n4. Explanation of your regression test coverage boundaries.\n5. Risks of duplicate tests, test fatigue, and advice on pruning old test suites."
+  },
+  {
+    "id": "deploy-docker",
+    "category": "Deployment & DevOps Prompts",
+    "tag": "Deploy",
+    "title": "Dockerfile Generator",
+    "description": "Generate multi-stage, secure Docker configurations optimizing builder caches and user privileges.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Senior DevOps Engineer. Create a production-ready, secure, and highly optimized Dockerfile and `.dockerignore` for [PROJECT_NAME] built with [TECH_STACK].\n\nYour Dockerfile must implement:\n1. Multi-stage builds to minimize the final image size and reduce attack surface.\n2. Running the container as a non-root user for security.\n3. Proper caching of dependencies (e.g., package.json copy before code copy) to optimize build times.\n4. Correct environment variables, entrypoint/cmd definitions, port exposures, and health checks.\n5. Explain the purpose of each build stage and caching optimization.\n6. Identify security risks (e.g., secret leakage, outdated base images) and how your setup mitigates them.\n7. Suggest improvements like Alpine base images vs distroless images."
+  },
+  {
+    "id": "deploy-cicd",
+    "category": "Deployment & DevOps Prompts",
+    "tag": "Deploy",
+    "title": "CI/CD Pipeline",
+    "description": "Generate configurations for automated workflows, checks, image builds, and deployment rollbacks.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]", "[CLOUD_PROVIDER]"],
+    "content": "Act as a Lead Site Reliability Engineer. Build a production-grade CI/CD pipeline configuration file (e.g., GitHub Actions, GitLab CI) for [PROJECT_NAME] using [TECH_STACK] and deploying to [CLOUD_PROVIDER].\n\nThe pipeline must include steps for:\n1. Code linting, formatting, and static analysis (SAST) runs.\n2. Running unit, integration, and E2E test suites with artifact reporting.\n3. Build compilation and Docker image creation/pushing to a registry (e.g., ECR, GCR).\n4. Safe deployment strategies (e.g., rolling update, blue-green, canary) with rollbacks on failure.\n5. Proper environment configuration, secret management, and cache key generation.\n6. Explain the trigger events, concurrency control, and job dependencies in the pipeline.\n7. Identify deployment failure risks and how automatic rollbacks are triggered."
+  },
+  {
+    "id": "deploy-env",
+    "category": "Deployment & DevOps Prompts",
+    "tag": "Deploy",
+    "title": "Environment Setup",
+    "description": "Generate Terraform templates defining server resources, secure DB settings, and networks.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Principal Infrastructure Engineer. Write a production-grade Infrastructure as Code (IaC) configuration (e.g., Terraform, CloudFormation, Docker Compose) to spin up the infrastructure for [PROJECT_NAME] using [TECH_STACK].\n\nThe code must define:\n1. Compute services (e.g., ECS, K8s, EC2, Cloud Run).\n2. Managed database services (e.g., RDS PostgreSQL, Atlas MongoDB) with replica sets, encryption at rest, and backup configs.\n3. Networking components (VPCs, private/public subnets, security groups, route tables, load balancers).\n4. IAM roles, policies, and environment secret injection configurations.\n5. Explain your infrastructure topology and security choices.\n6. Identify scale bounds, high availability (HA) configuration, and disaster recovery (DR) plans.\n7. Suggest cost-saving strategies (e.g., auto-scaling policies, spot instances)."
+  },
+  {
+    "id": "deploy-monitoring",
+    "category": "Deployment & DevOps Prompts",
+    "tag": "Deploy",
+    "title": "Monitoring Setup",
+    "description": "Formulate Datadog or Prometheus configs tracking query latencies and CPU limits.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]", "[MONITORING_TOOL]"],
+    "content": "Act as an SRE and Observability Lead. Set up a comprehensive monitoring and logging configuration for [PROJECT_NAME] using [TECH_STACK] and [MONITORING_TOOL] (e.g., Datadog, Prometheus/Grafana, ELK Stack).\n\nProvide:\n1. Configuration code or JSON templates for dashboards tracking Golden Signals (Latency, Traffic, Errors, Saturation).\n2. Logging format specifications (e.g., JSON logs) and aggregation rules.\n3. Alert threshold rules (e.g., alerting when error rate exceeds 1% over 5 minutes) with severity levels.\n4. Custom instrumentation code (e.g., middleware, tracers) to emit key performance metrics.\n5. Explain the logic behind your alert thresholds and logging format.\n6. Identify noise reduction strategies to prevent alert fatigue."
+  },
+  {
+    "id": "deploy-prr",
+    "category": "Deployment & DevOps Prompts",
+    "tag": "Deploy",
+    "title": "Production Readiness Review",
+    "description": "Establish a bulletproof pre-launch audit covering backups, disaster rules, and scale gates.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]", "[CLOUD_PROVIDER]"],
+    "content": "Act as a Principal DevOps Architect. Conduct a comprehensive Production Readiness Review (PRR) checklist for launching [PROJECT_NAME] built with [TECH_STACK] on [CLOUD_PROVIDER].\n\nYour review must generate an action plan covering:\n1. Infrastructure & Scaling (load balancing, auto-scaling, replication, CDN).\n2. Security & Compliance (encryption in transit/at rest, pen tests, IAM hygiene, vulnerability patches).\n3. Reliability & Fallbacks (backups, DR, rate limiting, connection timeouts).\n4. Observability (logging, metrics, traces, on-call alert routing).\n5. Deployment & Release controls (rollback scripts, feature flags, smoke tests).\n6. Explanations of critical checklist items and why they cannot be bypassed.\n7. Risks of scaling too fast or facing DDoS attacks, with immediate mitigations."
+  },
+  {
+    "id": "docs-readme",
+    "category": "Documentation Prompts",
+    "tag": "Docs",
+    "title": "README Generator",
+    "description": "Build high-quality main project README files specifying structures, parameters, and debug guidelines.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Senior Technical Writer and Product Engineer. Write a comprehensive, production-grade `README.md` for [PROJECT_NAME] built with [TECH_STACK].\n\nThe README must include:\n1. Clear project description, core features, and system architecture overview.\n2. Clear system prerequisites and step-by-step local development setup instructions.\n3. Instructions on running development servers, linters, tests, builds, and docker containers.\n4. Detailed environment variable reference with descriptions.\n5. API endpoints summary or links to API documentation.\n6. Deployment guidelines and contribution guidelines.\n7. Explain the styling and typography choices in the documentation layout.\n8. Identify common developer onboarding issues and add a Troubleshooting section to solve them."
+  },
+  {
+    "id": "docs-api-docs",
+    "category": "Documentation Prompts",
+    "tag": "Docs",
+    "title": "API Documentation",
+    "description": "Create detailed OpenAPI/Swagger specs or markdown documents listing response parameters.",
+    "placeholders": ["[API_NAME]", "[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as an API Architect and Technical Writer. Generate a comprehensive API documentation file (in OpenAPI 3.0 YAML or Markdown format) for [API_NAME] in [PROJECT_NAME] using [TECH_STACK].\n\nThe documentation must include:\n1. Base URL, paths, and HTTP methods.\n2. Headers, path parameters, query parameters, and request body schema (with TypeScript types or JSON validation schemas).\n3. Complete response payloads for all status codes (e.g., 200 OK, 201 Created, 400 Bad Request, 401 Unauthorized, 429 Too Many Requests, 500 Server Error).\n4. Security schemas (e.g., Bearer Token, OAuth2 scopes).\n5. Explain the data types, formats, and design decisions behind the API contract.\n6. Identify edge cases (e.g., rate limits, partial updates) and detail how the client should handle them."
+  },
+  {
+    "id": "docs-tech-docs",
+    "category": "Documentation Prompts",
+    "tag": "Docs",
+    "title": "Technical Documentation",
+    "description": "Generate in-depth technical design documents detailing data flows and sequence graphs.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Staff Systems Architect. Write an in-depth system architecture and technical design document (TDD) for [PROJECT_NAME] utilizing [TECH_STACK].\n\nThe TDD must contain:\n1. System context and high-level architectural diagram (in Mermaid.js syntax).\n2. Component descriptions (backend APIs, frontend portals, background queues, cache, DBs).\n3. Complete database schema definitions and data relationships description.\n4. Key sequence flows (e.g., user signup, asynchronous processing) illustrated with Mermaid.js sequence diagrams.\n5. Rationale for primary technical decisions (databases, frameworks, third-party integrations).\n6. Security topology, data flow constraints, and performance scale models.\n7. Suggest operational guides for disaster recovery and system maintenance."
+  },
+  {
+    "id": "docs-onboarding",
+    "category": "Documentation Prompts",
+    "tag": "Docs",
+    "title": "Onboarding Guide",
+    "description": "Formulate onboarding tutorials outlining workspace environments, dev scripts, and code policies.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as an Engineering Lead. Write an onboarding and development setup guide for new developers joining the [PROJECT_NAME] team using [TECH_STACK].\n\nThe guide must include:\n1. Prerequisites list (installing package managers, DB engines, CLIs, Git credentials).\n2. Cloning, local configurations setup, seed data generation, and IDE configurations (e.g., VS Code extension recommendations).\n3. Explanation of code layout, key architectural design patterns, and branch naming/pull request conventions.\n4. Instructions on how to test, build, lint, and run the app.\n5. Explanations of core coding philosophies and developer SLAs.\n6. Common pitfalls new developers face when installing dependencies or running the server, and their solutions."
+  },
+  {
+    "id": "docs-changelog",
+    "category": "Documentation Prompts",
+    "tag": "Docs",
+    "title": "Changelog Generator",
+    "description": "Autogenerate grouped logs listing additions, updates, breaking configurations, and upgrade rules.",
+    "placeholders": ["[PROJECT_NAME]", "[VERSION_NUMBER]", "[GIT_COMMITS_OR_PR_DESCRIPTIONS]"],
+    "content": "Act as a Product Engineer. Generate a production-grade `CHANGELOG.md` file summarizing the changes in [PROJECT_NAME] for version [VERSION_NUMBER].\n\nBase your changelog on the following git commit messages/PR descriptions:\n[GIT_COMMITS_OR_PR_DESCRIPTIONS]\n\nRequirements:\n1. Organize changes into standard categories: Added, Changed, Deprecated, Removed, Fixed, Security.\n2. Provide clear, user-friendly summaries of the changes rather than raw commit messages.\n3. Highlight breaking changes clearly at the top with migration instructions.\n4. Reference issue numbers or PR IDs if available.\n5. Explain the business value or technical necessity of key changes.\n6. Identify any deployment risks associated with upgrading to this version."
+  },
+  {
+    "id": "ai-feature-planning",
+    "category": "AI & Automation Prompts",
+    "tag": "AI",
+    "title": "AI Feature Planning",
+    "description": "Design LLM workflows, token consumption plans, and dynamic API failover routines.",
+    "placeholders": ["[AI_FEATURE_NAME]", "[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Senior AI Product Engineer. Plan the integration of an AI-powered [AI_FEATURE_NAME] into [PROJECT_NAME] built with [TECH_STACK].\n\nThe plan must include:\n1. Architecture diagram (Mermaid.js) showing the flow between frontend, backend, AI API gateway, and LLM providers.\n2. Detailed prompt design strategy, token optimization plan, and context pruning mechanism.\n3. Fallback strategy when LLM APIs are slow, error out, or exceed rate limits.\n4. Cost estimation models based on projected token consumption.\n5. Explanations of your choices of model (e.g., GPT-4o, Claude 3.5 Sonnet, local Llama) and orchestration frameworks (e.g., LangChain, raw SDKs).\n6. Identification of risks related to prompt injection, data leakage, and hallucinations, and how to mitigate them."
+  },
+  {
+    "id": "ai-openai-integration",
+    "category": "AI & Automation Prompts",
+    "tag": "AI",
+    "title": "OpenAI Integration",
+    "description": "Implement structured output endpoints with API validation and rate-limit retries.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Senior AI Software Engineer. Write complete, production-ready backend code to integrate the OpenAI API in [PROJECT_NAME] using [TECH_STACK].\n\nRequirements:\n1. Set up the OpenAI client with correct configurations, API key loading, and connection timeouts.\n2. Implement a call to the Chat Completions endpoint using Structured Outputs (JSON Schema/Tool calling) to guarantee the output format.\n3. Implement robust error handling (e.g., API errors, network issues, timeout errors) and rate-limit handling (e.g., retry with jitter).\n4. Provide the exact typescript/JSON interfaces for input and output schemas.\n5. Explain your choice of parameters (e.g., temperature, max_tokens, presence_penalty) and their effects.\n6. Analyze data privacy risks (e.g., user data sent to third-party APIs) and how to handle them (e.g., scrubbing PII)."
+  },
+  {
+    "id": "ai-agent-design",
+    "category": "AI & Automation Prompts",
+    "tag": "AI",
+    "title": "AI Agent Design",
+    "description": "Construct ReAct loops, tool execution specs, state histories, and vector DB retrievals.",
+    "placeholders": ["[AGENT_TASK]", "[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Staff AI Architect. Design a production-grade AI Agent system to perform [AGENT_TASK] for [PROJECT_NAME] using [TECH_STACK].\n\nYour design must include:\n1. The agent's core loop (ReAct, Plan-and-Execute, or State Graph) described via Mermaid.js.\n2. Detailed specifications for tools (APIs, DB accessors) the agent can execute, including input/output schemas.\n3. The agent's system prompt containing instructions, constraints, and error recovery protocols.\n4. Memory architecture (short-term state, long-term vector DB retrieval) and state management.\n5. Explanations of why you chose this agent architecture and tool boundaries.\n6. Identification of agent failure modes (e.g., loops, bad tools execution, context window exhaustion) and mitigations.\n7. Verification tests to evaluate agent accuracy and safety before deployment."
+  },
+  {
+    "id": "ai-workflow-automation",
+    "category": "AI & Automation Prompts",
+    "tag": "AI",
+    "title": "Workflow Automation",
+    "description": "Automate multi-step code operations, compiling scripts with retry boundaries.",
+    "placeholders": ["[AUTOMATION_TASK]", "[PROJECT_NAME]", "[TECH_STACK]"],
+    "content": "Act as a Principal Automation Engineer. Create a production-ready automated workflow script/configuration to solve [AUTOMATION_TASK] for [PROJECT_NAME] using [TECH_STACK].\n\nThe script must:\n1. Automate the multi-step process (e.g., parsing files, calling APIs, sending notifications, executing shell commands).\n2. Include robust logging, error handling, rollback steps on failure, and environment configuration.\n3. Be written inside a complete, runnable script file.\n4. Explain how this script simplifies operational overhead and saves developer hours.\n5. Identify security risks (e.g., hardcoded credentials, command injection) and implement strict safeguards.\n6. Suggest scheduling configurations (e.g., cron jobs, webhook listeners) to trigger the workflow."
+  },
+  {
+    "id": "ai-prompt-optimization",
+    "category": "AI & Automation Prompts",
+    "tag": "AI",
+    "title": "Prompt Optimization",
+    "description": "Optimize raw prompts with Chain-of-Thought paths, XML blocks, and validation frameworks.",
+    "placeholders": ["[ORIGINAL_PROMPT]", "[TASK_DESCRIPTION]", "[LLM_NAME]"],
+    "content": "Act as a World-Class Prompt Engineer. Optimize the following prompt to achieve high accuracy, structured output, and minimal token usage:\n\nOriginal Prompt: [ORIGINAL_PROMPT]\nTarget Task: [TASK_DESCRIPTION]\nTarget LLM: [LLM_NAME] (e.g., Claude 3.5 Sonnet, GPT-4o, Gemini 1.5 Pro)\n\nYour optimized output must include:\n1. Optimized Prompt utilizing advanced prompt engineering techniques (e.g., XML tags, few-shot examples, chain-of-thought, clear constraints, system vs user separation).\n2. Structured output parsing instructions (e.g., JSON schemas).\n3. Quantitative breakdown of the optimization techniques applied and why they work.\n4. Rationale explaining how the prompt minimizes token usage while preserving output quality.\n5. Risk analysis identifying potential failure cases, prompt injections, or edge-case deviations, and how the prompt defends against them."
+  },
+  {
+    "id": "perf-db-optimization",
+    "category": "Performance & Scaling Prompts",
+    "tag": "Performance",
+    "title": "Database Optimization",
+    "description": "Analyze query explain paths, build optimized indices, and rewrite nested joins.",
+    "placeholders": ["[SLOW_QUERY]", "[DATABASE_TYPE]", "[EXPLAIN_PLAN_OUTPUT]"],
+    "content": "Act as a Principal Database Engineer. Diagnose and optimize the following slow database query:\n\nSlow Query: [SLOW_QUERY]\nDatabase Type: [DATABASE_TYPE]\nExplain Analyze/Query Plan Output: [EXPLAIN_PLAN_OUTPUT]\n\nYour response must include:\n1. Root cause analysis explaining exactly why the query is slow (e.g., seq scan, index scan on wrong columns, lock contention, temporary disk writes).\n2. Optimized SQL query or ORM code.\n3. Required changes to the schema (e.g., creating indexes, composite indexes, rewriting joins, table partitioning).\n4. Explanation of database indexing mechanics (e.g., B-Tree traversal, index selectivity) relevant to this case.\n5. Analysis of indexing trade-offs (e.g., write overhead, storage costs).\n6. Verification plan to measure and compare performance before and after the change."
+  },
+  {
+    "id": "perf-frontend-optimization",
+    "category": "Performance & Scaling Prompts",
+    "tag": "Performance",
+    "title": "Frontend Optimization",
+    "description": "Optimize web vitals, split script bundles, and defer heavy rendering operations.",
+    "placeholders": ["[PERFORMANCE_REPORT]", "[PASTE_CODE]", "[TECH_STACK]"],
+    "content": "Act as a Senior Frontend Performance Architect. Optimize the web vitals (LCP, FID, CLS, INP) and bundle size of the following frontend application:\n\nPerformance Report: [PERFORMANCE_REPORT] (e.g., Lighthouse scores, bundle analyzer output)\nRelevant Code/Config: [PASTE_CODE]\nTech Stack: [TECH_STACK]\n\nYour optimization plan must include:\n1. Optimized refactoring of configuration (e.g., Webpack/Vite config, bundle splitting rules) and code.\n2. Implementation of modern frontend performance techniques (e.g., dynamic imports, image optimization, code virtualization, component memoization).\n3. Specific code improvements to eliminate layout shifts and minimize main thread blocking.\n4. Technical explanation of how each change impacts browser rendering performance.\n5. Risks of optimization regressions (e.g., split chunk bugs, state issues) and how to avoid them.\n6. Testing script to measure load times and performance impact in staging."
+  },
+  {
+    "id": "perf-backend-scaling",
+    "category": "Performance & Scaling Prompts",
+    "tag": "Performance",
+    "title": "Backend Scaling",
+    "description": "Scale slow API controllers with worker pools and asynchronous execution flows.",
+    "placeholders": ["[API_NAME]", "[TRAFFIC_SPEC]", "[TECH_STACK]", "[PASTE_CODE]"],
+    "content": "Act as a Principal Systems Engineer. Design a scaling plan for a backend service handling [API_NAME] which experiences high CPU/RAM load under concurrent traffic [TRAFFIC_SPEC].\n\nTech Stack: [TECH_STACK]\nCurrent Code: [PASTE_CODE]\n\nYour plan must include:\n1. Refactoring of the code to use non-blocking asynchronous operations, worker threads, or connection pooling.\n2. Load balancing, horizontal scaling, and container configuration suggestions.\n3. Horizontal scaling architecture diagram (Mermaid.js syntax).\n4. Detailed analysis of CPU/Memory profiles and why the current implementation bottlenecks.\n5. Identification of synchronization hazards (e.g., deadlocks, shared state race conditions) and their solutions.\n6. Load testing configuration (e.g., k6 script) to validate the service performance under load.\n7. Cost-capacity trade-off analysis."
+  },
+  {
+    "id": "perf-caching-strategy",
+    "category": "Performance & Scaling Prompts",
+    "tag": "Performance",
+    "title": "Caching Strategy",
+    "description": "Design Redis or CDN caching middleware with solid cache-aside structures and TTL invalidation.",
+    "placeholders": ["[PROJECT_NAME]", "[TECH_STACK]", "[CACHING_TOOL]"],
+    "content": "Act as a Staff Infrastructure Architect. Design a production-grade caching layer for [PROJECT_NAME] using [TECH_STACK] and [CACHING_TOOL] (e.g., Redis, Memcached, CDN).\n\nYour design must include:\n1. Cache topology and connection configurations.\n2. Caching implementation code (middleware, wrapper decorators) for read-through, write-through, or cache-aside strategies.\n3. Concrete Cache Invalidation strategies (e.g., time-to-live (TTL), versioning, pub/sub invalidation, write-through hooks) for dynamic data.\n4. Key naming conventions and namespace management.\n5. Explanation of cache eviction policies (e.g., LFU, LRU) and connection resilience logic (e.g., fallback to DB on cache fail).\n6. Analysis of risks such as cache stampede, cache penetration, stale data presentation, and their mitigations."
+  },
+  {
+    "id": "perf-system-review",
+    "category": "Performance & Scaling Prompts",
+    "tag": "Performance",
+    "title": "System Design Review",
+    "description": "Audit system designs for single points of failure (SPOFs) and request thresholds.",
+    "placeholders": ["[SYSTEM_DESIGN_DESCRIPTION]", "[TECH_STACK]", "[TARGET_SCALE]"],
+    "content": "Act as a Staff Systems Architect. Review the following high-level system architecture design for performance and scaling vulnerabilities:\n\nSystem Design Description: [SYSTEM_DESIGN_DESCRIPTION]\nTech Stack: [TECH_STACK]\nTarget Scale: [TARGET_SCALE]\n\nProvide:\n1. Deep-dive evaluation of systemic bottlenecks, single points of failure (SPOFs), database latency issues, and networking limits.\n2. Mermaid.js architecture diagram showing the redesigned, high-performance architecture.\n3. Detailed, actionable list of modifications (e.g., message queues introduction, microservice split, database replica setups).\n4. Rationale explaining why these architectural adjustments are required to support the target scale.\n5. Cost estimation impact of the scaling changes and alternative low-cost plans.\n6. Risk analysis of migrating the live production system to this new design."
+  }
+]
