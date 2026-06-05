@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Telehealth Connect | Premium Medical Care</title>
+    
+    <!-- Bootstrap 5.3.3 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- Tailwind CSS CDN (For utility compatibility matching Stitch design files) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Google Material Symbols Outlined -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    
+    <!-- Custom Tailwind Configuration to match Stitch Design Tokens -->
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "on-error": "#ffffff",
+              "outline-variant": "#c3c6d7",
+              "on-tertiary-fixed": "#002113",
+              "surface-container-highest": "#dae2fd",
+              "on-tertiary": "#ffffff",
+              "surface-dim": "#d2d9f4",
+              "on-primary": "#ffffff",
+              "on-surface": "#131b2e",
+              "on-secondary-fixed-variant": "#00504f",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#dbe1ff",
+              "tertiary-fixed-dim": "#4edea3",
+              "inverse-surface": "#283044",
+              "surface-container-lowest": "#ffffff",
+              "outline": "#737686",
+              "surface-variant": "#dae2fd",
+              "secondary-fixed": "#7df5f4",
+              "on-secondary-container": "#007070",
+              "surface-container": "#eaedff",
+              "background": "#faf8ff",
+              "on-primary-fixed-variant": "#003ea8",
+              "error-container": "#ffdad6",
+              "tertiary": "#006242",
+              "surface-tint": "#0053db",
+              "on-primary-fixed": "#00174b",
+              "surface": "#faf8ff",
+              "on-secondary": "#ffffff",
+              "surface-container-high": "#e2e7ff",
+              "primary-container": "#2563eb",
+              "primary": "#004ac6",
+              "tertiary-fixed": "#6ffbbe",
+              "on-secondary-fixed": "#002020",
+              "surface-container-low": "#f2f3ff",
+              "secondary-fixed-dim": "#5ed9d7",
+              "surface-bright": "#faf8ff",
+              "primary-fixed-dim": "#b4c5ff",
+              "on-background": "#131b2e",
+              "on-tertiary-container": "#bdffdb",
+              "on-surface-variant": "#434655",
+              "error": "#ba1a1a",
+              "secondary-container": "#7df5f4",
+              "inverse-on-surface": "#eef0ff",
+              "on-tertiary-fixed-variant": "#005236",
+              "secondary": "#006a69",
+              "inverse-primary": "#b4c5ff",
+              "tertiary-container": "#007d55",
+              "on-primary-container": "#eeefff"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+            "spacing": {
+              "base": "4px",
+              "lg": "24px",
+              "sm": "8px",
+              "gutter": "24px",
+              "xl": "32px",
+              "3xl": "64px",
+              "md": "16px",
+              "margin-desktop": "40px",
+              "margin-mobile": "16px",
+              "2xl": "48px",
+              "xs": "4px"
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #faf8ff;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .hero-gradient {
+        background: radial-gradient(circle at top right, #dbe1ff 0%, #faf8ff 100%);
+      }
+      .hover-lift {
+        transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-4px);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <!-- Bootstrap 5.3.3 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

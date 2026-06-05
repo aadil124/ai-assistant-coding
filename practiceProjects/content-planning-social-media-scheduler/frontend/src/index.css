@@ -1,0 +1,110 @@
+/* CreatorSuite Global Design System Overrides */
+:root {
+  --primary-blue: #004ac6;
+  --primary-container: #2563eb;
+  --bg-indigo-light: #f9f9ff;
+  --border-color: #c3c6d7;
+  --neutral-gray: #575e70;
+  --surface-dim: #d3daea;
+  --surface-tint: #0053db;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f9f9ff;
+  color: #151c27;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #dce2f3;
+  border-radius: 10px;
+}
+
+/* AI Gradient Border */
+.ai-gradient-border {
+  border: 1px solid transparent;
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+              linear-gradient(to right, #004ac6, #9333ea) border-box;
+}
+
+/* Calendar Layout Grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-collapse: collapse;
+}
+
+.calendar-cell {
+  min-height: 150px;
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.calendar-cell:hover {
+  background-color: #f8fafc;
+}
+
+/* Device Simulator styling */
+.device-simulator {
+  max-width: 360px;
+  border: 10px solid #111;
+  border-radius: 40px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  background-color: #ffffff;
+}
+
+/* Custom Glassmorphism Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Custom Font Utilities */
+.text-xs-caps {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: #6c757d;
+}
+
+/* Navigation Overrides */
+.nav-link-custom {
+  color: #575e70;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.nav-link-custom:hover {
+  background-color: #e9ecef;
+  color: #151c27;
+}
+
+.nav-link-custom.active {
+  background-color: #d9dff5;
+  color: #004ac6;
+  font-weight: 700;
+  border-left: 4px solid #004ac6;
+}
+
+/* Material Icons adjustment */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}
