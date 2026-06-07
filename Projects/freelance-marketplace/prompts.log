@@ -209,3 +209,6 @@ Scope:
 * WebSocket Integration
 * Activity Logs
 * Contract Notifications
+
+now I want to create saveToken.md file in docs folder 
+when I give any prompt then this file will use every time will all type of prmpt to save the number of token. i will mentioned this saveToken.md with every prompt
