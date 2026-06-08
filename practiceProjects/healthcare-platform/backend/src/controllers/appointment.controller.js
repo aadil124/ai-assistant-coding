@@ -70,3 +70,25 @@ export const updateStatus = async (req, res) => {
     return res.status(400).json({ message: err.message });
   }
 };
+
+export const getParticipants = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const role = req.user.role;
+    const participants = await appointmentService.getUniqueParticipants(userId, role);
+    return res.status(200).json(participants);
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};
+
+export const getStats = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const role = req.user.role;
+    const stats = await appointmentService.getStats(userId, role);
+    return res.status(200).json(stats);
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};

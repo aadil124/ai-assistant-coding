@@ -61,9 +61,27 @@ class ApiClient {
     });
   }
 
+  async logout() {
+    try {
+      await this.request('/auth/logout', { method: 'POST' });
+    } catch (err) {
+      console.warn('Backend logout failed or token already expired:', err);
+    } finally {
+      this.setToken(null);
+    }
+  }
+
   // Appointments
   async getAppointments() {
     return this.request('/appointments');
+  }
+
+  async getPatients() {
+    return this.request('/appointments/patients');
+  }
+
+  async getStats() {
+    return this.request('/appointments/stats');
   }
 
   async lockSlot(doctorId, scheduledTime, symptomsDescription) {

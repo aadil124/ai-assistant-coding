@@ -138,3 +138,13 @@ Redis sorted-set rankings, regional leaderboards, game mode rankings, daily, wee
 
 now I want to create saveToken.md file in docs folder 
 when I give any prompt then this file will use every time will all type of prmpt to save the number of token. i will mentioned this saveToken.md with every prompt
+
+I have coonect with my stitch mcp server fetch my all project @[docs/saveToken.md] 
+
+now I want to build UI screen for frontend code for project name SecureExam Enterprise Platform and project id : projects/7785340669022596825 
+@frontned-persona @[features] 
+folder structure : frontned/ .env , gitnore  all project code in that folder
+
+I want to revert all frontend code and delete the frontned folder
+
+frotnend folder not deleted yet

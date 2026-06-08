@@ -13,6 +13,12 @@ const router = express.Router();
 // Get authenticated user's appointments
 router.get('/', authenticate, appointmentController.getMyAppointments);
 
+// Get unique patient list / doctor list
+router.get('/patients', authenticate, appointmentController.getParticipants);
+
+// Get doctor/patient stats
+router.get('/stats', authenticate, appointmentController.getStats);
+
 // Lock a slot for 10 minutes
 router.post('/lock', authenticate, validate(lockSlotSchema), appointmentController.lockSlot);
 

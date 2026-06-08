@@ -1,52 +1,115 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import api from '../utils/api';
 
-export default function useWorkspace() {
-  const [activeWorkspace, setActiveWorkspace] = useState({
-    id: '8c3b6d27-6f68-4ad0-b2f7-ec87b415a7ee',
-    name: 'Acme Marketing Agency',
-    plan: 'Enterprise Plan',
-    role: 'ADMIN'
-  });
+export default function useWorkspace(isAuthenticated) {
+  const [activeWorkspace, setActiveWorkspace] = useState(null);
+  const [workspaces, setWorkspaces] = useState([]);
+  const [teamMembers, setTeamMembers] = useState([]);
 
-  const [workspaces, setWorkspaces] = useState([
-    { id: '8c3b6d27-6f68-4ad0-b2f7-ec87b415a7ee', name: 'Acme Marketing Agency', plan: 'Enterprise Plan', role: 'ADMIN' },
-    { id: '40446806-0107-6201-9311-2daaf0cf3638', name: 'Dev Sandbox', plan: 'Free Trial', role: 'ADMIN' },
-    { id: '95847153-1310-6173-0300-b1864046ce85', name: 'Global Retail Corp', plan: 'Growth Plan', role: 'EDITOR' }
-  ]);
+  const loadWorkspaces = useCallback(async () => {
+    if (!localStorage.getItem('token')) return;
+    try {
+      const res = await api.get('/workspaces');
+      if (res.success && res.data.length > 0) {
+        setWorkspaces(res.data.map(w => ({
+          id: w._id,
+          name: w.name,
+          plan: w.plan,
+          role: w.members.find(m => m.userId === localStorage.getItem('userId'))?.role || 'EDITOR'
+        })));
 
-  const [teamMembers, setTeamMembers] = useState([
-    { id: '1', name: 'Alex Rivera', email: 'alex@creatorsuite.io', role: 'ADMIN', status: 'ACTIVE' },
-    { id: '2', name: 'Sarah Lopez', email: 'sarah.l@acme.com', role: 'APPROVER', status: 'ACTIVE' },
-    { id: '3', name: 'Marcus Chen', email: 'marcus@acme.com', role: 'EDITOR', status: 'ACTIVE' },
-    { id: '4', name: 'Elena Rostova', email: 'elena@acme.com', role: 'VIEW_CLIENT', status: 'ACTIVE' }
-  ]);
+        const activeId = localStorage.getItem('workspaceId');
+        const found = res.data.find(w => w._id === activeId) || res.data[0];
+        
+        if (found) {
+          localStorage.setItem('workspaceId', found._id);
+          setActiveWorkspace({
+            id: found._id,
+            name: found.name,
+            plan: found.plan,
+            role: found.members.find(m => m.userId === localStorage.getItem('userId'))?.role || 'ADMIN'
+          });
+          loadMembers(found._id);
+        }
+      }
+    } catch (err) {
+      console.error('Failed to load workspaces:', err.message);
+    }
+  }, []);
 
-  const inviteMember = (email, role) => {
-    const newMember = {
-      id: String(teamMembers.length + 1),
-      name: email.split('@')[0],
-      email,
-      role,
-      status: 'PENDING'
-    };
-    setTeamMembers([...teamMembers, newMember]);
+  const loadMembers = async (wsId) => {
+    try {
+      const res = await api.get('/workspaces/members', { 'x-workspace-id': wsId });
+      if (res.success && res.data) {
+        setTeamMembers(res.data.map(m => ({
+          id: m.userId._id,
+          name: m.userId.displayName,
+          email: m.userId.email,
+          role: m.role,
+          status: m.status
+        })));
+      }
+    } catch (err) {
+      console.error('Failed to load workspace members:', err.message);
+    }
   };
 
-  const createWorkspace = (name) => {
-    const newWs = {
-      id: Math.random().toString(36).substring(2, 9),
-      name,
-      plan: 'Growth Plan',
-      role: 'ADMIN'
-    };
-    setWorkspaces([...workspaces, newWs]);
-    setActiveWorkspace(newWs);
+  const inviteMember = async (email, role) => {
+    try {
+      const res = await api.post('/workspaces/invite', { email, role });
+      if (res.success && activeWorkspace) {
+        loadMembers(activeWorkspace.id);
+      }
+      return res;
+    } catch (err) {
+      console.error('Failed to invite member:', err.message);
+      throw err;
+    }
   };
 
-  const changeWorkspace = (id) => {
-    const found = workspaces.find(w => w.id === id);
-    if (found) setActiveWorkspace(found);
+  const createWorkspace = async (name) => {
+    try {
+      const res = await api.post('/workspaces', { name });
+      if (res.success && res.data) {
+        const newWs = {
+          id: res.data._id,
+          name: res.data.name,
+          plan: res.data.plan,
+          role: 'ADMIN'
+        };
+        localStorage.setItem('workspaceId', newWs.id);
+        setWorkspaces(prev => [...prev, newWs]);
+        setActiveWorkspace(newWs);
+        loadMembers(newWs.id);
+      }
+      return res;
+    } catch (err) {
+      console.error('Failed to create workspace:', err.message);
+      throw err;
+    }
   };
+
+  const changeWorkspace = async (id) => {
+    try {
+      const res = await api.put(`/workspaces/switch/${id}`);
+      if (res.success) {
+        localStorage.setItem('workspaceId', id);
+        const found = workspaces.find(w => w.id === id);
+        if (found) {
+          setActiveWorkspace(found);
+          loadMembers(id);
+        }
+      }
+    } catch (err) {
+      console.error('Failed to switch workspace:', err.message);
+    }
+  };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      loadWorkspaces();
+    }
+  }, [isAuthenticated, loadWorkspaces]);
 
   return {
     activeWorkspace,
@@ -54,6 +117,7 @@ export default function useWorkspace() {
     teamMembers,
     inviteMember,
     createWorkspace,
-    changeWorkspace
+    changeWorkspace,
+    loadWorkspaces
   };
 }

@@ -44,8 +44,8 @@ export default function App() {
     setCurrentScreen(screenName);
   };
 
-  const handleLogout = () => {
-    api.setToken(null);
+  const handleLogout = async () => {
+    await api.logout();
     localStorage.removeItem('user');
     setUser(null);
     setActiveAppointmentId(null);

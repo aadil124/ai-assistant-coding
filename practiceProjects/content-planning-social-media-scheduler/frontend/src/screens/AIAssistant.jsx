@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import api from '../utils/api';
 
 export default function AIAssistant() {
   const [prompt, setPrompt] = useState('');
@@ -8,18 +9,24 @@ export default function AIAssistant() {
   const [suggestions, setSuggestions] = useState([]);
   const [copiedIndex, setCopiedIndex] = useState(null);
 
-  const handleGenerate = () => {
+  const handleGenerate = async () => {
     if (!prompt) return;
     setLoading(true);
-    // Mock generation
-    setTimeout(() => {
-      setSuggestions([
-        `💡 Focus on standardizing details to streamline workflows! Check out how we unified scheduling queues. #SaaS #CreatorEconomy`,
-        `Standard setups fail, but custom visual grid schedules empower SMMs to pacing calendar content elegantly. #workflow #marketing`,
-        `Eco-friendly packaging shifts require bold plans. Our client workspaces are already aligning drafts for launching soon! 🌿`
-      ]);
+    try {
+      const res = await api.post('/ai/generate-caption', {
+        prompt,
+        tone,
+        platform,
+        length: 'medium'
+      });
+      if (res.success && res.captions) {
+        setSuggestions(res.captions);
+      }
+    } catch (err) {
+      console.error('Failed to generate AI suggestions:', err.message);
+    } finally {
       setLoading(false);
-    }, 1500);
+    }
   };
 
   const handleCopy = (text, idx) => {

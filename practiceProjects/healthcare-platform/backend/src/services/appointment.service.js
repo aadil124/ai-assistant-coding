@@ -95,3 +95,80 @@ export const updateAppointmentStatus = async (appointmentId, status, userId, use
   await appointment.save();
   return appointment;
 };
+
+export const getUniqueParticipants = async (userId, role) => {
+  if (role === 'doctor') {
+    // Find unique patients
+    const appointments = await Appointment.find({ doctorId: userId })
+      .populate('patientId', 'email phoneNumber createdAt')
+      .lean();
+    
+    const patientsMap = new Map();
+    appointments.forEach(app => {
+      if (app.patientId && !patientsMap.has(app.patientId._id.toString())) {
+        patientsMap.set(app.patientId._id.toString(), {
+          _id: app.patientId._id,
+          email: app.patientId.email,
+          phoneNumber: app.patientId.phoneNumber,
+          joinedAt: app.patientId.createdAt,
+          lastAppointment: app.scheduledTime,
+        });
+      }
+    });
+    return Array.from(patientsMap.values());
+  } else {
+    // Find unique doctors
+    const appointments = await Appointment.find({ patientId: userId })
+      .populate('doctorId', 'email phoneNumber')
+      .lean();
+    
+    const doctorsMap = new Map();
+    for (const app of appointments) {
+      if (app.doctorId && !doctorsMap.has(app.doctorId._id.toString())) {
+        const details = await DoctorDetails.findOne({ userId: app.doctorId._id }).lean();
+        doctorsMap.set(app.doctorId._id.toString(), {
+          _id: app.doctorId._id,
+          email: app.doctorId.email,
+          phoneNumber: app.doctorId.phoneNumber,
+          firstName: details?.firstName || 'Doctor',
+          lastName: details?.lastName || 'Practitioner',
+          specialty: details?.specialty || 'General',
+          clinicAddress: details?.clinicAddress,
+        });
+      }
+    }
+    return Array.from(doctorsMap.values());
+  }
+};
+
+export const getStats = async (userId, role) => {
+  const query = role === 'doctor' ? { doctorId: userId } : { patientId: userId };
+  const appointments = await Appointment.find(query).lean();
+  
+  const total = appointments.length;
+  const completed = appointments.filter(a => a.status === 'completed').length;
+  const canceled = appointments.filter(a => a.status === 'canceled').length;
+  const locked = appointments.filter(a => a.status === 'locked').length;
+  const confirmed = appointments.filter(a => a.status === 'confirmed').length;
+
+  let revenue = 0;
+  let doctorProfile = null;
+
+  if (role === 'doctor') {
+    doctorProfile = await DoctorDetails.findOne({ userId }).lean();
+    // Revenue is fee * completed appointments
+    const fee = doctorProfile?.consultationFee || 100;
+    revenue = completed * fee;
+  }
+
+  return {
+    total,
+    completed,
+    canceled,
+    locked,
+    confirmed,
+    revenue,
+    ratingAverage: doctorProfile?.ratingAverage || 4.8,
+    reviewCount: doctorProfile?.reviewCount || 12,
+  };
+};

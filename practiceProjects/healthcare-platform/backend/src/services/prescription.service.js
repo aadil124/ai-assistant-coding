@@ -1,6 +1,6 @@
 import { Prescription } from '../models/Prescription.js';
 import { Appointment, Consultation } from '../models/Appointment.js';
-import redis from '../server.js'; // Will import Redis stub from server file
+import redis from '../utils/redis.js'; // Decoupled Redis stub client
 import crypto from 'crypto';
 
 export const createPrescriptionDraft = async (data, doctorId) => {

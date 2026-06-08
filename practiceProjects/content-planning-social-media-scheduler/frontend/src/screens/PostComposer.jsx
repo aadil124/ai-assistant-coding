@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import api from '../utils/api';
 
 export default function PostComposer({ setActiveTab, addPost }) {
   const [caption, setCaption] = useState('');
@@ -30,18 +31,36 @@ export default function PostComposer({ setActiveTab, addPost }) {
     }
   };
 
-  const handleAIQuery = () => {
+  const handleAIQuery = async () => {
     if (!aiPrompt) return;
     setAiLoading(true);
-    // Mock AI return
-    setTimeout(() => {
-      setAiSuggestions([
-        `🌿 Transforming the workspace today! Standardizing details keeps flow state clean and productive. What do you think?`,
-        `Bold moves. Fresh setups. CreatorSuite has made compiling daily assets and schedule queues an absolute breeze! 🚀`,
-        `Workspace check! Clean grids and soft shadows. Creating high-fidelity designs is a lot easier when things are structured.`
-      ]);
+    try {
+      const res = await api.post('/ai/generate-caption', {
+        prompt: aiPrompt,
+        tone: aiTone,
+        platform: platforms[0] || 'linkedin',
+        length: 'medium'
+      });
+      if (res.success && res.captions) {
+        setAiSuggestions(res.captions);
+      }
+    } catch (err) {
+      console.error('Failed to generate AI captions:', err.message);
+    } finally {
       setAiLoading(false);
-    }, 1500);
+    }
+  };
+
+  const handleSuggestTags = async () => {
+    if (!caption) return;
+    try {
+      const res = await api.post('/ai/generate-hashtags', { caption });
+      if (res.success && res.hashtags) {
+        setCaption(prev => `${prev} ${res.hashtags.join(' ')}`);
+      }
+    } catch (err) {
+      console.error('Failed to suggest tags:', err.message);
+    }
   };
 
   const handleMockUpload = () => {
@@ -136,7 +155,7 @@ export default function PostComposer({ setActiveTab, addPost }) {
           {/* Quick AI Options Toolbar */}
           <div className="d-flex gap-1.5 mt-2">
             <button className="btn btn-light btn-sm text-xs-caps px-3 rounded-pill bg-body-secondary" style={{ fontSize: '10px' }} onClick={() => { setAiPrompt('Improve readability'); setAiOpen(true); }}>Improve Writing</button>
-            <button className="btn btn-light btn-sm text-xs-caps px-3 rounded-pill bg-body-secondary" style={{ fontSize: '10px' }} onClick={() => { setCaption(caption + ' #growth #social #SaaS'); }}>Suggest Tags</button>
+            <button className="btn btn-light btn-sm text-xs-caps px-3 rounded-pill bg-body-secondary" style={{ fontSize: '10px' }} onClick={handleSuggestTags}>Suggest Tags</button>
           </div>
         </div>
 
