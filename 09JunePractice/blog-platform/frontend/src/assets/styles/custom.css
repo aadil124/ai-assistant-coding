@@ -1,0 +1,67 @@
+/* Custom Utility and Aesthetic Styles */
+
+.auth-card {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--lumina-border);
+  background-color: var(--lumina-card-bg);
+  border-radius: 0.75rem;
+}
+
+.auth-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.focus-ring:focus {
+  outline: none;
+  border-color: var(--lumina-primary-hover) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+.btn-lumina-primary {
+  background-color: var(--lumina-primary);
+  color: #ffffff;
+  border: none;
+  font-weight: 500;
+  transition: transform 0.1s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-lumina-primary:hover {
+  background-color: var(--lumina-primary-hover);
+  color: #ffffff;
+}
+
+.btn-lumina-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-lumina-primary:disabled {
+  background-color: #bec6e0;
+  cursor: not-allowed;
+}
+
+.btn-social {
+  border: 1px solid var(--lumina-border);
+  background-color: transparent;
+  color: var(--lumina-text);
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.btn-social:hover {
+  background-color: #eff4ff;
+  border-color: #cbd5e1;
+}
+
+.decoration-link {
+  color: var(--lumina-primary);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.decoration-link:hover {
+  border-bottom-color: var(--lumina-primary);
+  color: var(--lumina-primary);
+}

@@ -1,0 +1,60 @@
+/* Global Styles and Theme Custom Variables */
+
+:root {
+  --lumina-primary: #004ac6;
+  --lumina-primary-hover: #2563eb;
+  --lumina-bg: #f8f9ff;
+  --lumina-card-bg: #ffffff;
+  --lumina-text: #0b1c30;
+  --lumina-text-secondary: #434655;
+  --lumina-border: #c3c6d7;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--lumina-bg);
+  color: var(--lumina-text);
+  min-height: 100vh;
+}
+
+/* Atmospheric Background Decoration */
+.atmospheric-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.atmospheric-circle-1 {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 40%;
+  height: 40%;
+  background-color: rgba(37, 99, 235, 0.05);
+  border-radius: 50%;
+  filter: blur(120px);
+}
+
+.atmospheric-circle-2 {
+  position: absolute;
+  bottom: -10%;
+  right: -10%;
+  width: 40%;
+  height: 40%;
+  background-color: rgba(218, 226, 253, 0.2);
+  border-radius: 50%;
+  filter: blur(120px);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.material-symbols-outlined.fill-icon {
+  font-variation-settings: 'FILL' 1;
+}
