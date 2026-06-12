@@ -372,6 +372,7 @@ const submitFinalExam = async (courseId, answers, userId) => {
 
 const getEnrolledCourses = async (userId) => {
   const progressList = await Progress.find({ userId });
+  console.log('[DEBUG-BACKEND] getEnrolledCourses progressList:', progressList);
   const enrollments = await Promise.all(
     progressList.map(async (p) => {
       const course = await Course.findById(p.courseId);
@@ -388,6 +389,7 @@ const getEnrolledCourses = async (userId) => {
       };
     })
   );
+  console.log('[DEBUG-BACKEND] getEnrolledCourses returning:', enrollments.filter(Boolean));
   return enrollments.filter(Boolean);
 };
 

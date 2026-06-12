@@ -1,0 +1,131 @@
+/* Nexus LMS Enterprise Design System Tokens */
+:root {
+  --primary: #4648d4;
+  --primary-hover: #3536bd;
+  --primary-glow: rgba(70, 72, 212, 0.15);
+  --secondary: #565e74;
+  
+  --background: #f8f9ff;
+  --surface: #f8f9ff;
+  --surface-bright: #f8f9ff;
+  --surface-dim: #cbdbf5;
+  
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #eff4ff;
+  --surface-container: #e5eeff;
+  --surface-container-high: #dce9ff;
+  --surface-container-highest: #d3e4fe;
+  
+  --on-surface: #0b1c30;
+  --on-surface-variant: #464554;
+  --inverse-surface: #213145;
+  --inverse-on-surface: #eaf1ff;
+  
+  --outline: #767586;
+  --outline-variant: #c7c4d7;
+  
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'Geist', Menlo, Monaco, Consolas, "Courier New", monospace;
+  
+  /* Radius Scale */
+  --radius-sm: 0.25rem;
+  --radius-default: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+  --radius-full: 9999px;
+  
+  /* Spacing Scale */
+  --gutter: 24px;
+  --margin-desktop: 40px;
+  --margin-tablet: 24px;
+  --margin-mobile: 16px;
+}
+
+body {
+  background-color: var(--background);
+  font-family: var(--font-sans);
+  color: var(--on-surface);
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom UI Utilities */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(118, 117, 134, 0.1);
+}
+
+.card-nexus {
+  background-color: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(11, 28, 48, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-nexus:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(11, 28, 48, 0.08);
+}
+
+/* Inputs and interactive elements */
+.input-nexus {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-default);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--on-surface);
+  transition: all 0.2s ease;
+}
+
+.input-nexus:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+  outline: none;
+}
+
+/* Custom Buttons */
+.btn-nexus-primary {
+  background-color: var(--primary);
+  color: #ffffff !important;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radius-default);
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-nexus-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-nexus-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-nexus-secondary {
+  background-color: var(--surface-container-low);
+  color: var(--on-surface) !important;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radius-default);
+  border: 1px solid var(--outline-variant);
+  transition: all 0.2s ease;
+}
+
+.btn-nexus-secondary:hover {
+  background-color: var(--surface-container);
+}
+
+.font-mono-nexus {
+  font-family: var(--font-mono) !important;
+}

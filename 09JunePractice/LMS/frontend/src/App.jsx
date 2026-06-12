@@ -1,19 +1,37 @@
-import React from 'react';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import { useAuth, AuthProvider } from './context/AuthContext';
-import { ProgressProvider } from './context/ProgressContext';
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useAuth, AuthProvider } from "./context/AuthContext";
+import { ProgressProvider } from "./context/ProgressContext";
 
-// Import Pages
-import Login from './pages/Auth/Login';
-import Register from './pages/Auth/Register';
-import LearnerDashboard from './pages/Dashboard/LearnerDashboard';
-import InstructorDashboard from './pages/Dashboard/InstructorDashboard';
-import CourseCatalog from './pages/Course/CourseCatalog';
-import CourseViewer from './pages/Course/CourseViewer';
-import CourseCreator from './pages/Course/CourseCreator';
-import CourseBuilder from './pages/Course/CourseBuilder';
-import QuizInterface from './pages/Course/QuizInterface';
-import CourseCompletion from './pages/Course/CourseCompletion';
+// Import Pages - Learner Flow
+import PublicLandingPage from "./pages/Course/PublicLandingPage";
+import Register from "./pages/Auth/Register";
+import Login from "./pages/Auth/Login";
+import LearnerDashboard from "./pages/Dashboard/LearnerDashboard";
+import CourseCatalog from "./pages/Course/CourseCatalog";
+import CourseDetails from "./pages/Course/CourseDetails";
+import EnrollmentSuccessful from "./pages/Course/EnrollmentSuccessful";
+import CourseViewer from "./pages/Course/CourseViewer";
+import QuizInterface from "./pages/Course/QuizInterface";
+import AssessmentResults from "./pages/Course/AssessmentResults";
+import TopicCompletion from "./pages/Course/TopicCompletion";
+import FinalExamReady from "./pages/Course/FinalExamReady";
+import FinalExam from "./pages/Course/FinalExam";
+import CourseCompletion from "./pages/Course/CourseCompletion";
+import CourseCertificate from "./pages/Course/CourseCertificate";
+import Profile from "./pages/Auth/Profile";
+
+// Import Pages - Instructor Flow
+import InstructorDashboard from "./pages/Dashboard/InstructorDashboard";
+import CourseManagement from "./pages/Course/CourseManagement";
+import CourseCreator from "./pages/Course/CourseCreator";
+import CourseBuilder from "./pages/Course/CourseBuilder";
+import CreateModuleTopic from "./pages/Course/CreateModuleTopic";
+import ResourceManagement from "./pages/Course/ResourceManagement";
+import AssessmentBuilder from "./pages/Course/AssessmentBuilder";
+import CurriculumReorder from "./pages/Course/CurriculumReorder";
+import CourseAnalytics from "./pages/Course/CourseAnalytics";
+import InstructorSettings from "./pages/Auth/InstructorSettings";
 
 // Route Guard requiring authentication
 function ProtectedRoute({ children, allowedRole = null }) {
@@ -34,7 +52,12 @@ function ProtectedRoute({ children, allowedRole = null }) {
   }
 
   if (allowedRole && user.role !== allowedRole) {
-    return <Navigate to={user.role === 'Instructor' ? '/instructor' : '/dashboard'} replace />;
+    return (
+      <Navigate
+        to={user.role === "Instructor" ? "/instructor" : "/dashboard"}
+        replace
+      />
+    );
   }
 
   return children;
@@ -55,7 +78,12 @@ function GuestRoute({ children }) {
   }
 
   if (isAuthenticated) {
-    return <Navigate to={user.role === 'Instructor' ? '/instructor' : '/dashboard'} replace />;
+    return (
+      <Navigate
+        to={user.role === "Instructor" ? "/instructor" : "/dashboard"}
+        replace
+      />
+    );
   }
 
   return children;
@@ -63,98 +91,225 @@ function GuestRoute({ children }) {
 
 function MainRoutes() {
   const { user, isAuthenticated } = useAuth();
-  const navigate = useNavigate();
 
   return (
     <Routes>
       {/* Public / Catalog Paths */}
-      <Route 
-        path="/" 
-        element={<CourseCatalog isAuthenticated={isAuthenticated} />} 
+      <Route
+        path="/"
+        element={<PublicLandingPage isAuthenticated={isAuthenticated} />}
       />
-      <Route 
-        path="/courses" 
-        element={<CourseCatalog isAuthenticated={isAuthenticated} />} 
+      <Route
+        path="/courses"
+        element={<CourseCatalog isAuthenticated={isAuthenticated} />}
       />
 
       {/* Guest Authentication Paths */}
-      <Route 
-        path="/login" 
+      <Route
+        path="/login"
         element={
           <GuestRoute>
             <Login initialUser={user} />
           </GuestRoute>
-        } 
+        }
       />
-      <Route 
-        path="/register" 
+      <Route
+        path="/register"
         element={
           <GuestRoute>
             <Register />
           </GuestRoute>
-        } 
+        }
       />
 
-      {/* Learner Dashboard Paths */}
-      <Route 
-        path="/dashboard" 
+      {/* Instructor Guest Authentication Path */}
+      <Route
+        path="/instructor/login"
+        element={
+          <GuestRoute>
+            <Login />
+          </GuestRoute>
+        }
+      />
+
+      {/* Learner Protected Paths */}
+      <Route
+        path="/dashboard"
         element={
           <ProtectedRoute allowedRole="Learner">
             <LearnerDashboard />
           </ProtectedRoute>
-        } 
+        }
       />
-
-      {/* Learner Course Viewer Paths */}
-      <Route 
-        path="/course/:courseId" 
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute allowedRole="Learner">
+            <Profile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/course/:courseId/details"
+        element={
+          <ProtectedRoute allowedRole="Learner">
+            <CourseDetails />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/course/:courseId/enrollment-success"
+        element={
+          <ProtectedRoute allowedRole="Learner">
+            <EnrollmentSuccessful />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/course/:courseId"
         element={
           <ProtectedRoute allowedRole="Learner">
             <CourseViewer />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/course/:courseId/topic/:topicId/quiz" 
+      <Route
+        path="/course/:courseId/topic/:topicId/quiz"
         element={
           <ProtectedRoute allowedRole="Learner">
             <QuizInterface />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/course/:courseId/completion" 
+      <Route
+        path="/course/:courseId/topic/:topicId/quiz/results"
+        element={
+          <ProtectedRoute allowedRole="Learner">
+            <AssessmentResults />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/course/:courseId/topic/:topicId/completed"
+        element={
+          <ProtectedRoute allowedRole="Learner">
+            <TopicCompletion />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/course/:courseId/exam/ready"
+        element={
+          <ProtectedRoute allowedRole="Learner">
+            <FinalExamReady />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/course/:courseId/exam"
+        element={
+          <ProtectedRoute allowedRole="Learner">
+            <FinalExam />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/course/:courseId/completion"
         element={
           <ProtectedRoute allowedRole="Learner">
             <CourseCompletion />
           </ProtectedRoute>
-        } 
+        }
+      />
+      <Route
+        path="/course/:courseId/certificate"
+        element={
+          <ProtectedRoute allowedRole="Learner">
+            <CourseCertificate />
+          </ProtectedRoute>
+        }
       />
 
-      {/* Instructor Dashboard & Creator Paths */}
-      <Route 
-        path="/instructor" 
+      {/* Instructor Protected Paths */}
+      <Route
+        path="/instructor"
         element={
           <ProtectedRoute allowedRole="Instructor">
             <InstructorDashboard />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/instructor/courses" 
+      <Route
+        path="/instructor/courses"
+        element={
+          <ProtectedRoute allowedRole="Instructor">
+            <CourseManagement />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/course/create"
         element={
           <ProtectedRoute allowedRole="Instructor">
             <CourseCreator />
           </ProtectedRoute>
-        } 
+        }
       />
-      <Route 
-        path="/instructor/courses/:courseId/curriculum" 
+      <Route
+        path="/instructor/courses/:courseId/curriculum"
         element={
           <ProtectedRoute allowedRole="Instructor">
             <CourseBuilder />
           </ProtectedRoute>
-        } 
+        }
+      />
+      <Route
+        path="/instructor/courses/:courseId/curriculum/add"
+        element={
+          <ProtectedRoute allowedRole="Instructor">
+            <CreateModuleTopic />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/instructor/courses/:courseId/curriculum/reorder"
+        element={
+          <ProtectedRoute allowedRole="Instructor">
+            <CurriculumReorder />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/instructor/courses/:courseId/topics/:topicId/resources"
+        element={
+          <ProtectedRoute allowedRole="Instructor">
+            <ResourceManagement />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/instructor/courses/:courseId/assessment"
+        element={
+          <ProtectedRoute allowedRole="Instructor">
+            <AssessmentBuilder />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/instructor/courses/:courseId/analytics"
+        element={
+          <ProtectedRoute allowedRole="Instructor">
+            <CourseAnalytics />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/instructor/settings"
+        element={
+          <ProtectedRoute allowedRole="Instructor">
+            <InstructorSettings />
+          </ProtectedRoute>
+        }
       />
 
       {/* Fallback Catch-All */}

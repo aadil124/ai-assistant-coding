@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import Sidebar from '../../components/common/Sidebar';
 
 /**
  * CourseBuilder Component
@@ -9,9 +11,36 @@ import React, { useState, useEffect } from 'react';
  * @param {String} props.courseId - ID of the course being edited
  * @param {Array} props.initialCurriculum - List of modules in the course
  */
-export default function CourseBuilder({ courseId, initialCurriculum = [] }) {
+export default function CourseBuilder({ courseId: propCourseId, initialCurriculum = [] }) {
+  const params = useParams();
+  const courseId = propCourseId || params.courseId;
+
   const [curriculum, setCurriculum] = useState(initialCurriculum);
   const [originalCurriculum, setOriginalCurriculum] = useState(initialCurriculum);
+
+  useEffect(() => {
+    if ((!initialCurriculum || initialCurriculum.length === 0) && courseId) {
+      const fetchCurriculum = async () => {
+        try {
+          const response = await fetch(`/courses/${courseId}`, {
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token') || ''}`,
+            },
+          });
+          if (response.ok) {
+            const result = await response.json();
+            if (result.success && result.data && result.data.modules) {
+              setCurriculum(result.data.modules);
+              setOriginalCurriculum(result.data.modules);
+            }
+          }
+        } catch (err) {
+          console.error('Failed to fetch curriculum:', err);
+        }
+      };
+      fetchCurriculum();
+    }
+  }, [initialCurriculum, courseId]);
 
   // Add Module states
   const [showAddModule, setShowAddModule] = useState(false);
@@ -197,156 +226,212 @@ export default function CourseBuilder({ courseId, initialCurriculum = [] }) {
   };
 
   return (
-    <div data-testid="course-builder-wrapper" className="container py-4">
-      <header className="mb-4 d-flex justify-content-between align-items-center">
-        <div>
-          <h1 className="h2 text-primary fw-bold mb-1">Course Curriculum</h1>
-          <p className="text-muted small">Design modules, structure lessons, and order topics</p>
-        </div>
-        <div className="d-flex gap-2">
-          <button
-            className="btn btn-primary"
-            onClick={() => handleSaveOrder()}
-            disabled={isSavingOrder}
-          >
-            {isSavingOrder ? 'Saving order...' : 'Save Order'}
-          </button>
-        </div>
-      </header>
+    <div data-testid="course-builder-wrapper" className="container-fluid p-0 d-flex min-vh-100 animate-fade-in text-start" style={{ backgroundColor: 'var(--bg-neutral)' }}>
+      <style>{`
+        .main-canvas-premium {
+          flex: 1;
+          margin-left: 260px; /* Offset for fixed sidebar */
+          height: 100vh;
+          overflow-y: auto;
+          display: flex;
+          flex-direction: column;
+        }
+        .reorder-btn-premium {
+          width: 32px;
+          height: 32px;
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border-color);
+          background-color: #ffffff;
+          color: var(--text-secondary);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: var(--transition-fast);
+        }
+        .reorder-btn-premium:hover {
+          background-color: var(--border-light);
+          color: var(--primary);
+          border-color: var(--primary);
+        }
+        .reorder-btn-premium:disabled {
+          opacity: 0.3;
+          cursor: not-allowed;
+        }
+      `}</style>
 
-      {reorderError && (
-        <div className="alert alert-danger d-flex align-items-center mb-4" role="alert">
-          <span className="me-2">⚠️</span>
-          <div>{reorderError}</div>
-        </div>
-      )}
+      <Sidebar />
 
-      {/* Modules List */}
-      <div className="space-y-3 mb-4">
-        {curriculum.map((module, idx) => (
-          <div key={module.id} className="card shadow-sm border-0 bg-white p-3 mb-3">
-            <div className="d-flex justify-content-between align-items-center mb-2 border-bottom pb-2">
-              <div className="d-flex align-items-center gap-2">
-                {/* Module Title with specific class name for test assertions */}
-                <div className="module-title-item fw-bold h5 text-dark mb-0">
-                  {module.title}
-                </div>
-              </div>
-              <div className="d-flex gap-2">
-                <button
-                  className="btn btn-sm btn-outline-secondary"
-                  onClick={() => handleMoveUp(idx)}
-                  disabled={idx === 0}
-                  aria-label="Move Up"
-                >
-                  ▲
-                </button>
-                <button
-                  className="btn btn-sm btn-outline-secondary"
-                  onClick={() => handleMoveDown(idx)}
-                  disabled={idx === curriculum.length - 1}
-                  aria-label="Move Down"
-                >
-                  ▼
-                </button>
-              </div>
+      {/* Main Content Area */}
+      <main className="main-canvas-premium">
+          {/* Top Header Bar */}
+          <header className="nav-premium-top justify-content-between shrink-0">
+            <div className="d-flex align-items-center gap-3">
+              <Link to="/instructor/courses" className="text-decoration-none d-flex align-items-center gap-2 text-secondary hover-text-primary me-2">
+                <span className="material-symbols-outlined fs-5">arrow_back</span>
+                <span className="fw-semibold small">Back</span>
+              </Link>
+              <div className="vr text-secondary" style={{ height: '20px' }}></div>
+              <h1 className="h6 fw-bold text-dark mb-0 ms-2">Course Curriculum</h1>
             </div>
-
-            {/* Nested Topics List */}
-            <ul className="list-group list-group-flush mb-3">
-              {module.topics?.map((topic) => (
-                <li
-                  key={topic.id}
-                  className="list-group-item d-flex justify-content-between align-items-center px-0 bg-transparent py-2 border-light-subtle"
-                >
-                  <span className="small text-muted">{topic.title}</span>
-                </li>
-              ))}
-            </ul>
-
-            {/* Topic Addition Section */}
-            {activeAddTopicModuleId === module.id ? (
-              <form
-                onSubmit={(e) => handleSaveTopic(e, module.id)}
-                className="d-flex gap-2 mt-2 bg-light p-2 rounded"
+            <div>
+              <button
+                className="btn-premium-primary py-2 px-4"
+                onClick={() => handleSaveOrder()}
+                disabled={isSavingOrder}
               >
-                <input
-                  type="text"
-                  className="form-control form-control-sm"
-                  placeholder="Enter topic title"
-                  value={newTopicTitle}
-                  onChange={(e) => setNewTopicTitle(e.target.value)}
-                  required
-                />
-                <button type="submit" className="btn btn-sm btn-success">
-                  Save Topic
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-sm btn-outline-secondary"
-                  onClick={() => {
-                    setActiveAddTopicModuleId(null);
-                    setNewTopicTitle('');
-                  }}
-                >
-                  Cancel
-                </button>
-              </form>
-            ) : (
-              <div>
-                <button
-                  className="btn btn-sm btn-link text-primary p-0 fw-semibold text-decoration-none"
-                  onClick={() => setActiveAddTopicModuleId(module.id)}
-                >
-                  + Add Topic
-                </button>
+                <span className="material-symbols-outlined fs-5">save</span>
+                <span>{isSavingOrder ? 'Saving order...' : 'Save Order'}</span>
+              </button>
+            </div>
+          </header>
+
+          <div className="p-4 p-md-5 max-w-4xl mx-auto w-100 flex-grow-1" style={{ maxWidth: '960px' }}>
+            {reorderError && (
+              <div className="alert alert-danger d-flex align-items-center mb-4 border-0 rounded-3" role="alert">
+                <span className="material-symbols-outlined me-2">error</span>
+                <div>{reorderError}</div>
               </div>
             )}
-          </div>
-        ))}
-      </div>
 
-      {/* Add Module Section */}
-      {showAddModule ? (
-        <form onSubmit={handleSaveModule} className="card shadow-sm border-0 p-3 bg-light">
-          <div className="mb-3">
-            <label htmlFor="newModuleTitleInput" className="form-label fw-bold text-dark small">
-              New Module Title
-            </label>
-            <input
-              id="newModuleTitleInput"
-              type="text"
-              className="form-control"
-              placeholder="Enter module title"
-              value={newModuleTitle}
-              onChange={(e) => setNewModuleTitle(e.target.value)}
-              required
-            />
+            {/* Modules List */}
+            <div className="mb-4">
+              {curriculum.map((module, idx) => (
+                <div key={module.id} className="card-premium p-4 mb-4 bg-white">
+                  {/* Module Header */}
+                  <div className="d-flex justify-content-between align-items-center mb-3 border-bottom pb-3">
+                    <div className="d-flex align-items-center gap-2">
+                      <span className="material-symbols-outlined text-primary">folder</span>
+                      <div className="fw-bold h6 text-dark mb-0" style={{ lineHeight: '1.4' }}>
+                        {module.title}
+                      </div>
+                    </div>
+                    <div className="d-flex gap-2">
+                      <button
+                        className="reorder-btn-premium"
+                        onClick={() => handleMoveUp(idx)}
+                        disabled={idx === 0}
+                        aria-label="Move Up"
+                      >
+                        <span className="material-symbols-outlined fs-5">arrow_upward</span>
+                      </button>
+                      <button
+                        className="reorder-btn-premium"
+                        onClick={() => handleMoveDown(idx)}
+                        disabled={idx === curriculum.length - 1}
+                        aria-label="Move Down"
+                      >
+                        <span className="material-symbols-outlined fs-5">arrow_downward</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Topics List */}
+                  <ul className="list-group list-group-flush mb-3">
+                    {module.topics?.map((topic) => (
+                      <li
+                        key={topic.id}
+                        className="list-group-item d-flex justify-content-between align-items-center px-0 bg-transparent py-2.5 border-light-subtle"
+                      >
+                        <div className="d-flex align-items-center gap-2 text-secondary">
+                          <span className="material-symbols-outlined fs-5">article</span>
+                          <span className="small fw-medium">{topic.title}</span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Add Topic Panel */}
+                  {activeAddTopicModuleId === module.id ? (
+                    <form
+                      onSubmit={(e) => handleSaveTopic(e, module.id)}
+                      className="mt-3 bg-light p-3 rounded-3 border"
+                    >
+                      <div className="mb-3">
+                        <input
+                          type="text"
+                          className="input-premium form-control-sm"
+                          placeholder="Enter topic title"
+                          value={newTopicTitle}
+                          onChange={(e) => setNewTopicTitle(e.target.value)}
+                          required
+                        />
+                      </div>
+                      <div className="d-flex gap-2">
+                        <button type="submit" className="btn btn-sm btn-success px-3 rounded-pill fw-semibold">
+                          Save Topic
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-outline-secondary px-3 rounded-pill fw-semibold"
+                          onClick={() => {
+                            setActiveAddTopicModuleId(null);
+                            setNewTopicTitle('');
+                          }}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  ) : (
+                    <div className="mt-2">
+                      <button
+                        className="btn btn-sm btn-link text-primary p-0 fw-semibold text-decoration-none d-flex align-items-center gap-1"
+                        onClick={() => setActiveAddTopicModuleId(module.id)}
+                      >
+                        <span className="material-symbols-outlined fs-5">add</span>
+                        <span>Add Topic</span>
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Add Module Section */}
+            {showAddModule ? (
+              <form onSubmit={handleSaveModule} className="card-premium p-4 bg-light rounded-4">
+                <div className="form-group-premium">
+                  <label htmlFor="newModuleTitleInput" className="label-premium">
+                    New Module Title
+                  </label>
+                  <input
+                    id="newModuleTitleInput"
+                    type="text"
+                    className="input-premium"
+                    placeholder="Enter module title"
+                    value={newModuleTitle}
+                    onChange={(e) => setNewModuleTitle(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="d-flex gap-2">
+                  <button type="submit" className="btn-premium-primary py-2 px-4">
+                    Save Module
+                  </button>
+                  <button
+                    type="button"
+                    className="btn-premium-secondary py-2 px-4"
+                    onClick={() => {
+                      setShowAddModule(false);
+                      setNewModuleTitle('');
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <button
+                className="btn btn-outline-primary w-100 py-3.5 border-dashed rounded-4 fw-semibold d-flex align-items-center justify-content-center gap-2"
+                onClick={() => setShowAddModule(true)}
+              >
+                <span className="material-symbols-outlined fs-5">add</span>
+                <span>Add Module</span>
+              </button>
+            )}
           </div>
-          <div className="d-flex gap-2">
-            <button type="submit" className="btn btn-success">
-              Save Module
-            </button>
-            <button
-              type="button"
-              className="btn btn-outline-secondary"
-              onClick={() => {
-                setShowAddModule(false);
-                setNewModuleTitle('');
-              }}
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
-      ) : (
-        <button
-          className="btn btn-outline-primary w-100 py-3 border-dashed"
-          onClick={() => setShowAddModule(true)}
-        >
-          + Add Module
-        </button>
-      )}
+        </main>
     </div>
   );
 }

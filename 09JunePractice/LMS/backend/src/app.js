@@ -11,6 +11,11 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
+// Trigger Node.js course seeding (non-test envs)
+if (process.env.NODE_ENV !== 'test') {
+  require('./seedNodejsCourseStartup');
+}
+
 // Security and standard middlewares
 app.use(helmet());
 app.use(cors());
