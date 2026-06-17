@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-family: 'Inter', sans-serif;
+  
+  /* Color Tokens */
+  --primary-color: #004ac6;
+  --primary-container: #2563eb;
+  --secondary-color: #006b5f;
+  --background-color: #faf8ff;
+  --on-surface: #191b23;
+  --on-surface-variant: #434655;
+  --border-color: #e1e2ed;
+  
+  /* Depth & Blur */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(225, 226, 237, 0.6);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+  
+  /* Borders */
+  --rounded-sm: 0.25rem;
+  --rounded-md: 0.5rem;
+  --rounded-lg: 0.75rem;
+  --rounded-xl: 1rem;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--on-surface);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Glassmorphism Containers */
+.neo-glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--rounded-xl);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.neo-glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.08);
+}
+
+/* Premium Gradient Headers */
+.neo-gradient-text {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-container) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Buttons Styling */
+.btn-primary-neo {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: var(--rounded-md);
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary-neo:hover {
+  background-color: var(--primary-container);
+  color: #ffffff;
+}
+
+.btn-primary-neo:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary-neo {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 0.6rem 1.5rem;
+  border-radius: var(--rounded-md);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary-neo:hover {
+  background-color: rgba(0, 74, 198, 0.05);
+  border-color: var(--primary-container);
+  color: var(--primary-container);
+}
+
+/* Inputs Styling */
+.form-control-neo {
+  border: 1px solid var(--border-color);
+  border-radius: var(--rounded-md);
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control-neo:focus {
+  border-color: var(--primary-container);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+  outline: none;
+}

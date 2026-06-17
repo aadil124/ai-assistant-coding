@@ -455,6 +455,220 @@ Task: Generate all frontend test cases for:
 Feature [01]: Registration and Login
 ````
 
+---
+
+## PROMPT 16 — Generate Implementation-Ready Feature Specs for Module 1: Patient Flow
+
+**Output Files:**
+- `modules/01-patient-flow/01-registration-and-login.md`
+- `modules/01-patient-flow/02-doctor-search-and-filters.md`
+- `modules/01-patient-flow/03-slot-selection-and-payment-checkout.md`
+- `modules/01-patient-flow/04-booking-confirmation-and-notifications.md`
+- `modules/01-patient-flow/05-video-consultation-access.md`
+- `modules/01-patient-flow/06-post-consultation-prescription-and-medical-records-access.md`
+- `modules/01-patient-flow/07-doctor-reviews-submission.md`
+
+---
+
+### Prompt Content (Verbatim)
+
+````text
+Role: You are a senior full-stack tech lead breaking down a
+product module into implementation-ready feature files.
+
+Format: Output one markdown file per feature at:
+modules/[NN-module-name]/[NN-feature-name].md
+Example:
+  modules/01-authentication/01-user-login.md
+  modules/01-authentication/02-user-register.md
+  modules/01-authentication/03-forgot-password.md
+
+Each feature file must include exactly these 10 sections:
+1. Feature Overview
+2. Acceptance Criteria (from kpi.md)
+3. UI/UX Requirements
+4. API Endpoints Required
+5. Data Models / Schema
+6. State Management Notes
+7. Edge Cases
+8. Dependencies on Other Features
+9. Testing Requirements
+   (exact test file name with correct extension —
+    never .md)
+10. Out of Scope for This Feature
+
+Context:
+@docs/prd.md — product spec
+@docs/kpi.md — acceptance criteria source
+@docs/project-scope.md — project boundaries
+@personas/frontend-persona.md — frontend tech constraints
+@personas/backend-persona.md — backend tech constraints
+@docs/save-token.md — follow all token-saving rules
+
+Current Batch — Module: Patient Flow
+Folder: modules/01-patient-flow/
+
+Features in this batch:
+- 01-registration-and-login
+- 02-doctor-search-and-filters
+- 03-slot-selection-and-payment-checkout
+- 04-booking-confirmation-and-notifications
+- 05-video-consultation-access
+- 06-post-consultation-prescription-and-medical-records-access
+- 07-doctor-reviews-submission
+
+Already completed modules/features (do not repeat or contradict):
+None
+````
+
+---
+
+## PROMPT 17 — Generate Implementation-Ready Feature Specs for Module 2: Doctor Flow
+
+**Output Files:**
+- `modules/02-doctor-flow/01-doctor-registration-verification-and-profile-setup.md`
+- `modules/02-doctor-flow/02-schedule-availability-and-consultation-fees-configuration.md`
+- `modules/02-doctor-flow/03-dashboard-and-upcoming-appointments-management.md`
+- `modules/02-doctor-flow/04-video-consultation-host-session.md`
+- `modules/02-doctor-flow/05-digital-prescription-generation-and-medical-record-uploads.md`
+- `modules/02-doctor-flow/06-review-management-and-earnings-tracking.md`
+
+---
+
+### Prompt Content (Verbatim)
+
+````text
+give me for module 2
+````
+
+---
+
+## PROMPT 18 — Generate Implementation-Ready Feature Specs for Module 3: Admin Flow
+
+**Output Files:**
+- `modules/03-admin-flow/01-admin-authentication-and-dashboard-access.md`
+- `modules/03-admin-flow/02-doctor-credentials-verification-approve-reject.md`
+- `modules/03-admin-flow/03-platform-oversight-and-activity-monitoring.md`
+- `modules/03-admin-flow/04-refund-handling-and-policy-violation-management.md`
+
+---
+
+### Prompt Content (Verbatim)
+
+````text
+now module 3
+````
+
+---
+
+## PROMPT 19 — Generate API Schema and Design Document
+
+**Output File:** `docs/api-schema-and-design.md`
+
+---
+
+### Prompt Content (Verbatim)
+
+````text
+Role: You are a senior backend architect and API design specialist
+creating a comprehensive API schema and design document that will
+serve as the single source of truth for all backend and frontend
+development in this project.
+
+Format: Output a single markdown file at
+docs/api-schema-and-design.md with these sections:
+
+1. Overview (base URL, versioning, auth mechanism, response format)
+2. Authentication & Authorization
+   - Auth flow description
+   - Token structure
+   - Protected vs public routes
+3. Database Schema
+   - All tables/collections with every field,
+     data type, constraints, and relationships
+4. API Endpoints (for every module):
+   ### Module Name
+   #### Endpoint: METHOD /path
+   - Description
+   - Auth required: Yes/No
+   - Request Headers
+   - Request Body (with field names, types, required/optional)
+   - Success Response (status code + body structure)
+   - Error Responses (all possible status codes + messages)
+   - Business Rules / Validation Rules
+5. Shared/Common Schemas (reusable response objects)
+6. Error Code Reference Table
+7. Rate Limiting & Security Notes
+
+Context:
+@docs/kpi.md — all modules and features
+@docs/prd.md — product spec and API design section
+@personas/backend-persona.md — backend tech constraints
+@modules/ — all generated module/feature files
+
+Task: Generate docs/api-schema-and-design.md covering every
+module and every endpoint. Every field must be documented.
+Every error case must have a status code and message.
+This document will be used directly by both backend and
+frontend developers — make it complete and unambiguous.
+````
+
+---
+
+## PROMPT 20 — Fetch Stitch MCP Projects List
+
+**Output File:** None (Stdout Response)
+
+---
+
+### Prompt Content (Verbatim)
+
+````text
+I have connected my stitch mcp server 
+fetch my all projects list here
+````
+
+---
+
+## PROMPT 21 — Fetch Screens List for Neo Health Platform
+
+**Output File:** None (Stdout Response)
+
+---
+
+### Prompt Content (Verbatim)
+
+````text
+for Neo Health Platform and project path : projects/1300401718963667279
+fetch my all screens list here 
+````
+
+---
+
+## PROMPT 22 — Create Frontend Public Screens Setup Plan
+
+**Output File:** None (Staging Plan)
+
+---
+
+### Prompt Content (Verbatim)
+
+````text
+@[personas/frontend-persona.md] start making screen for 
+Public Screens
+Landing Page
+About Us
+Contact Us
+FAQ
+Login
+Register
+Forgot Password
+Reset Password
+404/Error Page
+@[docs/save-token.md] 
+````
+
+
 
 
 
