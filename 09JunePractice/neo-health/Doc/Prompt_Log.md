@@ -680,3 +680,70 @@ Reset Password
 
 
 
+
+---
+
+## PROMPT 23 — Build Public Screens and Form Validations (Iterative)
+
+**Output File:** `frontend/src/pages/` (9 files) and `frontend/src/components/`
+
+---
+
+### Prompt Content (Verbatim)
+
+````text
+yes proceed
+
+[Artifact comment on file:///c%3A/Users/md.adil/.gemini/antigravity/brain/392fc79a-8424-4956-bcf4-e873d215d117/implementation_plan.md]: javascript 
+[Artifact comment on file:///c%3A/Users/md.adil/.gemini/antigravity/brain/392fc79a-8424-4956-bcf4-e873d215d117/implementation_plan.md]: dont forget to make .env and .gitignore files
+````
+
+---
+
+## PROMPT 24 — Relocate src/ directory and Refactor Configs
+
+**Output File:** `frontend/` root structures, Vite config, and `walkthrough.md`
+
+---
+
+### Prompt Content (Verbatim)
+
+````text
+move my src/ folder into frontend folder
+````
+
+---
+
+## PROMPT 25 — Audit Logs and Compile Token Usage Report
+
+**Output File:** `docs/token-usage-report.md`
+
+---
+
+### Prompt Content (Verbatim)
+
+````text
+# Token Usage & Cost Analysis
+
+## Objective
+
+Analyze the complete project history and estimate the total AI token consumption and associated cost incurred during the development of this project using Antigravity.
+
+---
+
+## Instructions
+
+Perform a comprehensive audit of all project-related interactions, including:
+
+### 1. Prompt Analysis
+
+Review all prompts, conversations, instructions, refinements, bug-fix requests, feature implementations, code generations, architecture discussions, documentation generation, testing requests, UI improvements, and deployment-related interactions that occurred during the project lifecycle.
+
+For each interaction:
+
+* Estimate input tokens.
+* Estimate output tokens.
+* Calculate total tokens consumed.
+* Categorize by activity type.
+... [Full request for Token Usage & Cost Analysis]
+````
