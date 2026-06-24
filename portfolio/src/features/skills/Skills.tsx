@@ -5,12 +5,12 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { 
-  MdCode, 
-  MdSettings, 
-  MdLayers, 
-  MdBuild, 
-  MdStorage 
+import {
+  MdCode,
+  MdSettings,
+  MdLayers,
+  MdBuild,
+  MdStorage,
 } from 'react-icons/md';
 import SectionHeader from '@/components/SectionHeader';
 import GlassCard from '@/components/GlassCard';
@@ -18,137 +18,116 @@ import GlassCard from '@/components/GlassCard';
 export default function Skills() {
   const skillCategories = [
     {
-      title: 'Frontend Technologies',
-      icon: <MdCode size={28} />,
+      title: 'Frontend',
+      icon: <MdCode size={20} />,
       skills: ['React.js', 'NextJS', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3'],
-      color: '#3B82F6', // Blue
+      color: '#818CF8',
     },
     {
-      title: 'Backend Engineering',
-      icon: <MdStorage size={28} />,
-      skills: ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'REST API Design', 'JWT Auth', 'RBAC (Access Control)'],
-      color: '#10B981', // Emerald
+      title: 'Backend',
+      icon: <MdStorage size={20} />,
+      skills: ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'REST API', 'JWT Auth', 'RBAC'],
+      color: '#34D399',
     },
     {
       title: 'State Management',
-      icon: <MdSettings size={28} />,
-      skills: ['Redux Toolkit', 'Redux Saga', 'Context API', 'Redux (Core)'],
-      color: '#A78BFA', // Purple
+      icon: <MdSettings size={20} />,
+      skills: ['Redux Toolkit', 'Redux Saga', 'Context API', 'Redux'],
+      color: '#C4B5FD',
     },
     {
       title: 'UI Frameworks',
-      icon: <MdLayers size={28} />,
-      skills: ['Material UI (MUI)', 'Tailwind CSS', 'Bootstrap', 'Ant Design'],
-      color: '#F59E0B', // Amber
+      icon: <MdLayers size={20} />,
+      skills: ['Material UI', 'Tailwind CSS', 'Bootstrap', 'Ant Design'],
+      color: '#FCD34D',
     },
     {
-      title: 'Developer Tools',
-      icon: <MdBuild size={28} />,
-      skills: ['Git & GitHub', 'GitLab', 'Jira', 'Postman', 'VS Code', 'Chrome DevTools'],
-      color: '#EC4899', // Pink
+      title: 'Dev Tools',
+      icon: <MdBuild size={20} />,
+      skills: ['Git & GitHub', 'GitLab', 'Jira', 'Postman', 'VS Code', 'DevTools'],
+      color: '#F9A8D4',
     },
   ];
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        delay: i * 0.1,
-        ease: [0.16, 1, 0.3, 1] as const,
-      },
-    }),
-  };
-
   return (
-    <Box id="skills" sx={{ py: { xs: 10, md: 14 } }}>
+    <Box id="skills" sx={{ py: { xs: 8, md: 12 } }}>
       <Container maxWidth="lg">
         <SectionHeader
+          label="Expertise"
           title="Skills & Toolkit"
-          subtitle="A categorized summary of the frontend systems, backend servers, libraries, and DevOps tools I use."
+          subtitle="Technologies, frameworks, and tools I use to build production-grade web applications."
         />
 
         <Box
           sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
-            gap: 3.5,
+            gap: 2.5,
           }}
         >
           {skillCategories.map((category, idx) => (
             <motion.div
               key={category.title}
-              custom={idx}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-40px' }}
-              variants={cardVariants}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.4, delay: idx * 0.06 }}
               style={{ width: '100%', display: 'flex' }}
             >
               <GlassCard
                 sx={{
-                  p: 3.5,
+                  p: 3,
                   width: '100%',
                   display: 'flex',
                   flexDirection: 'column',
                   position: 'relative',
                   overflow: 'hidden',
-                  '&:hover': {
-                    '& .category-icon': {
-                      transform: 'scale(1.15) rotate(5deg)',
-                      color: category.color,
-                    },
-                  },
                 }}
               >
-                {/* Decorative corner color bar */}
+                {/* Left accent */}
                 <Box
                   sx={{
                     position: 'absolute',
                     top: 0,
                     left: 0,
-                    width: '4px',
+                    width: '2px',
                     height: '100%',
                     bgcolor: category.color,
+                    opacity: 0.6,
                   }}
                 />
 
-                {/* Icon & Title */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
+                {/* Header */}
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2.5 }}>
                   <Box
-                    className="category-icon"
                     sx={{
-                      color: 'text.secondary',
+                      color: category.color,
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
-                      transition: 'all 0.3s ease',
                     }}
                   >
                     {category.icon}
                   </Box>
                   <Typography
-                    variant="h6"
+                    variant="body1"
                     sx={{
-                      fontWeight: 700,
-                      fontFamily: 'var(--font-outfit), sans-serif',
-                      fontSize: '1.15rem',
+                      fontWeight: 600,
+                      fontFamily: 'var(--font-outfit), system-ui, sans-serif',
+                      fontSize: '0.9375rem',
                     }}
                   >
                     {category.title}
                   </Typography>
                 </Box>
 
-                {/* Skills List */}
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.2, mt: 'auto' }}>
+                {/* Skills */}
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75, mt: 'auto' }}>
                   {category.skills.map((skill) => (
                     <Box
                       key={skill}
                       sx={{
-                        fontSize: '0.8rem',
-                        fontWeight: 600,
+                        fontSize: '0.75rem',
+                        fontWeight: 500,
                         bgcolor: (theme) =>
                           theme.palette.mode === 'dark'
                             ? 'rgba(255, 255, 255, 0.03)'
@@ -157,15 +136,17 @@ export default function Skills() {
                           `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)'}`,
                         color: 'text.secondary',
                         px: 1.5,
-                        py: 0.8,
-                        borderRadius: 2,
-                        transition: 'all 0.25s ease',
+                        py: 0.625,
+                        borderRadius: '8px',
+                        transition: 'all 0.15s ease',
                         '&:hover': {
-                          color: 'white',
-                          bgcolor: category.color,
-                          borderColor: category.color,
-                          transform: 'translateY(-2px)',
-                          boxShadow: `0 4px 12px ${category.color}30`,
+                          color: 'text.primary',
+                          borderColor: (theme) =>
+                            theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)',
+                          bgcolor: (theme) =>
+                            theme.palette.mode === 'dark'
+                              ? 'rgba(255, 255, 255, 0.05)'
+                              : 'rgba(0, 0, 0, 0.05)',
                         },
                       }}
                     >

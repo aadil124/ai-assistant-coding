@@ -26,7 +26,6 @@ export default function Contact() {
     message: '',
   });
 
-  // Toast status states
   const [toast, setToast] = useState({
     open: false,
     message: '',
@@ -46,7 +45,6 @@ export default function Contact() {
     e.preventDefault();
     setLoading(true);
 
-    // Read EmailJS configs from env variables
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
     const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
@@ -60,7 +58,6 @@ export default function Contact() {
         'Simulating email delivery successfully in development mode.'
       );
 
-      // Simulate network request duration
       setTimeout(() => {
         setLoading(false);
         setToast({
@@ -107,59 +104,60 @@ export default function Contact() {
 
   const contactDetails = [
     {
-      icon: <MdEmail size={22} />,
+      icon: <MdEmail size={18} />,
       label: 'Email',
       value: 'ansariaadil2623@gmail.com',
       url: 'mailto:ansariaadil2623@gmail.com',
-      color: '#3B82F6',
+      color: '#818CF8',
     },
     {
-      icon: <MdPhone size={22} />,
+      icon: <MdPhone size={18} />,
       label: 'Phone',
       value: '+91 7276450124',
       url: 'tel:+917276450124',
-      color: '#10B981',
+      color: '#34D399',
     },
     {
-      icon: <MdLocationOn size={22} />,
+      icon: <MdLocationOn size={18} />,
       label: 'Location',
-      value: 'Bhiwandi Thane, Mumbai, India',
+      value: 'Bhiwandi, Mumbai, India',
       url: 'https://maps.google.com/?q=Bhiwandi+Thane+Mumbai+India',
-      color: '#EC4899',
+      color: '#F9A8D4',
     },
   ];
 
   return (
-    <Box id="contact" sx={{ py: { xs: 10, md: 14 }, bgcolor: 'background.default' }}>
+    <Box id="contact" sx={{ py: { xs: 8, md: 12 } }}>
       <Container maxWidth="lg">
         <SectionHeader
+          label="Connect"
           title="Get In Touch"
-          subtitle="Interested in hiring me for a role, discussing a MERN contract, or reviewing code details? Reach out directly."
+          subtitle="Interested in working together? I'm open to full-time roles, contracts, and consulting."
         />
 
         <Box
           sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', md: '5fr 7fr' },
-            gap: { xs: 5, md: 8 },
+            gap: { xs: 4, md: 5 },
           }}
         >
-          {/* Direct Details Column */}
+          {/* Contact Details */}
           <Box>
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
+              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <Typography variant="h4" sx={{ fontWeight: 700, mb: 2, fontSize: '1.75rem' }}>
+              <Typography variant="h4" sx={{ fontWeight: 600, mb: 1.5, fontSize: { xs: '1.25rem', md: '1.375rem' } }}>
                 Let&apos;s <span className="text-gradient">Collaborate</span>
               </Typography>
-              <Typography variant="body1" color="text.secondary" sx={{ mb: 4, lineHeight: 1.75 }}>
-                I am actively seeking roles as a Senior Frontend / MERN Developer. I am open to permanent positions, remote contracts, or project consulting. Reach out using the form, or ping me directly.
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 3, lineHeight: 1.7 }}>
+                I am actively seeking roles as a Senior Frontend / MERN Developer. Open to permanent positions, remote contracts, or project consulting.
               </Typography>
 
-              <Stack spacing={2.5}>
+              <Stack spacing={1.5}>
                 {contactDetails.map((detail) => (
                   <a
                     key={detail.label}
@@ -170,33 +168,27 @@ export default function Contact() {
                   >
                     <GlassCard
                       sx={{
-                        p: 2.5,
+                        p: 2,
                         display: 'flex',
                         alignItems: 'center',
-                        gap: 2.5,
+                        gap: 2,
                         '&:hover': {
-                          transform: 'translateX(6px)',
+                          transform: 'translateX(4px)',
                         },
                       }}
                     >
-                      <Box
-                        sx={{
-                          p: 1.5,
-                          borderRadius: 3,
-                          bgcolor: `${detail.color}12`,
-                          color: detail.color,
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
+                      <Box sx={{ color: detail.color, display: 'flex' }}>
                         {detail.icon}
                       </Box>
                       <Box>
-                        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', fontWeight: 600 }}>
+                        <Typography
+                          variant="caption"
+                          color="text.secondary"
+                          sx={{ display: 'block', fontWeight: 500, fontSize: '0.625rem', letterSpacing: '0.06em', textTransform: 'uppercase', mb: 0.125 }}
+                        >
                           {detail.label}
                         </Typography>
-                        <Typography variant="body1" sx={{ fontWeight: 700, fontSize: { xs: '0.9rem', sm: '1rem' } }}>
+                        <Typography variant="body2" sx={{ fontWeight: 600, fontSize: '0.8125rem' }}>
                           {detail.value}
                         </Typography>
                       </Box>
@@ -207,24 +199,23 @@ export default function Contact() {
             </motion.div>
           </Box>
 
-          {/* Form Column */}
+          {/* Form */}
           <Box>
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
+              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <GlassCard sx={{ p: { xs: 3, sm: 4 } }}>
+              <GlassCard sx={{ p: { xs: 2.5, sm: 3.5 } }}>
                 <form ref={formRef} onSubmit={handleSubmit}>
                   <Box
                     sx={{
                       display: 'grid',
                       gridTemplateColumns: 'repeat(12, 1fr)',
-                      gap: 2.5,
+                      gap: 2,
                     }}
                   >
-                    {/* Name */}
                     <Box sx={{ gridColumn: { xs: 'span 12', sm: 'span 6' } }}>
                       <TextField
                         required
@@ -233,11 +224,8 @@ export default function Contact() {
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        variant="outlined"
                       />
                     </Box>
-
-                    {/* Email */}
                     <Box sx={{ gridColumn: { xs: 'span 12', sm: 'span 6' } }}>
                       <TextField
                         required
@@ -247,11 +235,8 @@ export default function Contact() {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        variant="outlined"
                       />
                     </Box>
-
-                    {/* Subject */}
                     <Box sx={{ gridColumn: 'span 12' }}>
                       <TextField
                         required
@@ -260,26 +245,20 @@ export default function Contact() {
                         name="subject"
                         value={formData.subject}
                         onChange={handleInputChange}
-                        variant="outlined"
                       />
                     </Box>
-
-                    {/* Message */}
                     <Box sx={{ gridColumn: 'span 12' }}>
                       <TextField
                         required
                         fullWidth
                         multiline
-                        rows={5}
+                        rows={4}
                         label="Your Message"
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
-                        variant="outlined"
                       />
                     </Box>
-
-                    {/* Submit Button */}
                     <Box sx={{ gridColumn: 'span 12' }}>
                       <Button
                         type="submit"
@@ -287,11 +266,14 @@ export default function Contact() {
                         size="large"
                         fullWidth
                         disabled={loading}
-                        endIcon={!loading && <MdSend />}
-                        sx={{ py: 1.8, borderRadius: 2 }}
+                        endIcon={!loading && <MdSend size={16} />}
+                        sx={{
+                          py: 1.5,
+                          fontSize: '0.875rem',
+                        }}
                       >
                         {loading ? (
-                          <CircularProgress size={24} color="inherit" />
+                          <CircularProgress size={20} color="inherit" />
                         ) : (
                           'Send Message'
                         )}
@@ -303,19 +285,18 @@ export default function Contact() {
             </motion.div>
           </Box>
         </Box>
-      </Container>
 
-      {/* MUI Toast Notification feedback */}
-      <Snackbar
-        open={toast.open}
-        autoHideDuration={6000}
-        onClose={handleCloseToast}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-      >
-        <Alert onClose={handleCloseToast} severity={toast.severity} sx={{ width: '100%' }}>
-          {toast.message}
-        </Alert>
-      </Snackbar>
+        <Snackbar
+          open={toast.open}
+          autoHideDuration={6000}
+          onClose={handleCloseToast}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        >
+          <Alert onClose={handleCloseToast} severity={toast.severity} sx={{ width: '100%' }}>
+            {toast.message}
+          </Alert>
+        </Snackbar>
+      </Container>
     </Box>
   );
 }

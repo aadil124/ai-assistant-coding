@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp, FaWhatsapp } from 'react-icons/fa';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -18,20 +18,19 @@ export default function Footer() {
   };
 
   const socials = [
-    { icon: <FaGithub size={20} />, url: 'https://github.com/aadil124', label: 'GitHub' },
-    { icon: <FaLinkedin size={20} />, url: 'https://www.linkedin.com', label: 'LinkedIn' },
-    { icon: <FaEnvelope size={20} />, url: 'mailto:ansariaadil2623@gmail.com', label: 'Email' },
+    { icon: <FaGithub size={16} />, url: 'https://github.com/aadil124', label: 'GitHub' },
+    { icon: <FaLinkedin size={16} />, url: 'https://www.linkedin.com', label: 'LinkedIn' },
+    { icon: <FaEnvelope size={16} />, url: 'mailto:ansariaadil2623@gmail.com', label: 'Email' },
+    { icon: <FaWhatsapp size={16} />, url: 'https://wa.me/917276450124', label: 'WhatsApp' },
   ];
 
   return (
     <Box
       component="footer"
       sx={{
-        py: 6,
-        bgcolor: (theme) =>
-          theme.palette.mode === 'dark' ? 'rgba(3,7,18,0.4)' : 'rgba(241,245,249,0.5)',
+        py: 5,
         borderTop: (theme) =>
-          `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'}`,
+          `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)'}`,
       }}
     >
       <Container maxWidth="lg">
@@ -41,33 +40,30 @@ export default function Footer() {
             gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' },
             gap: 3,
             alignItems: 'center',
-            justifyContent: 'space-between',
           }}
         >
-          {/* Brand Name & Summary */}
+          {/* Brand */}
           <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
             <Typography
-              variant="h6"
+              variant="body1"
               sx={{
-                fontWeight: 800,
-                fontFamily: 'var(--font-outfit), sans-serif',
-                mb: 1,
-                background: 'linear-gradient(90deg, #3B82F6 0%, #10B981 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                fontWeight: 600,
+                fontFamily: 'var(--font-outfit), system-ui, sans-serif',
+                mb: 0.5,
+                fontSize: '0.9375rem',
+                color: 'text.primary',
               }}
             >
               Adil Ansari
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ maxWidth: 280, mx: { xs: 'auto', md: 0 } }}>
-              Senior Full Stack MERN Developer crafting high-performance, responsive web interfaces.
+            <Typography variant="caption" color="text.secondary" sx={{ maxWidth: 240, mx: { xs: 'auto', md: 0 }, display: 'block', lineHeight: 1.5 }}>
+              Senior Full Stack MERN Developer crafting high-performance web applications.
             </Typography>
           </Box>
 
-          {/* Social Profiles & Copyright */}
+          {/* Socials & Copyright */}
           <Box sx={{ textAlign: 'center' }}>
-            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1.5, mb: 2 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 0.75, mb: 1.5 }}>
               {socials.map((social) => (
                 <IconButton
                   key={social.label}
@@ -76,17 +72,14 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
+                  size="small"
                   sx={{
                     color: 'text.secondary',
-                    bgcolor: (theme) =>
-                      theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.03)',
-                    p: 1.5,
-                    transition: 'all 0.3s ease',
+                    width: 34,
+                    height: 34,
+                    transition: 'all 0.15s ease',
                     '&:hover': {
-                      color: 'primary.main',
-                      bgcolor: (theme) =>
-                        theme.palette.mode === 'dark' ? 'rgba(59,130,246,0.1)' : 'rgba(37, 99, 235, 0.08)',
-                      transform: 'translateY(-3px)',
+                      color: 'text.primary',
                     },
                   }}
                 >
@@ -94,30 +87,33 @@ export default function Footer() {
                 </IconButton>
               ))}
             </Box>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6875rem' }}>
               &copy; {currentYear} Mohd Adil Ansari. All rights reserved.
             </Typography>
           </Box>
 
-          {/* Scroll back to top */}
+          {/* Back to top */}
           <Box sx={{ textAlign: { xs: 'center', md: 'right' } }}>
             <IconButton
               onClick={scrollToTop}
               aria-label="Scroll to top"
+              size="small"
               sx={{
-                color: 'text.primary',
-                bgcolor: (theme) =>
-                  theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.03)',
-                p: 1.5,
+                color: 'text.secondary',
+                width: 34,
+                height: 34,
+                border: (theme) =>
+                  `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)'}`,
                 '&:hover': {
-                  bgcolor: (theme) =>
-                    theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)',
+                  color: 'text.primary',
+                  borderColor: (theme) =>
+                    theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)',
                 },
               }}
             >
-              <FaArrowUp size={16} />
+              <FaArrowUp size={12} />
             </IconButton>
-            <Typography variant="caption" sx={{ display: 'block', mt: 1, fontWeight: 700, color: 'text.secondary' }}>
+            <Typography variant="caption" sx={{ display: 'block', mt: 0.75, fontWeight: 500, color: 'text.secondary', fontSize: '0.625rem' }}>
               Back to Top
             </Typography>
           </Box>

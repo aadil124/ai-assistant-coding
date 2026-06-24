@@ -12,7 +12,6 @@ import SectionHeader from '@/components/SectionHeader';
 import GlassCard from '@/components/GlassCard';
 import { GitHubRepo } from '@/utils/fallbackData';
 
-// Color map for coding languages
 const langColors: { [key: string]: string } = {
   JavaScript: '#F1E05A',
   TypeScript: '#3178C6',
@@ -40,99 +39,94 @@ export default function Github() {
         setLoading(false);
       }
     };
-
     fetchRepos();
   }, []);
 
   return (
-    <Box id="github-repos" sx={{ py: { xs: 10, md: 14 } }}>
+    <Box id="github-repos" sx={{ py: { xs: 8, md: 12 } }}>
       <Container maxWidth="lg">
         <SectionHeader
-          title="GitHub Repository Activity"
-          subtitle="Real-time repositories fetched directly from my GitHub profile. Highlighting active coding templates and scripts."
+          label="Open Source"
+          title="GitHub Repositories"
+          subtitle="Repositories fetched from my GitHub profile — active templates, scripts, and side projects."
         />
 
         <Box
           sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' },
-            gap: 3,
+            gap: 2,
           }}
         >
           {loading
-            ? // Display Skeleton placeholders while loading
-              Array.from(new Array(6)).map((_, idx) => (
+            ? Array.from(new Array(6)).map((_, idx) => (
                 <Box key={idx}>
-                  <GlassCard sx={{ p: 3.5, height: 180, display: 'flex', flexDirection: 'column' }}>
-                    <Skeleton variant="text" width="60%" height={24} sx={{ mb: 1.5 }} />
-                    <Skeleton variant="text" width="90%" height={16} sx={{ mb: 1 }} />
-                    <Skeleton variant="text" width="75%" height={16} sx={{ mb: 'auto' }} />
-                    <Box sx={{ display: 'flex', gap: 2 }}>
-                      <Skeleton variant="circular" width={16} height={16} />
-                      <Skeleton variant="text" width="20%" height={16} />
+                  <GlassCard sx={{ p: 3, height: 160, display: 'flex', flexDirection: 'column' }}>
+                    <Skeleton variant="text" width="55%" height={20} sx={{ mb: 1 }} />
+                    <Skeleton variant="text" width="85%" height={14} sx={{ mb: 0.5 }} />
+                    <Skeleton variant="text" width="70%" height={14} sx={{ mb: 'auto' }} />
+                    <Box sx={{ display: 'flex', gap: 2, mt: 1 }}>
+                      <Skeleton variant="circular" width={10} height={10} />
+                      <Skeleton variant="text" width="20%" height={12} />
                     </Box>
                   </GlassCard>
                 </Box>
               ))
-            : // Render Repository Cards
-              repos.slice(0, 6).map((repo, index) => (
+            : repos.slice(0, 6).map((repo, index) => (
                 <Box key={repo.name} sx={{ display: 'flex' }}>
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 12 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
                     style={{ width: '100%', display: 'flex' }}
                   >
                     <GlassCard
                       sx={{
-                        p: 3.5,
+                        p: 3,
                         width: '100%',
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'space-between',
                       }}
                     >
-                      {/* Repo Name */}
                       <Box>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5 }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
                           <Typography
                             component="a"
                             href={repo.html_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            variant="h6"
+                            variant="body1"
                             sx={{
-                              fontWeight: 700,
-                              fontSize: '1.05rem',
+                              fontWeight: 600,
+                              fontSize: '0.875rem',
                               fontFamily: 'monospace',
                               color: 'text.primary',
                               overflow: 'hidden',
                               textOverflow: 'ellipsis',
                               whiteSpace: 'nowrap',
                               mr: 1,
-                              '&:hover': {
-                                color: 'primary.main',
-                              },
+                              transition: 'color 0.15s ease',
+                              '&:hover': { color: 'primary.main' },
                             }}
                           >
                             {repo.name}
                           </Typography>
-                          <Box sx={{ display: 'flex', color: 'text.secondary', flexShrink: 0 }}>
-                            <FaExternalLinkAlt size={12} />
+                          <Box sx={{ color: 'text.secondary', flexShrink: 0, display: 'flex' }}>
+                            <FaExternalLinkAlt size={10} />
                           </Box>
                         </Box>
 
-                        {/* Repo Description */}
                         <Typography
-                          variant="body2"
+                          variant="caption"
                           color="text.secondary"
                           sx={{
-                            mb: 3,
-                            fontSize: '0.825rem',
+                            mb: 2,
+                            fontSize: '0.75rem',
                             lineHeight: 1.5,
                             display: '-webkit-box',
-                            WebkitLineClamp: 3,
+                            WebkitLineClamp: 2,
                             WebkitBoxOrient: 'vertical',
                             overflow: 'hidden',
                           }}
@@ -141,28 +135,25 @@ export default function Github() {
                         </Typography>
                       </Box>
 
-                      {/* Repo Meta info */}
                       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 'auto' }}>
-                        {/* Language dot indicator */}
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
                           <Box
                             sx={{
-                              width: 10,
-                              height: 10,
+                              width: 8,
+                              height: 8,
                               borderRadius: '50%',
-                              bgcolor: langColors[repo.language] || '#888',
+                              bgcolor: langColors[repo.language] || '#71717A',
                             }}
                           />
-                          <Typography variant="caption" sx={{ fontWeight: 700, color: 'text.secondary' }}>
+                          <Typography variant="caption" sx={{ fontWeight: 500, color: 'text.secondary', fontSize: '0.6875rem' }}>
                             {repo.language}
                           </Typography>
                         </Box>
 
-                        {/* Star Count */}
                         {repo.stargazers_count > 0 && (
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, color: 'text.secondary' }}>
-                            <FaStar size={12} />
-                            <Typography variant="caption" sx={{ fontWeight: 700 }}>
+                            <FaStar size={10} />
+                            <Typography variant="caption" sx={{ fontWeight: 500, fontSize: '0.6875rem' }}>
                               {repo.stargazers_count}
                             </Typography>
                           </Box>
@@ -174,31 +165,22 @@ export default function Github() {
               ))}
         </Box>
 
-        {/* View All Button */}
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 5 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
           <Button
             component="a"
             href="https://github.com/aadil124?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
             variant="outlined"
-            startIcon={<FaGithub />}
+            size="small"
+            startIcon={<FaGithub size={14} />}
             sx={{
-              px: 3.5,
-              py: 1.5,
-              borderRadius: 2,
-              fontWeight: 700,
-              fontSize: '0.9rem',
-              borderColor: (theme) =>
-                theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.15)',
-              color: 'text.primary',
-              '&:hover': {
-                borderColor: 'primary.main',
-                bgcolor: 'rgba(59, 130, 246, 0.05)',
-              },
+              px: 2.5,
+              py: 1,
+              fontSize: '0.8125rem',
             }}
           >
-            Explore More on GitHub
+            View All Repositories
           </Button>
         </Box>
       </Container>

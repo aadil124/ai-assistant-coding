@@ -36,11 +36,10 @@ export default function Navbar() {
     setMobileOpen((prevState) => !prevState);
   };
 
-  // Scroll spy to highlight active nav item
+  // Scroll spy
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 120;
-
       for (const item of navItems) {
         const el = document.getElementById(item.id);
         if (el) {
@@ -52,7 +51,6 @@ export default function Navbar() {
         }
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -74,73 +72,62 @@ export default function Navbar() {
     <Box sx={{ display: 'flex' }}>
       <AppBar
         position="fixed"
-        elevation={trigger ? 4 : 0}
+        elevation={0}
         sx={{
           background: (theme) =>
             trigger
               ? theme.palette.mode === 'dark'
-                ? 'rgba(3, 7, 18, 0.75)'
-                : 'rgba(248, 250, 252, 0.8)'
+                ? 'rgba(9, 9, 11, 0.8)'
+                : 'rgba(250, 250, 250, 0.85)'
               : 'transparent',
-          backdropFilter: trigger ? 'blur(12px)' : 'none',
+          backdropFilter: trigger ? 'blur(12px) saturate(180%)' : 'none',
           borderBottom: (theme) =>
-            trigger
-              ? `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)'}`
-              : 'none',
-          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            `1px solid ${
+              trigger
+                ? theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)'
+                : 'transparent'
+            }`,
+          boxShadow: 'none',
+          transition: 'all 0.3s ease',
         }}
       >
         <Container maxWidth="lg">
-          <Toolbar disableGutters sx={{ justifyContent: 'space-between', height: { xs: 64, md: 80 } }}>
-            {/* Logo / Brand Name */}
+          <Toolbar disableGutters sx={{ justifyContent: 'space-between', height: { xs: 60, md: 72 } }}>
+            {/* Logo */}
             <Typography
               variant="h6"
               component="div"
               onClick={() => scrollToSection('home')}
               sx={{
-                fontWeight: 800,
+                fontWeight: 700,
                 cursor: 'pointer',
-                fontFamily: 'var(--font-outfit), sans-serif',
-                fontSize: { xs: '1.25rem', md: '1.5rem' },
+                fontFamily: 'var(--font-outfit), system-ui, sans-serif',
+                fontSize: { xs: '1.1rem', md: '1.25rem' },
                 letterSpacing: '-0.02em',
-                background: 'linear-gradient(90deg, #3B82F6 0%, #10B981 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: 'text.primary',
               }}
             >
-              Adil Ansari.
+              Adil Ansari
             </Typography>
 
-            {/* Desktop Navigation Links */}
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
+            {/* Desktop Nav */}
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 0.25 }}>
               {navItems.map((item) => (
                 <Button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   sx={{
-                    color: activeSection === item.id ? 'primary.main' : 'text.secondary',
-                    fontWeight: activeSection === item.id ? 700 : 500,
-                    fontSize: '0.9rem',
-                    px: 2,
-                    py: 1,
-                    transition: 'all 0.2s ease',
-                    position: 'relative',
+                    color: activeSection === item.id ? 'text.primary' : 'text.secondary',
+                    fontWeight: activeSection === item.id ? 600 : 400,
+                    fontSize: '0.8125rem',
+                    px: 1.5,
+                    py: 0.75,
+                    borderRadius: '8px',
+                    minWidth: 'auto',
+                    transition: 'all 0.15s ease',
                     '&:hover': {
-                      color: 'primary.main',
+                      color: 'text.primary',
                       bgcolor: 'transparent',
-                    },
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      bottom: 0,
-                      left: '15%',
-                      width: '70%',
-                      height: '2px',
-                      borderRadius: 1,
-                      bgcolor: 'primary.main',
-                      transform: activeSection === item.id ? 'scaleX(1)' : 'scaleX(0)',
-                      transition: 'transform 0.25s ease',
                     },
                   }}
                 >
@@ -149,66 +136,54 @@ export default function Navbar() {
               ))}
             </Box>
 
-            {/* Right-side Utilities: Theme Toggle & Resume Action */}
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 0.5, md: 1.5 } }}>
+            {/* Right Utilities */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 0.5, md: 1 } }}>
               <IconButton
                 onClick={toggleColorMode}
+                size="small"
                 sx={{
-                  color: 'text.primary',
-                  bgcolor: (theme) =>
-                    theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.03)',
-                  p: 1.2,
-                  '&:hover': {
-                    bgcolor: (theme) =>
-                      theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)',
-                  },
+                  color: 'text.secondary',
+                  width: 36,
+                  height: 36,
+                  '&:hover': { color: 'text.primary' },
                 }}
                 aria-label="Toggle Color Theme"
               >
-                {mode === 'dark' ? <MdLightMode size={20} /> : <MdDarkMode size={20} />}
+                {mode === 'dark' ? <MdLightMode size={18} /> : <MdDarkMode size={18} />}
               </IconButton>
 
               <Button
                 component="a"
                 href="/Mohd_Adil_Ansari_Resume.pdf"
                 download="Mohd_Adil_Ansari_Resume.pdf"
-                variant="outlined"
-                startIcon={<MdFileDownload />}
+                variant="contained"
+                size="small"
+                startIcon={<MdFileDownload size={16} />}
                 sx={{
                   display: { xs: 'none', sm: 'inline-flex' },
-                  borderColor: (theme) =>
-                    theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.15)',
-                  color: 'text.primary',
-                  '&:hover': {
-                    borderColor: 'primary.main',
-                    bgcolor: 'primary.main',
-                    color: 'white',
-                  },
                   px: 2,
-                  py: 1,
-                  borderRadius: 2,
-                  transition: 'all 0.3s ease',
+                  py: 0.875,
+                  fontSize: '0.8125rem',
                 }}
               >
                 Resume
               </Button>
 
-              {/* Mobile Menu Icon */}
+              {/* Mobile Menu */}
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
-                edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ display: { md: 'none' }, ml: 0.5, p: 1.2 }}
+                sx={{ display: { md: 'none' }, p: 1 }}
               >
-                <MdMenu size={24} />
+                <MdMenu size={22} />
               </IconButton>
             </Box>
           </Toolbar>
         </Container>
       </AppBar>
 
-      {/* Mobile Drawer menu */}
+      {/* Mobile Drawer */}
       <Drawer
         anchor="right"
         variant="temporary"
@@ -220,22 +195,21 @@ export default function Navbar() {
             sx: {
               width: 280,
               background: (theme) =>
-                theme.palette.mode === 'dark' ? '#0F172A' : '#FFFFFF',
+                theme.palette.mode === 'dark' ? '#18181B' : '#FFFFFF',
               backgroundImage: 'none',
               borderLeft: (theme) =>
                 `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)'}`,
-              boxShadow: 'none',
             },
           },
         }}
       >
-        <Box sx={{ p: 2, display: 'flex', flexDirection: 'column', height: '100%' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-            <Typography variant="h6" sx={{ fontWeight: 800 }}>
-              Menu
+        <Box sx={{ p: 2.5, display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+            <Typography variant="body1" sx={{ fontWeight: 600 }}>
+              Navigation
             </Typography>
-            <IconButton onClick={handleDrawerToggle}>
-              <MdClose size={24} />
+            <IconButton onClick={handleDrawerToggle} size="small">
+              <MdClose size={20} />
             </IconButton>
           </Box>
           <List sx={{ mb: 'auto' }}>
@@ -246,22 +220,35 @@ export default function Navbar() {
                   selected={activeSection === item.id}
                   sx={{
                     borderRadius: 2,
-                    mb: 1,
+                    mb: 0.5,
+                    py: 1,
                     '&.Mui-selected': {
-                      bgcolor: 'primary.main',
-                      color: 'white',
+                      bgcolor: (theme) =>
+                        theme.palette.mode === 'dark'
+                          ? 'rgba(129, 140, 248, 0.08)'
+                          : 'rgba(79, 70, 229, 0.06)',
+                      color: 'primary.main',
                       '&:hover': {
-                        bgcolor: 'primary.dark',
+                        bgcolor: (theme) =>
+                          theme.palette.mode === 'dark'
+                            ? 'rgba(129, 140, 248, 0.12)'
+                            : 'rgba(79, 70, 229, 0.08)',
                       },
                     },
                   }}
                 >
-                  <ListItemText primary={<Typography sx={{ fontWeight: 600 }}>{item.label}</Typography>} />
+                  <ListItemText
+                    primary={
+                      <Typography sx={{ fontWeight: activeSection === item.id ? 600 : 400, fontSize: '0.875rem' }}>
+                        {item.label}
+                      </Typography>
+                    }
+                  />
                 </ListItemButton>
               </ListItem>
             ))}
           </List>
-          <Box sx={{ pt: 2, borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+          <Box sx={{ pt: 2, borderTop: (theme) => `1px solid ${theme.palette.divider}` }}>
             <Button
               component="a"
               href="/Mohd_Adil_Ansari_Resume.pdf"
@@ -269,7 +256,7 @@ export default function Navbar() {
               variant="contained"
               fullWidth
               startIcon={<MdFileDownload />}
-              sx={{ py: 1.5 }}
+              sx={{ py: 1.25 }}
             >
               Download Resume
             </Button>

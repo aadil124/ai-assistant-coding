@@ -1,4 +1,4 @@
-/* Global Styles & Scroll Behaviors */
+/* ===== Base Reset ===== */
 html {
   scroll-behavior: smooth;
   height: 100%;
@@ -15,16 +15,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Selection Highlight */
+/* ===== Selection ===== */
 ::selection {
-  background-color: rgba(59, 130, 246, 0.3); /* Cobalt Blue Transparent */
+  background-color: rgba(99, 102, 241, 0.2);
   color: inherit;
 }
 
-/* Scrollbar Customization */
+/* ===== Scrollbar ===== */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -32,77 +32,102 @@ body {
 }
 
 .theme-dark ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
-  border: 2px solid #030712;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
 }
 
 .theme-dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .theme-light ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  border: 2px solid #F8FAFC;
+  border-radius: 4px;
 }
 
 .theme-light ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.18);
 }
 
-/* Smooth Navigation Scroll Offset Adjustments */
+/* ===== Scroll Offset ===== */
 section {
-  scroll-margin-top: 80px; /* Offset for sticky navbar */
+  scroll-margin-top: 80px;
 }
 
-/* Text Gradient Utilities */
-.text-gradient {
-  background: linear-gradient(135deg, #3B82F6 0%, #10B981 100%);
+/* ===== Text Gradient Utilities ===== */
+.theme-dark .text-gradient {
+  background: linear-gradient(135deg, #A5B4FC 0%, #818CF8 50%, #C4B5FD 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.text-gradient-secondary {
-  background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
+.theme-light .text-gradient {
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #6366F1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Glow effects */
-.glow-effect {
-  position: relative;
+.theme-dark .text-gradient-secondary {
+  background: linear-gradient(135deg, #34D399 0%, #6EE7B7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.glow-effect::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: inherit;
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+.theme-light .text-gradient-secondary {
+  background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.glow-effect:hover::before {
-  opacity: 1;
+/* ===== Animations ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
 }
 
-/* Custom background styles for modes */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.03); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 8s ease-in-out infinite;
+}
+
+/* ===== Theme Backgrounds ===== */
 .theme-dark {
-  background: radial-gradient(circle at 50% 50%, #0f172a 0%, #030712 100%);
-  color: #F3F4F6;
+  background: #09090B;
+  color: #FAFAFA;
   min-height: 100vh;
 }
 
 .theme-light {
-  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
-  color: #0F172A;
+  background: #FAFAFA;
+  color: #09090B;
   min-height: 100vh;
+}
+
+/* ===== Ensure z-index stacking ===== */
+.theme-dark > *,
+.theme-light > * {
+  position: relative;
+  z-index: 1;
 }

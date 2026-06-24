@@ -28,7 +28,7 @@ export default function Projects() {
       title: 'Bank of Maharashtra – HRMS Portal',
       category: 'Enterprise Fintech',
       company: 'NeoSoft Pvt Ltd',
-      icon: <MdComputer size={24} />,
+      icon: <MdComputer size={18} />,
       highlights: [
         'Developed core modules for Appraisal Management, Promotion cycles, and Talent Pipelines.',
         'Engineered dynamic forms with custom validation schemas for employee self-evaluations.',
@@ -36,13 +36,13 @@ export default function Projects() {
       ],
       metrics: ['Used by bank employees state-wide', 'Validated dynamic forms', 'Enterprise appraisal workflows'],
       skills: ['React.js', 'Redux Toolkit', 'Bootstrap', 'Recharts', 'Axios'],
-      color: '#3B82F6', // Blue
+      color: '#818CF8',
     },
     {
       title: 'White Label 2.0 (Gaming Platform)',
       category: 'High-Traffic Web App',
       company: 'HKB Development',
-      icon: <MdTrendingUp size={24} />,
+      icon: <MdTrendingUp size={18} />,
       highlights: [
         'Designed mobile-first UI modules for a system hosting 4000+ online games.',
         'Built full operator dashboards, showing master admin configurations and game metrics.',
@@ -50,13 +50,13 @@ export default function Projects() {
       ],
       metrics: ['30% loading speed increase', '15% user retention gain', '4000+ games integrated'],
       skills: ['React.js', 'Redux Saga', 'JavaScript', 'Bootstrap', 'Axios'],
-      color: '#10B981', // Emerald
+      color: '#34D399',
     },
     {
       title: 'Edjobster (Job Portal Platform)',
-      category: 'Full-Stack Web Portal',
+      category: 'Full-Stack Portal',
       company: 'Wow InfoBiz',
-      icon: <MdAccountTree size={24} />,
+      icon: <MdAccountTree size={18} />,
       highlights: [
         'Built MongoDB collections, schemas, and Express controllers for job boards.',
         'Structured candidate registration, recruiter dashboard, and admin review modules.',
@@ -64,13 +64,13 @@ export default function Projects() {
       ],
       metrics: ['Full-stack MERN stack', '3 distinct user roles', 'JWT session tokens'],
       skills: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'JWT', 'Postman'],
-      color: '#A78BFA', // Purple
+      color: '#C4B5FD',
     },
     {
       title: 'Gulf Pharmacy (Healthcare App)',
       category: 'E-commerce & Dispatch',
       company: 'Wow InfoBiz',
-      icon: <MdSecurity size={24} />,
+      icon: <MdSecurity size={18} />,
       highlights: [
         'Implemented secure route guards, forgot-password templates, and login states.',
         'Utilized code-splitting (React.lazy) and memoization hooks to improve render speed.',
@@ -78,101 +78,99 @@ export default function Projects() {
       ],
       metrics: ['30% loading time cut', '20% organic traffic gain', 'SEO optimized markup'],
       skills: ['React.js', 'Redux', 'React Router', 'Bootstrap', 'Lazy Loading'],
-      color: '#EC4899', // Pink
+      color: '#F9A8D4',
     },
   ];
 
   return (
-    <Box id="projects" sx={{ py: { xs: 10, md: 14 }, bgcolor: 'background.default' }}>
+    <Box id="projects" sx={{ py: { xs: 8, md: 12 } }}>
       <Container maxWidth="lg">
         <SectionHeader
+          label="Work"
           title="Featured Projects"
-          subtitle="A selection of high-volume web portals and enterprise applications built for banking, healthcare, and gaming clients."
+          subtitle="High-volume web portals and enterprise applications built for banking, healthcare, and gaming clients."
         />
 
         <Box
           sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-            gap: 4,
+            gap: 2.5,
           }}
         >
           {projectsList.map((project, idx) => (
             <Box key={project.title} sx={{ display: 'flex' }}>
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.7, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] as const }}
+                viewport={{ once: true, margin: '-30px' }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
                 style={{ width: '100%', display: 'flex' }}
               >
                 <GlassCard
                   sx={{
-                    p: 4,
+                    p: 3.5,
                     width: '100%',
                     display: 'flex',
                     flexDirection: 'column',
                     position: 'relative',
-                    borderTop: `4px solid ${project.color}`,
+                    borderTop: `2px solid ${project.color}`,
                   }}
                 >
-                  {/* Category Header */}
+                  {/* Header */}
                   <Box
                     sx={{
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
-                      mb: 2.5,
+                      mb: 2,
                     }}
                   >
                     <Typography
-                      variant="caption"
+                      component="span"
                       sx={{
-                        bgcolor: `${project.color}15`,
-                        color: project.color,
-                        px: 1.5,
-                        py: 0.6,
-                        borderRadius: 1.5,
-                        fontWeight: 700,
+                        fontSize: '0.6875rem',
+                        fontWeight: 500,
+                        letterSpacing: '0.06em',
                         textTransform: 'uppercase',
-                        letterSpacing: '0.05em',
+                        color: project.color,
                       }}
                     >
                       {project.category}
                     </Typography>
-                    <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600 }}>
+                    <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500, fontSize: '0.6875rem' }}>
                       {project.company}
                     </Typography>
                   </Box>
 
-                  {/* Project Title */}
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      fontWeight: 700,
-                      fontSize: { xs: '1.25rem', md: '1.5rem' },
-                      mb: 2,
-                      fontFamily: 'var(--font-outfit), sans-serif',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 1.5,
-                    }}
-                  >
-                    <Box sx={{ color: project.color, display: 'flex' }}>{project.icon}</Box>
-                    {project.title}
-                  </Typography>
+                  {/* Title */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
+                    <Box sx={{ color: project.color, display: 'flex' }}>
+                      {project.icon}
+                    </Box>
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        fontWeight: 600,
+                        fontSize: { xs: '1.05rem', md: '1.15rem' },
+                        fontFamily: 'var(--font-outfit), system-ui, sans-serif',
+                      }}
+                    >
+                      {project.title}
+                    </Typography>
+                  </Box>
 
-                  {/* Highlights Bullet List */}
-                  <Box component="ul" sx={{ pl: 2, mb: 3.5, color: 'text.secondary', flexGrow: 1 }}>
+                  {/* Highlights */}
+                  <Box component="ul" sx={{ pl: 2, mb: 2.5, color: 'text.secondary', flexGrow: 1 }}>
                     {project.highlights.map((highlight, index) => (
                       <Box
                         component="li"
                         key={index}
                         sx={{
-                          mb: 1.2,
-                          fontSize: '0.9rem',
-                          lineHeight: 1.6,
-                          '&::marker': { color: project.color },
+                          mb: 0.8,
+                          fontSize: '0.8125rem',
+                          lineHeight: 1.65,
+                          '&::marker': { color: project.color, fontSize: '0.7rem' },
                         }}
                       >
                         {highlight}
@@ -180,24 +178,24 @@ export default function Projects() {
                     ))}
                   </Box>
 
-                  {/* Key Metrics / Achievements */}
+                  {/* Metrics */}
                   <Box
                     sx={{
                       bgcolor: (theme) =>
-                        theme.palette.mode === 'dark' ? 'rgba(0,0,0,0.15)' : 'rgba(0,0,0,0.02)',
+                        theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.02)',
                       border: (theme) =>
                         `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)'}`,
                       p: 2,
-                      borderRadius: 3,
-                      mb: 3.5,
+                      borderRadius: 2,
+                      mb: 2.5,
                     }}
                   >
                     <Typography
                       variant="caption"
                       color="text.secondary"
-                      sx={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', mb: 1, display: 'block' }}
+                      sx={{ fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', mb: 1.25, display: 'block', fontSize: '0.625rem' }}
                     >
-                      Key Performance Metrics
+                      Key Metrics
                     </Typography>
                     <Stack spacing={1}>
                       {project.metrics.map((metric) => (
@@ -206,23 +204,24 @@ export default function Projects() {
                           sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            gap: 1,
+                            gap: 1.25,
                           }}
                         >
                           <Box
                             sx={{
-                              width: 6,
-                              height: 6,
+                              width: 5,
+                              height: 5,
                               borderRadius: '50%',
                               bgcolor: project.color,
                               flexShrink: 0,
+                              opacity: 0.8,
                             }}
                           />
                           <Typography
-                            variant="body2"
+                            variant="caption"
                             sx={{
-                              fontSize: '0.85rem',
-                              fontWeight: 600,
+                              fontSize: '0.75rem',
+                              fontWeight: 500,
                               color: 'text.primary',
                             }}
                           >
@@ -233,19 +232,21 @@ export default function Projects() {
                     </Stack>
                   </Box>
 
-                  {/* Tech stack chips */}
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  {/* Tech Stack */}
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75 }}>
                     {project.skills.map((skill) => (
                       <Chip
                         key={skill}
                         label={skill}
                         size="small"
                         sx={{
-                          fontSize: '0.75rem',
-                          fontWeight: 600,
+                          fontSize: '0.6875rem',
+                          fontWeight: 500,
+                          height: 24,
                           bgcolor: 'transparent',
                           border: (theme) =>
-                            `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)'}`,
+                            `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)'}`,
+                          color: 'text.secondary',
                         }}
                       />
                     ))}

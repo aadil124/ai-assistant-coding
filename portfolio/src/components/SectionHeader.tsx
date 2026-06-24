@@ -8,61 +8,76 @@ import { motion } from 'framer-motion';
 interface SectionHeaderProps {
   title: string;
   subtitle?: string;
+  label?: string;
   centered?: boolean;
 }
 
-export default function SectionHeader({ title, subtitle, centered = false }: SectionHeaderProps) {
+export default function SectionHeader({ title, subtitle, label, centered = false }: SectionHeaderProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
+      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
       style={{ width: '100%' }}
     >
       <Box
         sx={{
-          mb: { xs: 5, md: 8 },
+          mb: { xs: 5, md: 7 },
           textAlign: centered ? 'center' : 'left',
           display: 'flex',
           flexDirection: 'column',
           alignItems: centered ? 'center' : 'flex-start',
         }}
       >
+        {/* Optional label chip */}
+        {label && (
+          <Typography
+            component="span"
+            sx={{
+              fontSize: '0.7rem',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'primary.main',
+              mb: 2,
+              px: 1.5,
+              py: 0.5,
+              borderRadius: '6px',
+              bgcolor: (theme) =>
+                theme.palette.mode === 'dark'
+                  ? 'rgba(129, 140, 248, 0.08)'
+                  : 'rgba(79, 70, 229, 0.06)',
+              border: (theme) =>
+                `1px solid ${theme.palette.mode === 'dark' ? 'rgba(129, 140, 248, 0.15)' : 'rgba(79, 70, 229, 0.12)'}`,
+            }}
+          >
+            {label}
+          </Typography>
+        )}
+
         <Typography
           variant="h2"
           sx={{
-            fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
-            fontWeight: 800,
-            position: 'relative',
-            pb: 2,
-            mb: 2,
+            fontSize: { xs: '1.875rem', sm: '2.25rem', md: '2.75rem' },
+            fontWeight: 700,
             color: 'text.primary',
-            fontFamily: 'var(--font-outfit), sans-serif',
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              bottom: 0,
-              left: centered ? '50%' : 0,
-              transform: centered ? 'translateX(-50%)' : 'none',
-              width: 80,
-              height: 4,
-              borderRadius: 2,
-              background: 'linear-gradient(90deg, #3B82F6 0%, #10B981 100%)',
-            },
+            fontFamily: 'var(--font-outfit), system-ui, sans-serif',
+            mb: subtitle ? 1.5 : 0,
           }}
         >
           {title}
         </Typography>
+
         {subtitle && (
           <Typography
             variant="subtitle1"
             color="text.secondary"
             sx={{
-              maxWidth: 700,
-              fontSize: { xs: '1rem', md: '1.125rem' },
+              maxWidth: 560,
+              fontSize: { xs: '0.875rem', md: '0.9375rem' },
               fontWeight: 400,
-              mt: 1,
+              lineHeight: 1.7,
             }}
           >
             {subtitle}

@@ -55,13 +55,13 @@ export default function Experience() {
   ];
 
   return (
-    <Box id="experience" sx={{ py: { xs: 10, md: 14 }, bgcolor: 'background.default' }}>
+    <Box id="experience" sx={{ py: { xs: 8, md: 12 } }}>
       <Container maxWidth="lg">
         <SectionHeader
+          label="Career"
           title="Work Experience"
-          subtitle="A history of building scalable solutions, banking modules, and high-performance gaming applications."
+          subtitle="A history of building scalable solutions, banking modules, and high-performance applications."
         />
-
         <Timeline items={experienceItems} />
       </Container>
     </Box>
