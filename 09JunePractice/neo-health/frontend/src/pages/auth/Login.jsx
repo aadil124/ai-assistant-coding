@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 export default function Login() {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [role, setRole] = useState('patient'); // patient, doctor, admin
   const [formData, setFormData] = useState({
     email: '',
@@ -17,7 +19,7 @@ export default function Login() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess(false);
@@ -40,34 +42,25 @@ export default function Login() {
 
     setLoading(true);
 
-    // Simulate API authorization request
-    setTimeout(() => {
-      setLoading(false);
-      
-      // Simulate credential checks for demo purposes
-      if (formData.email === 'admin@neohealth.com' && role !== 'admin') {
-        setError('This email is registered under Admin role. Please select Admin tab.');
-        return;
-      }
-      if (formData.email === 'doctor@neohealth.com' && role !== 'doctor') {
-        setError('This email is registered under Doctor role. Please select Doctor tab.');
-        return;
-      }
-
-      // Successful simulated login
+    try {
+      await login(formData.email, formData.password, role);
       setSuccess(true);
-      const fakeToken = `dummy-jwt-token-for-${role}-${Date.now()}`;
-      localStorage.setItem('token', fakeToken);
-      localStorage.setItem('userRole', role);
-      localStorage.setItem('userEmail', formData.email);
-
-      // Redirect after brief delay to show success
       setTimeout(() => {
-        // Since dashboard layouts are out of scope for this ticket, we redirect to landing page
-        // or a simulated success state
-        navigate('/');
-      }, 1500);
-    }, 1000);
+        if (role === 'patient') {
+          navigate('/patient/dashboard');
+        } else if (role === 'doctor') {
+          navigate('/doctor/dashboard');
+        } else if (role === 'admin') {
+          navigate('/admin/dashboard');
+        } else {
+          navigate('/');
+        }
+      }, 1200);
+    } catch (err) {
+      setError(err.message || 'An error occurred during authentication.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

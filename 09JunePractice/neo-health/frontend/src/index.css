@@ -106,3 +106,39 @@ body {
   box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
   outline: none;
 }
+
+/* Dark Mode Theme Tokens override */
+[data-bs-theme="dark"] {
+  --background-color: #0b0c10;
+  --on-surface: #f1f3f9;
+  --on-surface-variant: #a0aec0;
+  --border-color: #1a1e29;
+  
+  --glass-bg: rgba(15, 17, 26, 0.85);
+  --glass-border: rgba(40, 44, 60, 0.5);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
+  
+  --bs-body-bg: var(--background-color);
+  --bs-body-color: var(--on-surface);
+  --bs-tertiary-bg: #11141d;
+  --bs-secondary-bg: #131722;
+  --bs-border-color: var(--border-color);
+}
+
+/* Common layouts helpers */
+.hover-border-primary:hover {
+  border-color: var(--primary-color) !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.border-dashed {
+  border-style: dashed !important;
+}
+
+.ratio-16x9 {
+  aspect-ratio: 16 / 9;
+}
+
