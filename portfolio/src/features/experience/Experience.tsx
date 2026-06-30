@@ -3,6 +3,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import { MdAccountBalance, MdSportsEsports, MdWork } from 'react-icons/md';
 import SectionHeader from '@/components/SectionHeader';
 import Timeline, { TimelineItemData } from '@/components/Timeline';
 
@@ -14,6 +15,7 @@ export default function Experience() {
       location: 'Navi Mumbai, India',
       period: 'Sept 2025 - Present',
       link: 'https://www.neosofttech.com',
+      icon: <MdAccountBalance size={16} />,
       description: [
         'Developed enterprise-grade HRMS modules using React.js for the Bank of Maharashtra.',
         'Built dynamic forms with validation and modular, reusable UI components.',
@@ -29,6 +31,7 @@ export default function Experience() {
       company: 'HKB Development Pvt Ltd',
       location: 'Navi Mumbai, India',
       period: 'Mar 2024 - Mar 2025',
+      icon: <MdSportsEsports size={16} />,
       description: [
         'Designed and developed responsive web/mobile user interfaces for White Label 2.0 (HorasBet Gaming Platform) hosting 4000+ games.',
         'Created comprehensive Admin and Master Admin control panels for platform operators.',
@@ -44,6 +47,7 @@ export default function Experience() {
       company: 'Wow InfoBiz Pvt Ltd',
       location: 'Thane, Mumbai, India',
       period: 'Dec 2021 – Mar 2024',
+      icon: <MdWork size={16} />,
       description: [
         'Job Portal (Edjobster): Designed full-stack models, collections, and routes using MERN (MongoDB, Express, React, Node). Implemented secure authentication with JWT and role-based access control (RBAC) for candidates, recruiters, and administrators.',
         'Healthcare App (Gulf Pharmacy): Programmed login flow, password reset, and protected routes. Optimized routing and assets via React.lazy and memoization, leading to a 30% speedup and 20% growth in organic traffic via SEO structure.',

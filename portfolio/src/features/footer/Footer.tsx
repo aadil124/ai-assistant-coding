@@ -28,7 +28,8 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
-        py: 5,
+        py: 6,
+        bgcolor: (theme) => theme.palette.mode === 'dark' ? '#09090C' : '#F8FAFC',
         borderTop: (theme) =>
           `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)'}`,
       }}
@@ -37,8 +38,8 @@ export default function Footer() {
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' },
-            gap: 3,
+            gridTemplateColumns: { xs: '1fr', md: '1.2fr 1.6fr 1.2fr' },
+            gap: 4,
             alignItems: 'center',
           }}
         >
@@ -47,23 +48,23 @@ export default function Footer() {
             <Typography
               variant="body1"
               sx={{
-                fontWeight: 600,
+                fontWeight: 800,
                 fontFamily: 'var(--font-outfit), system-ui, sans-serif',
-                mb: 0.5,
-                fontSize: '0.9375rem',
+                mb: 0.75,
+                fontSize: '1rem',
                 color: 'text.primary',
               }}
             >
               Adil Ansari
             </Typography>
-            <Typography variant="caption" color="text.secondary" sx={{ maxWidth: 240, mx: { xs: 'auto', md: 0 }, display: 'block', lineHeight: 1.5 }}>
+            <Typography variant="caption" color="text.secondary" sx={{ maxWidth: 260, mx: { xs: 'auto', md: 0 }, display: 'block', lineHeight: 1.5, fontSize: { xs: '0.875rem', md: '0.725rem' } }}>
               Senior Full Stack MERN Developer crafting high-performance web applications.
             </Typography>
           </Box>
 
           {/* Socials & Copyright */}
           <Box sx={{ textAlign: 'center' }}>
-            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 0.75, mb: 1.5 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1.5, mb: 2 }}>
               {socials.map((social) => (
                 <IconButton
                   key={social.label}
@@ -75,11 +76,17 @@ export default function Footer() {
                   size="small"
                   sx={{
                     color: 'text.secondary',
-                    width: 34,
-                    height: 34,
-                    transition: 'all 0.15s ease',
+                    width: { xs: 44, md: 38 },
+                    height: { xs: 44, md: 38 },
+                    borderRadius: '50%',
+                    border: (theme) => `1px solid ${theme.palette.divider}`,
+                    bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.01)',
+                    transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
                     '&:hover': {
-                      color: 'text.primary',
+                      color: 'primary.main',
+                      borderColor: 'primary.main',
+                      bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(129, 140, 248, 0.08)' : 'rgba(79, 70, 229, 0.05)',
+                      transform: 'translateY(-2.5px) scale(1.05)',
                     },
                   }}
                 >
@@ -87,7 +94,7 @@ export default function Footer() {
                 </IconButton>
               ))}
             </Box>
-            <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6875rem' }}>
+            <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.7rem', fontWeight: 500 }}>
               &copy; {currentYear} Mohd Adil Ansari. All rights reserved.
             </Typography>
           </Box>
@@ -100,20 +107,23 @@ export default function Footer() {
               size="small"
               sx={{
                 color: 'text.secondary',
-                width: 34,
-                height: 34,
+                width: { xs: 44, md: 36 },
+                height: { xs: 44, md: 36 },
                 border: (theme) =>
                   `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)'}`,
+                bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.01)',
+                transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
                 '&:hover': {
-                  color: 'text.primary',
-                  borderColor: (theme) =>
-                    theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)',
+                  color: 'primary.main',
+                  borderColor: 'primary.main',
+                  bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(129, 140, 248, 0.06)' : 'rgba(79, 70, 229, 0.04)',
+                  transform: 'translateY(-2.5px)',
                 },
               }}
             >
               <FaArrowUp size={12} />
             </IconButton>
-            <Typography variant="caption" sx={{ display: 'block', mt: 0.75, fontWeight: 500, color: 'text.secondary', fontSize: '0.625rem' }}>
+            <Typography variant="caption" sx={{ display: 'block', mt: 0.75, fontWeight: 650, color: 'text.secondary', fontSize: '0.625rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               Back to Top
             </Typography>
           </Box>

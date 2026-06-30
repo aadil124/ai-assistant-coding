@@ -30,40 +30,52 @@ export default function SectionHeader({ title, subtitle, label, centered = false
           alignItems: centered ? 'center' : 'flex-start',
         }}
       >
-        {/* Optional label chip */}
+        {/* Sleek kicker/eyebrow label */}
         {label && (
-          <Typography
-            component="span"
+          <Box
             sx={{
-              fontSize: '0.7rem',
-              fontWeight: 600,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: 'primary.main',
-              mb: 2,
-              px: 1.5,
-              py: 0.5,
-              borderRadius: '6px',
-              bgcolor: (theme) =>
-                theme.palette.mode === 'dark'
-                  ? 'rgba(129, 140, 248, 0.08)'
-                  : 'rgba(79, 70, 229, 0.06)',
-              border: (theme) =>
-                `1px solid ${theme.palette.mode === 'dark' ? 'rgba(129, 140, 248, 0.15)' : 'rgba(79, 70, 229, 0.12)'}`,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 1.25,
+              mb: 1.5,
             }}
           >
-            {label}
-          </Typography>
+            {/* Tiny accent dot */}
+            <Box
+              sx={{
+                width: 6,
+                height: 6,
+                borderRadius: '50%',
+                bgcolor: 'primary.main',
+                boxShadow: (theme) => `0 0 8px ${theme.palette.primary.main}`,
+              }}
+            />
+            <Typography
+              component="span"
+              sx={{
+                fontSize: '0.725rem',
+                fontWeight: 650,
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                color: 'primary.main',
+                fontFamily: 'var(--font-inter), system-ui, sans-serif',
+              }}
+            >
+              {label}
+            </Typography>
+          </Box>
         )}
 
         <Typography
           variant="h2"
           sx={{
-            fontSize: { xs: '1.875rem', sm: '2.25rem', md: '2.75rem' },
-            fontWeight: 700,
+            fontSize: { xs: '2rem', sm: '2.5rem', md: '2.85rem' }, // clamp 2rem-3rem feel
+            fontWeight: 800,
             color: 'text.primary',
             fontFamily: 'var(--font-outfit), system-ui, sans-serif',
-            mb: subtitle ? 1.5 : 0,
+            mb: subtitle ? 2 : 0,
+            letterSpacing: '-0.025em',
+            position: 'relative',
           }}
         >
           {title}
@@ -74,8 +86,8 @@ export default function SectionHeader({ title, subtitle, label, centered = false
             variant="subtitle1"
             color="text.secondary"
             sx={{
-              maxWidth: 560,
-              fontSize: { xs: '0.875rem', md: '0.9375rem' },
+              maxWidth: 580,
+              fontSize: { xs: '0.875rem', md: '0.975rem' },
               fontWeight: 400,
               lineHeight: 1.7,
             }}

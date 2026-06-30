@@ -10,6 +10,7 @@ import Github from '@/features/github/Github';
 import Certifications from '@/features/certifications/Certifications';
 import Contact from '@/features/contact/Contact';
 import Footer from '@/features/footer/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 export default function Home() {
   return (
@@ -28,6 +29,9 @@ export default function Home() {
         <Certifications />
         <Contact />
       </Box>
+
+      {/* Floating WhatsApp contact button */}
+      <WhatsAppButton />
 
       {/* Page footer links */}
       <Footer />

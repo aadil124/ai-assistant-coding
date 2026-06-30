@@ -104,30 +104,51 @@ export default function Contact() {
 
   const contactDetails = [
     {
-      icon: <MdEmail size={18} />,
+      icon: <MdEmail size={20} />,
       label: 'Email',
       value: 'ansariaadil2623@gmail.com',
       url: 'mailto:ansariaadil2623@gmail.com',
       color: '#818CF8',
+      bgColor: 'rgba(129, 140, 248, 0.08)',
     },
     {
-      icon: <MdPhone size={18} />,
+      icon: <MdPhone size={20} />,
       label: 'Phone',
       value: '+91 7276450124',
       url: 'tel:+917276450124',
       color: '#34D399',
+      bgColor: 'rgba(52, 211, 153, 0.08)',
     },
     {
-      icon: <MdLocationOn size={18} />,
+      icon: <MdLocationOn size={20} />,
       label: 'Location',
       value: 'Bhiwandi, Mumbai, India',
       url: 'https://maps.google.com/?q=Bhiwandi+Thane+Mumbai+India',
       color: '#F9A8D4',
+      bgColor: 'rgba(249, 168, 212, 0.08)',
     },
   ];
 
+  type HTMLInputChangeEvent = React.ChangeEvent<HTMLInputElement>;
+
   return (
-    <Box id="contact" sx={{ py: { xs: 8, md: 12 } }}>
+    <Box 
+      id="contact" 
+      className="bg-grid"
+      sx={{ 
+        py: { xs: 8, md: 12 },
+        position: 'relative',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '1px',
+          background: (theme) => `linear-gradient(to right, transparent, ${theme.palette.divider}, transparent)`,
+        }
+      }}
+    >
       <Container maxWidth="lg">
         <SectionHeader
           label="Connect"
@@ -139,7 +160,7 @@ export default function Contact() {
           sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', md: '5fr 7fr' },
-            gap: { xs: 4, md: 5 },
+            gap: { xs: 5, md: 6 },
           }}
         >
           {/* Contact Details */}
@@ -150,14 +171,23 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <Typography variant="h4" sx={{ fontWeight: 600, mb: 1.5, fontSize: { xs: '1.25rem', md: '1.375rem' } }}>
+              <Typography 
+                variant="h4" 
+                sx={{ 
+                  fontWeight: 800, 
+                  mb: 2, 
+                  fontSize: { xs: '1.45rem', md: '1.75rem' },
+                  fontFamily: 'var(--font-outfit), sans-serif',
+                  letterSpacing: '-0.02em',
+                }}
+              >
                 Let&apos;s <span className="text-gradient">Collaborate</span>
               </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 3, lineHeight: 1.7 }}>
+              <Typography variant="body1" color="text.secondary" sx={{ mb: 4, lineHeight: 1.75 }}>
                 I am actively seeking roles as a Senior Frontend / MERN Developer. Open to permanent positions, remote contracts, or project consulting.
               </Typography>
 
-              <Stack spacing={1.5}>
+              <Stack spacing={2.5}>
                 {contactDetails.map((detail) => (
                   <a
                     key={detail.label}
@@ -168,27 +198,56 @@ export default function Contact() {
                   >
                     <GlassCard
                       sx={{
-                        p: 2,
+                        p: { xs: 2.25, md: 2.5 },
                         display: 'flex',
                         alignItems: 'center',
-                        gap: 2,
+                        gap: 2.5,
                         '&:hover': {
-                          transform: 'translateX(4px)',
+                          transform: 'translateX(6px)',
+                          borderColor: detail.color,
                         },
                       }}
                     >
-                      <Box sx={{ color: detail.color, display: 'flex' }}>
+                      {/* Tinted circular container for icon */}
+                      <Box
+                        sx={{
+                          width: 44,
+                          height: 44,
+                          borderRadius: '50%',
+                          bgcolor: detail.bgColor,
+                          color: detail.color,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexShrink: 0,
+                          boxShadow: `0 2px 8px ${detail.color}15`,
+                        }}
+                      >
                         {detail.icon}
                       </Box>
                       <Box>
                         <Typography
                           variant="caption"
                           color="text.secondary"
-                          sx={{ display: 'block', fontWeight: 500, fontSize: '0.625rem', letterSpacing: '0.06em', textTransform: 'uppercase', mb: 0.125 }}
+                          sx={{ 
+                            display: 'block', 
+                            fontWeight: 700, 
+                            fontSize: { xs: '0.75rem', md: '0.65rem' }, 
+                            letterSpacing: '0.08em', 
+                            textTransform: 'uppercase', 
+                            mb: 0.5 
+                          }}
                         >
                           {detail.label}
                         </Typography>
-                        <Typography variant="body2" sx={{ fontWeight: 600, fontSize: '0.8125rem' }}>
+                        <Typography 
+                          variant="body2" 
+                          sx={{ 
+                            fontWeight: 700, 
+                            fontSize: { xs: '0.9375rem', md: '0.9rem' },
+                            color: 'text.primary',
+                          }}
+                        >
                           {detail.value}
                         </Typography>
                       </Box>
@@ -199,7 +258,7 @@ export default function Contact() {
             </motion.div>
           </Box>
 
-          {/* Form */}
+          {/* Form Card */}
           <Box>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -207,15 +266,38 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <GlassCard sx={{ p: { xs: 2.5, sm: 3.5 } }}>
+              <GlassCard 
+                sx={{ 
+                  p: { xs: 2.25, sm: 4.5 },
+                  bgcolor: (theme) => theme.palette.mode === 'dark' ? '#0E0E12' : '#FFFFFF',
+                  '&:hover': { transform: 'none' }, // Static form panel
+                }}
+              >
                 <form ref={formRef} onSubmit={handleSubmit}>
                   <Box
                     sx={{
                       display: 'grid',
                       gridTemplateColumns: 'repeat(12, 1fr)',
-                      gap: 2,
+                      gap: 2.5,
                     }}
                   >
+                    <Box sx={{ gridColumn: 'span 12', mb: 1 }}>
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          fontWeight: 800,
+                          fontFamily: 'var(--font-outfit), sans-serif',
+                          fontSize: '1.15rem',
+                          mb: 0.5,
+                        }}
+                      >
+                        Send a Message
+                      </Typography>
+                      <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.875rem', md: '0.75rem' } }}>
+                        Fill out the details below and I will get back to you within 24 hours.
+                      </Typography>
+                    </Box>
+
                     <Box sx={{ gridColumn: { xs: 'span 12', sm: 'span 6' } }}>
                       <TextField
                         required
@@ -268,7 +350,7 @@ export default function Contact() {
                         disabled={loading}
                         endIcon={!loading && <MdSend size={16} />}
                         sx={{
-                          py: 1.5,
+                          py: 1.75,
                           fontSize: '0.875rem',
                         }}
                       >

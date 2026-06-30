@@ -16,6 +16,7 @@ import ListItemText from '@mui/material/ListItemText';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { MdMenu, MdClose, MdLightMode, MdDarkMode, MdFileDownload } from 'react-icons/md';
 import { useColorMode } from '@/app/providers';
+import { motion } from 'framer-motion';
 
 const navItems = [
   { label: 'Home', id: 'home' },
@@ -39,7 +40,7 @@ export default function Navbar() {
   // Scroll spy
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 120;
+      const scrollPosition = window.scrollY + 140;
       for (const item of navItems) {
         const el = document.getElementById(item.id);
         if (el) {
@@ -77,14 +78,14 @@ export default function Navbar() {
           background: (theme) =>
             trigger
               ? theme.palette.mode === 'dark'
-                ? 'rgba(9, 9, 11, 0.8)'
-                : 'rgba(250, 250, 250, 0.85)'
+                ? 'rgba(9, 9, 11, 0.75)'
+                : 'rgba(250, 250, 250, 0.8)'
               : 'transparent',
-          backdropFilter: trigger ? 'blur(12px) saturate(180%)' : 'none',
+          backdropFilter: trigger ? 'blur(16px) saturate(180%)' : 'none',
           borderBottom: (theme) =>
             `1px solid ${
               trigger
-                ? theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)'
+                ? theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)'
                 : 'transparent'
             }`,
           boxShadow: 'none',
@@ -92,26 +93,29 @@ export default function Navbar() {
         }}
       >
         <Container maxWidth="lg">
-          <Toolbar disableGutters sx={{ justifyContent: 'space-between', height: { xs: 60, md: 72 } }}>
-            {/* Logo */}
+          <Toolbar disableGutters sx={{ justifyContent: 'space-between', height: { xs: 52, md: 72 } }}>
+            {/* Logo with modern gradient */}
             <Typography
               variant="h6"
               component="div"
               onClick={() => scrollToSection('home')}
               sx={{
-                fontWeight: 700,
+                fontWeight: 800,
                 cursor: 'pointer',
                 fontFamily: 'var(--font-outfit), system-ui, sans-serif',
-                fontSize: { xs: '1.1rem', md: '1.25rem' },
-                letterSpacing: '-0.02em',
-                color: 'text.primary',
+                fontSize: { xs: '1.15rem', md: '1.3rem' },
+                letterSpacing: '-0.03em',
+                userSelect: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 0.5,
               }}
             >
-              Adil Ansari
+              <span className="text-gradient">Adil Ansari</span>
             </Typography>
 
-            {/* Desktop Nav */}
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 0.25 }}>
+            {/* Desktop Nav with Sliding Active Indicator */}
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 0.5 }}>
               {navItems.map((item) => (
                 <Button
                   key={item.id}
@@ -120,18 +124,61 @@ export default function Navbar() {
                     color: activeSection === item.id ? 'text.primary' : 'text.secondary',
                     fontWeight: activeSection === item.id ? 600 : 400,
                     fontSize: '0.8125rem',
-                    px: 1.5,
-                    py: 0.75,
+                    px: 2,
+                    py: 1,
                     borderRadius: '8px',
                     minWidth: 'auto',
-                    transition: 'all 0.15s ease',
+                    transition: 'all 0.25s ease',
+                    position: 'relative',
                     '&:hover': {
                       color: 'text.primary',
                       bgcolor: 'transparent',
                     },
                   }}
                 >
-                  {item.label}
+                  <span style={{ position: 'relative', zIndex: 2 }}>{item.label}</span>
+                  
+                  {/* Sliding active pill indicator */}
+                  {activeSection === item.id && (
+                    <Box
+                      component={motion.div}
+                      layoutId="activeNavIndicator"
+                      sx={{
+                        position: 'absolute',
+                        top: 4,
+                        bottom: 4,
+                        left: 4,
+                        right: 4,
+                        borderRadius: '6px',
+                        bgcolor: (theme) =>
+                          theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.04)',
+                        border: (theme) =>
+                          `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.05)'}`,
+                        zIndex: 1,
+                      }}
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+
+                  {/* Sleek bottom active accent line */}
+                  {activeSection === item.id && (
+                    <Box
+                      component={motion.div}
+                      layoutId="activeNavLine"
+                      sx={{
+                        position: 'absolute',
+                        bottom: 4,
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: 14,
+                        height: 2,
+                        borderRadius: 1,
+                        bgcolor: 'primary.main',
+                        zIndex: 3,
+                      }}
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
                 </Button>
               ))}
             </Box>
@@ -143,9 +190,19 @@ export default function Navbar() {
                 size="small"
                 sx={{
                   color: 'text.secondary',
-                  width: 36,
-                  height: 36,
-                  '&:hover': { color: 'text.primary' },
+                  width: { xs: 44, md: 36 },
+                  height: { xs: 44, md: 36 },
+                  border: (theme) =>
+                    `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)'}`,
+                  bgcolor: (theme) =>
+                    theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.01)',
+                  transition: 'all 0.2s ease',
+                  '&:hover': {
+                    color: 'text.primary',
+                    borderColor: 'primary.main',
+                    bgcolor: (theme) =>
+                      theme.palette.mode === 'dark' ? 'rgba(129, 140, 248, 0.05)' : 'rgba(79, 70, 229, 0.04)',
+                  },
                 }}
                 aria-label="Toggle Color Theme"
               >
@@ -161,8 +218,8 @@ export default function Navbar() {
                 startIcon={<MdFileDownload size={16} />}
                 sx={{
                   display: { xs: 'none', sm: 'inline-flex' },
-                  px: 2,
-                  py: 0.875,
+                  px: 2.25,
+                  py: 1,
                   fontSize: '0.8125rem',
                 }}
               >
@@ -174,7 +231,13 @@ export default function Navbar() {
                 color="inherit"
                 aria-label="open drawer"
                 onClick={handleDrawerToggle}
-                sx={{ display: { md: 'none' }, p: 1 }}
+                sx={{
+                  display: { md: 'none' },
+                  width: 44,
+                  height: 44,
+                  color: 'text.secondary',
+                  '&:hover': { color: 'text.primary' },
+                }}
               >
                 <MdMenu size={22} />
               </IconButton>
@@ -195,7 +258,7 @@ export default function Navbar() {
             sx: {
               width: 280,
               background: (theme) =>
-                theme.palette.mode === 'dark' ? '#18181B' : '#FFFFFF',
+                theme.palette.mode === 'dark' ? '#121215' : '#FFFFFF',
               backgroundImage: 'none',
               borderLeft: (theme) =>
                 `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)'}`,
@@ -205,10 +268,10 @@ export default function Navbar() {
       >
         <Box sx={{ p: 2.5, display: 'flex', flexDirection: 'column', height: '100%' }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-            <Typography variant="body1" sx={{ fontWeight: 600 }}>
+            <Typography variant="body1" sx={{ fontWeight: 600, fontFamily: 'var(--font-outfit), sans-serif' }}>
               Navigation
             </Typography>
-            <IconButton onClick={handleDrawerToggle} size="small">
+            <IconButton onClick={handleDrawerToggle} size="small" sx={{ width: 44, height: 44 }}>
               <MdClose size={20} />
             </IconButton>
           </Box>
@@ -221,7 +284,8 @@ export default function Navbar() {
                   sx={{
                     borderRadius: 2,
                     mb: 0.5,
-                    py: 1,
+                    py: 1.5,
+                    minHeight: 44,
                     '&.Mui-selected': {
                       bgcolor: (theme) =>
                         theme.palette.mode === 'dark'

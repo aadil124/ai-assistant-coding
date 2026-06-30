@@ -4,6 +4,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import Chip from '@mui/material/Chip';
 import { motion } from 'framer-motion';
 import {
   MdCode,
@@ -19,38 +20,64 @@ export default function Skills() {
   const skillCategories = [
     {
       title: 'Frontend',
-      icon: <MdCode size={20} />,
+      icon: <MdCode size={22} />,
       skills: ['React.js', 'NextJS', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3'],
       color: '#818CF8',
+      bgColor: 'rgba(129, 140, 248, 0.06)',
+      borderColor: 'rgba(129, 140, 248, 0.15)',
     },
     {
       title: 'Backend',
-      icon: <MdStorage size={20} />,
+      icon: <MdStorage size={22} />,
       skills: ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'REST API', 'JWT Auth', 'RBAC'],
       color: '#34D399',
+      bgColor: 'rgba(52, 211, 153, 0.06)',
+      borderColor: 'rgba(52, 211, 153, 0.15)',
     },
     {
       title: 'State Management',
-      icon: <MdSettings size={20} />,
+      icon: <MdSettings size={22} />,
       skills: ['Redux Toolkit', 'Redux Saga', 'Context API', 'Redux'],
       color: '#C4B5FD',
+      bgColor: 'rgba(196, 181, 253, 0.06)',
+      borderColor: 'rgba(196, 181, 253, 0.15)',
     },
     {
       title: 'UI Frameworks',
-      icon: <MdLayers size={20} />,
+      icon: <MdLayers size={22} />,
       skills: ['Material UI', 'Tailwind CSS', 'Bootstrap', 'Ant Design'],
       color: '#FCD34D',
+      bgColor: 'rgba(252, 211, 77, 0.06)',
+      borderColor: 'rgba(252, 211, 77, 0.15)',
     },
     {
       title: 'Dev Tools',
-      icon: <MdBuild size={20} />,
+      icon: <MdBuild size={22} />,
       skills: ['Git & GitHub', 'GitLab', 'Jira', 'Postman', 'VS Code', 'DevTools'],
       color: '#F9A8D4',
+      bgColor: 'rgba(249, 168, 212, 0.06)',
+      borderColor: 'rgba(249, 168, 212, 0.15)',
     },
   ];
 
   return (
-    <Box id="skills" sx={{ py: { xs: 8, md: 12 } }}>
+    <Box 
+      id="skills" 
+      className="bg-grid"
+      sx={{ 
+        py: { xs: 8, md: 12 },
+        position: 'relative',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '1px',
+          background: (theme) => `linear-gradient(to right, transparent, ${theme.palette.divider}, transparent)`,
+        }
+      }}
+    >
       <Container maxWidth="lg">
         <SectionHeader
           label="Expertise"
@@ -62,7 +89,7 @@ export default function Skills() {
           sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
-            gap: 2.5,
+            gap: 3,
           }}
         >
           {skillCategories.map((category, idx) => (
@@ -76,82 +103,84 @@ export default function Skills() {
             >
               <GlassCard
                 sx={{
-                  p: 3,
+                  p: { xs: 2.25, md: 3.5 },
                   width: '100%',
                   display: 'flex',
                   flexDirection: 'column',
                   position: 'relative',
                   overflow: 'hidden',
+                  borderLeft: `3.5px solid ${category.color}`,
+                  '&:hover': {
+                    borderColor: category.color,
+                    boxShadow: (theme) =>
+                      theme.palette.mode === 'dark'
+                        ? `0 12px 30px -4px rgba(0, 0, 0, 0.5), 0 0 12px ${category.color}20`
+                        : `0 12px 30px -4px rgba(0, 0, 0, 0.06), 0 0 12px ${category.color}10`,
+                  }
                 }}
               >
-                {/* Left accent */}
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '2px',
-                    height: '100%',
-                    bgcolor: category.color,
-                    opacity: 0.6,
-                  }}
-                />
-
-                {/* Header */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2.5 }}>
+                {/* Header Row */}
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
                   <Box
                     sx={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: '10px',
+                      bgcolor: category.bgColor,
                       color: category.color,
                       display: 'flex',
                       alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: `0 2px 6px ${category.color}15`,
                     }}
                   >
                     {category.icon}
                   </Box>
                   <Typography
-                    variant="body1"
+                    variant="h6"
                     sx={{
-                      fontWeight: 600,
+                      fontWeight: 700,
                       fontFamily: 'var(--font-outfit), system-ui, sans-serif',
-                      fontSize: '0.9375rem',
+                      fontSize: '1rem',
+                      letterSpacing: '-0.01em',
+                      color: 'text.primary',
                     }}
                   >
                     {category.title}
                   </Typography>
                 </Box>
 
-                {/* Skills */}
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75, mt: 'auto' }}>
+                {/* Tinted Skills Chips */}
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 'auto' }}>
                   {category.skills.map((skill) => (
-                    <Box
+                    <Chip
                       key={skill}
+                      label={skill}
+                      size="small"
                       sx={{
-                        fontSize: '0.75rem',
-                        fontWeight: 500,
-                        bgcolor: (theme) =>
-                          theme.palette.mode === 'dark'
-                            ? 'rgba(255, 255, 255, 0.03)'
-                            : 'rgba(0, 0, 0, 0.03)',
-                        border: (theme) =>
-                          `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)'}`,
-                        color: 'text.secondary',
-                        px: 1.5,
-                        py: 0.625,
-                        borderRadius: '8px',
-                        transition: 'all 0.15s ease',
+                        fontSize: '0.725rem',
+                        fontWeight: 600,
+                        bgcolor: category.bgColor,
+                        border: `1px solid ${category.color}20`,
+                        color: (theme) => 
+                          theme.palette.mode === 'dark' 
+                            ? category.color === '#FCD34D' ? '#FBBF24' : category.color
+                            : category.color === '#818CF8' ? '#4F46E5'
+                            : category.color === '#34D399' ? '#047857'
+                            : category.color === '#C4B5FD' ? '#6D28D9'
+                            : category.color === '#FCD34D' ? '#D97706'
+                            : category.color === '#F9A8D4' ? '#DB2777'
+                            : category.color,
+                        px: 0.5,
+                        py: 1.5,
+                        height: 26,
                         '&:hover': {
-                          color: 'text.primary',
-                          borderColor: (theme) =>
-                            theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)',
-                          bgcolor: (theme) =>
-                            theme.palette.mode === 'dark'
-                              ? 'rgba(255, 255, 255, 0.05)'
-                              : 'rgba(0, 0, 0, 0.05)',
+                          bgcolor: `${category.color}1a`,
+                          borderColor: category.color,
+                          color: (theme) => theme.palette.mode === 'dark' ? '#FAFAFA' : '#09090B',
                         },
                       }}
-                    >
-                      {skill}
-                    </Box>
+                    />
                   ))}
                 </Box>
               </GlassCard>
