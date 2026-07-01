@@ -70,20 +70,88 @@ export default function About() {
           subtitle="A summary of my professional journey, philosophy, and engineering metrics."
         />
 
+        {/* Row 1: Photo & Biography */}
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-            gap: { xs: 5, md: 6 },
+            gridTemplateColumns: { xs: '1fr', md: '5fr 7fr' },
+            gap: { xs: 5, md: 7 },
             alignItems: 'center',
+            mb: { xs: 6, md: 8 },
           }}
         >
-          {/* Biography with left accent border and modern quotes feel */}
+          {/* Left Column: Portrait Photo */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, scale: 0.95, x: -30 }}
+            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <Box sx={{ position: 'relative', width: '100%', maxWidth: { xs: 340, md: '100%' }, mx: 'auto' }}>
+              {/* Background Decorative Gradient Orb */}
+              <Box
+                sx={{
+                  position: 'absolute',
+                  top: '-5%',
+                  left: '-5%',
+                  width: '110%',
+                  height: '110%',
+                  borderRadius: 6,
+                  background: (theme) => 
+                    theme.palette.mode === 'dark'
+                      ? 'linear-gradient(135deg, rgba(129, 140, 248, 0.15) 0%, rgba(52, 211, 153, 0.15) 100%)'
+                      : 'linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(5, 150, 105, 0.08) 100%)',
+                  filter: 'blur(16px)',
+                  zIndex: 0,
+                  pointerEvents: 'none',
+                }}
+              />
+              
+              <GlassCard
+                sx={{
+                  position: 'relative',
+                  zIndex: 1,
+                  borderRadius: 5,
+                  overflow: 'hidden',
+                  borderWidth: '1px',
+                  borderColor: (theme) => 
+                    theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
+                  '&:hover': {
+                    transform: 'translateY(-6px) rotate(1deg)',
+                    boxShadow: (theme) =>
+                      theme.palette.mode === 'dark'
+                        ? '0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(129, 140, 248, 0.15)'
+                        : '0 20px 40px rgba(0, 0, 0, 0.08), 0 0 20px rgba(79, 70, 229, 0.08)',
+                  }
+                }}
+              >
+                <Box
+                  component="img"
+                  src="/profile.jpg"
+                  alt="Mohd Adil Portrait"
+                  sx={{
+                    width: '100%',
+                    height: 'auto',
+                    aspectRatio: '1 / 1',
+                    objectFit: 'cover',
+                    objectPosition: 'center 15%',
+                    display: 'block',
+                    transition: 'transform 0.5s ease',
+                    '&:hover': {
+                      transform: 'scale(1.03)',
+                    }
+                  }}
+                />
+              </GlassCard>
+            </Box>
+          </motion.div>
+
+          {/* Right Column: Biography */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <Box
               sx={{
@@ -113,96 +181,96 @@ export default function About() {
             <Typography variant="body1" color="text.secondary" sx={{ mb: 2.5, lineHeight: 1.8, fontSize: { xs: '0.875rem', md: '0.9375rem' } }}>
               My core strength lies in frontend orchestration with <strong>React</strong> and <strong>TypeScript</strong>, combined with backend services in <strong>Node.js</strong> and <strong>Express</strong>. At NeoSoft, I build module screens for the Bank of Maharashtra&apos;s HRMS Portal. Previously, I designed responsive interfaces for high-traffic gaming portals handling 4000+ games.
             </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8, fontSize: { xs: '0.875rem', md: '0.9375rem' }, mb: { xs: 2, md: 0 } }}>
+            <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8, fontSize: { xs: '0.875rem', md: '0.9375rem' } }}>
               Whether it is building custom data-tables with client-side caching, structuring secure role-based access control, or engineering responsive dashboard grids — I focus on <strong>web performance, clean architecture, and high usability.</strong>
             </Typography>
           </motion.div>
+        </Box>
 
-          {/* Stats Grid */}
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: 2.5,
-            }}
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                style={{ display: 'flex' }}
+        {/* Row 2: Stats Grid */}
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr 1fr', md: '1fr 1fr 1fr 1fr' },
+            gap: 3,
+          }}
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              style={{ display: 'flex' }}
+            >
+              <GlassCard
+                sx={{
+                  p: { xs: 2.25, md: 3 },
+                  width: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  minHeight: 160,
+                  alignItems: 'flex-start',
+                  '&:hover': {
+                    borderColor: stat.color,
+                    boxShadow: (theme) =>
+                      theme.palette.mode === 'dark'
+                        ? `0 12px 28px rgba(0,0,0,0.5), 0 0 16px ${stat.color}20`
+                        : `0 12px 28px rgba(0,0,0,0.06), 0 0 16px ${stat.color}10`,
+                  }
+                }}
               >
-                <GlassCard
+                {/* Icon Container - Tinted background */}
+                <Box
                   sx={{
-                    p: { xs: 2.25, md: 3 },
-                    width: '100%',
+                    width: { xs: 38, md: 44 },
+                    height: { xs: 38, md: 44 },
+                    borderRadius: '10px',
+                    bgcolor: stat.bgColor,
+                    color: stat.color,
                     display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    minHeight: 160,
-                    alignItems: 'flex-start',
-                    '&:hover': {
-                      borderColor: stat.color,
-                      boxShadow: (theme) =>
-                        theme.palette.mode === 'dark'
-                          ? `0 8px 24px rgba(0,0,0,0.5), 0 0 12px ${stat.color}25`
-                          : `0 8px 24px rgba(0,0,0,0.06), 0 0 12px ${stat.color}15`,
-                    }
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    mb: 2.5,
+                    boxShadow: `0 2px 8px ${stat.color}15`,
                   }}
                 >
-                  {/* Icon Container - Tinted background */}
-                  <Box
+                  {stat.icon}
+                </Box>
+
+                {/* Value and Labels */}
+                <Box>
+                  <Typography
+                    variant="h3"
                     sx={{
-                      width: { xs: 38, md: 44 },
-                      height: { xs: 38, md: 44 },
-                      borderRadius: '10px',
-                      bgcolor: stat.bgColor,
+                      fontWeight: 800,
+                      fontSize: { xs: '2.1rem', md: '2.6rem' },
+                      mb: 0.5,
                       color: stat.color,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      mb: 2.5,
-                      boxShadow: `0 2px 8px ${stat.color}15`,
+                      letterSpacing: '-0.03em',
+                      fontFamily: 'var(--font-outfit), sans-serif',
+                      lineHeight: 1.1,
                     }}
                   >
-                    {stat.icon}
-                  </Box>
-
-                  {/* Value and Labels */}
-                  <Box>
-                    <Typography
-                      variant="h3"
-                      sx={{
-                        fontWeight: 800,
-                        fontSize: { xs: '2.1rem', md: '2.6rem' },
-                        mb: 0.5,
-                        color: stat.color,
-                        letterSpacing: '-0.03em',
-                        fontFamily: 'var(--font-outfit), sans-serif',
-                        lineHeight: 1.1,
-                      }}
-                    >
-                      {stat.value}
-                    </Typography>
-                    <Typography
-                      variant="subtitle2"
-                      sx={{ fontWeight: 700, mb: 0.5, color: 'text.primary', fontSize: { xs: '0.875rem', md: '0.825rem' } }}
-                    >
-                      {stat.label}
-                    </Typography>
-                    <Typography variant="caption" color="text.secondary" sx={{ lineHeight: 1.45, fontSize: { xs: '0.75rem', md: '0.725rem' }, display: 'block' }}>
-                      {stat.desc}
-                    </Typography>
-                  </Box>
-                </GlassCard>
-              </motion.div>
-            ))}
-          </Box>
+                    {stat.value}
+                  </Typography>
+                  <Typography
+                    variant="subtitle2"
+                    sx={{ fontWeight: 700, mb: 0.5, color: 'text.primary', fontSize: { xs: '0.875rem', md: '0.825rem' } }}
+                  >
+                    {stat.label}
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary" sx={{ lineHeight: 1.45, fontSize: { xs: '0.75rem', md: '0.725rem' }, display: 'block' }}>
+                    {stat.desc}
+                  </Typography>
+                </Box>
+              </GlassCard>
+            </motion.div>
+          ))}
         </Box>
       </Container>
     </Box>

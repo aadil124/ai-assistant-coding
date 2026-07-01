@@ -205,8 +205,8 @@ export default function Hero() {
                 <Stack
                   direction={{ xs: 'column', sm: 'row' }}
                   spacing={2}
-                  sx={{ 
-                    alignItems: 'center', 
+                  sx={{
+                    alignItems: 'center',
                     justifyContent: { xs: 'center', md: 'flex-start' },
                     width: '100%'
                   }}
@@ -377,7 +377,7 @@ export default function Hero() {
                             {tab === 'profile.json' && <SiJson size={11} color="#F59E0B" />}
                             {tab === 'experience.md' && <SiMarkdown size={11} color="#38BDF8" />}
                             {tab === 'tech.sh' && <VscTerminal size={11} color="#4ADE80" />}
-                            
+
                             {tab}
                           </Box>
                         );
