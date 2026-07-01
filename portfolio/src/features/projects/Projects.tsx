@@ -136,6 +136,7 @@ export default function Projects() {
       sx={{ 
         py: { xs: 8, md: 12 },
         position: 'relative',
+        overflowX: 'hidden',
         '&::before': {
           content: '""',
           position: 'absolute',

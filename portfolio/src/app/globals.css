@@ -2,6 +2,8 @@
 html {
   scroll-behavior: smooth;
   height: 100%;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -10,6 +12,7 @@ body {
   width: 100%;
   min-height: 100%;
   overflow-x: hidden;
+  max-width: 100%;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -19,7 +19,7 @@ export default function Home() {
       <Navbar />
 
       {/* Main sections container */}
-      <Box component="main" sx={{ flexGrow: 1 }}>
+      <Box component="main" sx={{ flexGrow: 1, overflowX: 'hidden' }}>
         <Hero />
         <About />
         <Experience />

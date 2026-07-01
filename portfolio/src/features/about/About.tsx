@@ -52,6 +52,7 @@ export default function About() {
       sx={{ 
         py: { xs: 8, md: 12 },
         position: 'relative',
+        overflowX: 'hidden',
         '&::before': {
           content: '""',
           position: 'absolute',
