@@ -79,7 +79,7 @@ import AdminReviews from "./pages/admin/AdminReviews.jsx";
 import AdminUsers from "./pages/admin/AdminUsers.jsx";
 import AdminRefunds from "./pages/admin/AdminRefunds.jsx";
 import AdminAuditLogs from "./pages/admin/AdminAuditLogs.jsx";
-// import AdminSettings from './pages/admin/AdminSettings.jsx';
+import AdminSettings from "./pages/admin/AdminSettings.jsx";
 
 export default function App() {
   return (
