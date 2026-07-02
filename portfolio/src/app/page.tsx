@@ -8,6 +8,7 @@ import Skills from '@/features/skills/Skills';
 import Projects from '@/features/projects/Projects';
 import Github from '@/features/github/Github';
 import Certifications from '@/features/certifications/Certifications';
+import Education from '@/features/education/Education';
 import Contact from '@/features/contact/Contact';
 import Footer from '@/features/footer/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -27,6 +28,7 @@ export default function Home() {
         <Projects />
         <Github />
         <Certifications />
+        <Education />
         <Contact />
       </Box>
 

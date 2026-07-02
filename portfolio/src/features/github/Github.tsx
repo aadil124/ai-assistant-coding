@@ -87,7 +87,7 @@ export default function Github() {
       id="github-repos" 
       className="bg-grid"
       sx={{ 
-        py: { xs: 8, md: 12 },
+        py: { xs: 4, md: 6 },
         position: 'relative',
         '&::before': {
           content: '""',
@@ -166,7 +166,7 @@ export default function Github() {
                       @aadil124
                     </Typography>
                     <Typography variant="caption" color="text.secondary" sx={{ display: 'block', lineHeight: 1.4, fontSize: { xs: '0.875rem', md: '0.75rem' } }}>
-                      Senior Full Stack Developer specializing in React, Node.js, and high-performance SaaS tools.
+                      Frontend Developer (React Js Developer) specializing in React, Node.js, and high-performance SaaS tools.
                     </Typography>
                   </Box>
                 </Box>

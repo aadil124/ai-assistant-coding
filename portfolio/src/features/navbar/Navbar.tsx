@@ -25,6 +25,7 @@ const navItems = [
   { label: 'Skills', id: 'skills' },
   { label: 'Projects', id: 'projects' },
   { label: 'Certifications', id: 'certifications' },
+  { label: 'Education', id: 'education' },
   { label: 'Contact', id: 'contact' },
 ];
 
@@ -111,7 +112,7 @@ export default function Navbar() {
                 gap: 0.5,
               }}
             >
-              <span className="text-gradient">Adil Ansari</span>
+              <span className="text-gradient">Mohd Adil Ansari</span>
             </Typography>
 
             {/* Desktop Nav with Sliding Active Indicator */}

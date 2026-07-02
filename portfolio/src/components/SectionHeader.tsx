@@ -23,7 +23,7 @@ export default function SectionHeader({ title, subtitle, label, centered = false
     >
       <Box
         sx={{
-          mb: { xs: 5, md: 7 },
+          mb: { xs: 4, md: 5 },
           textAlign: centered ? 'center' : 'left',
           display: 'flex',
           flexDirection: 'column',

@@ -136,7 +136,7 @@ export default function Contact() {
       id="contact" 
       className="bg-grid"
       sx={{ 
-        py: { xs: 8, md: 12 },
+        py: { xs: 4, md: 6 },
         position: 'relative',
         '&::before': {
           content: '""',

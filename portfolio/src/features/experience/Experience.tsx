@@ -43,7 +43,7 @@ export default function Experience() {
       skills: ['React.js', 'Redux', 'Redux Saga', 'Bootstrap', 'Axios', 'JavaScript', 'Responsive UI'],
     },
     {
-      title: 'Full Stack Developer',
+      title: 'MERN Stack Developer',
       company: 'Wow InfoBiz Pvt Ltd',
       location: 'Thane, Mumbai, India',
       period: 'Dec 2021 – Mar 2024',
@@ -59,7 +59,7 @@ export default function Experience() {
   ];
 
   return (
-    <Box id="experience" sx={{ py: { xs: 8, md: 12 } }}>
+    <Box id="experience" sx={{ py: { xs: 4, md: 6 } }}>
       <Container maxWidth="lg">
         <SectionHeader
           label="Career"

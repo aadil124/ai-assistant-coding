@@ -134,7 +134,7 @@ export default function Projects() {
       id="projects" 
       className="bg-dot"
       sx={{ 
-        py: { xs: 8, md: 12 },
+        py: { xs: 4, md: 6 },
         position: 'relative',
         overflowX: 'hidden',
         '&::before': {

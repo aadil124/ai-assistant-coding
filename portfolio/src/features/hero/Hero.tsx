@@ -43,11 +43,11 @@ export default function Hero() {
       id="home"
       className="bg-grid"
       sx={{
-        minHeight: '100vh',
+        minHeight: { xs: 'auto', md: '80vh', lg: '75vh' },
         display: 'flex',
         alignItems: 'center',
-        pt: { xs: 12, md: 14 },
-        pb: { xs: 8, md: 10 },
+        pt: { xs: 8, md: 10 },
+        pb: { xs: 4, md: 6 },
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -161,7 +161,7 @@ export default function Hero() {
                     letterSpacing: '-0.035em',
                   }}
                 >
-                  Hi, I&apos;m <span className="text-gradient">Mohd Adil</span>
+                  Hi, I&apos;m <span className="text-gradient">Mohd Adil Ansari</span>
                 </Typography>
               </motion.div>
 
@@ -179,7 +179,7 @@ export default function Hero() {
                     letterSpacing: '-0.015em',
                   }}
                 >
-                  Senior Full Stack Developer
+                  Frontend Developer (React Js Developer)
                 </Typography>
               </motion.div>
 
@@ -196,7 +196,7 @@ export default function Hero() {
                     lineHeight: 1.8,
                   }}
                 >
-                  Crafting high-performance dashboards, optimizing complex app router workflows, and engineering secure, scalable full-stack web applications.
+                  Frontend Engineer with 4+ years of professional experience specializing in building responsive, high-performance web applications with React, TypeScript, Redux Toolkit, and Material UI.
                 </Typography>
               </motion.div>
 
@@ -444,7 +444,7 @@ export default function Hero() {
                           {'\n  '}
                           <span className="key">{'"name"'}</span>: <span className="string">{'"Mohd Adil Ansari"'}</span>,
                           {'\n  '}
-                          <span className="key">{'"role"'}</span>: <span className="string">{'"Senior Full Stack Developer"'}</span>,
+                          <span className="key">{'"role"'}</span>: <span className="string">{'"Frontend Developer (React Js Developer)"'}</span>,
                           {'\n  '}
                           <span className="key">{'"focus"'}</span>: <span className="string">{'"Scalable MERN Architectures"'}</span>,
                           {'\n  '}

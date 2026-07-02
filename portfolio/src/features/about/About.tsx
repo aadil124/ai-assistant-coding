@@ -50,7 +50,7 @@ export default function About() {
       id="about" 
       className="bg-dot"
       sx={{ 
-        py: { xs: 8, md: 12 },
+        py: { xs: 4, md: 6 },
         position: 'relative',
         overflowX: 'hidden',
         '&::before': {
@@ -129,7 +129,7 @@ export default function About() {
                 <Box
                   component="img"
                   src="/profile.jpg"
-                  alt="Mohd Adil Portrait"
+                  alt="Mohd Adil Ansari Portrait"
                   sx={{
                     width: '100%',
                     height: 'auto',
@@ -177,10 +177,10 @@ export default function About() {
             </Box>
             
             <Typography variant="body1" color="text.secondary" sx={{ mb: 2.5, lineHeight: 1.8, fontSize: { xs: '0.875rem', md: '0.9375rem' } }}>
-              I am a passionate Full Stack Developer with an engineering background (M.Tech in Structural Engineering). I transitioned into software development out of a deep love for logic and system design, translating complex workflows into fluid web interfaces.
+              I am a passionate Frontend Engineer with 4+ years of professional experience specializing in building responsive, high-performance, and scalable web applications. My core expertise lies in React, TypeScript, JavaScript, Redux Toolkit, and Material UI, with a strong track record of designing intuitive user interfaces and optimizing performance for enterprise-grade applications.
             </Typography>
             <Typography variant="body1" color="text.secondary" sx={{ mb: 2.5, lineHeight: 1.8, fontSize: { xs: '0.875rem', md: '0.9375rem' } }}>
-              My core strength lies in frontend orchestration with <strong>React</strong> and <strong>TypeScript</strong>, combined with backend services in <strong>Node.js</strong> and <strong>Express</strong>. At NeoSoft, I build module screens for the Bank of Maharashtra&apos;s HRMS Portal. Previously, I designed responsive interfaces for high-traffic gaming portals handling 4000+ games.
+              I focus on implementing seamless REST API integrations, robust state management, and modern responsive design patterns to deliver premium user experiences. At NeoSoft, I build module screens for the Bank of Maharashtra&apos;s HRMS Portal. Previously, I designed responsive interfaces for high-traffic gaming portals handling 4000+ games and client admin panels.
             </Typography>
             <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8, fontSize: { xs: '0.875rem', md: '0.9375rem' } }}>
               Whether it is building custom data-tables with client-side caching, structuring secure role-based access control, or engineering responsive dashboard grids — I focus on <strong>web performance, clean architecture, and high usability.</strong>

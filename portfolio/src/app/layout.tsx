@@ -16,9 +16,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: 'Mohd Adil Ansari | Senior Full Stack Developer',
-  description: 'Professional portfolio of Mohd Adil Ansari, a MERN Full Stack Developer with 4+ years of experience building enterprise-grade HRMS dashboards, high-volume gaming platforms, and financial admin panels.',
-  keywords: ['Mohd Adil Ansari', 'Full Stack Developer', 'MERN Stack', 'React Developer', 'Node.js Developer', 'Software Engineer Portfolio', 'Web Developer Mumbai', 'Next.js Developer'],
+  title: 'Mohd Adil Ansari | Frontend Developer (React Js Developer)',
+  description: 'Professional portfolio of Mohd Adil Ansari, a Frontend Developer (React Js Developer) with 4+ years of experience building enterprise-grade HRMS dashboards, high-volume gaming platforms, and financial admin panels.',
+  keywords: ['Mohd Adil Ansari', 'Frontend Developer', 'React Js Developer', 'React Developer', 'Node.js Developer', 'Software Engineer Portfolio', 'Web Developer Mumbai', 'Next.js Developer'],
   authors: [{ name: 'Mohd Adil Ansari' }],
   creator: 'Mohd Adil Ansari',
   metadataBase: new URL('https://github.com/aadil124'),
@@ -26,14 +26,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://github.com/aadil124',
-    title: 'Mohd Adil Ansari | Senior Full Stack Developer',
+    title: 'Mohd Adil Ansari | Frontend Developer (React Js Developer)',
     description: 'Explore the portfolio of Mohd Adil Ansari, specializing in high-performance web applications, appraisal workflows, and responsive dashboard design.',
     siteName: 'Mohd Adil Ansari Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mohd Adil Ansari | Senior Full Stack Developer',
-    description: 'MERN Stack Developer with 4 years of frontend and 2 years of full stack experience.',
+    title: 'Mohd Adil Ansari | Frontend Developer (React Js Developer)',
+    description: 'Frontend Developer (React Js Developer) with 4+ years of React.js development experience.',
   },
 };
 

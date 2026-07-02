@@ -55,10 +55,10 @@ export default function Footer() {
                 color: 'text.primary',
               }}
             >
-              Adil Ansari
+              Mohd Adil Ansari
             </Typography>
             <Typography variant="caption" color="text.secondary" sx={{ maxWidth: 260, mx: { xs: 'auto', md: 0 }, display: 'block', lineHeight: 1.5, fontSize: { xs: '0.875rem', md: '0.725rem' } }}>
-              Senior Full Stack MERN Developer crafting high-performance web applications.
+              Frontend Developer (React Js Developer) crafting high-performance web applications.
             </Typography>
           </Box>
 

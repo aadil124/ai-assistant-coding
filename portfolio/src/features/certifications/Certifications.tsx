@@ -65,7 +65,7 @@ export default function Certifications() {
       id="certifications" 
       className="bg-dot"
       sx={{ 
-        py: { xs: 8, md: 12 },
+        py: { xs: 4, md: 6 },
         position: 'relative',
         '&::before': {
           content: '""',
