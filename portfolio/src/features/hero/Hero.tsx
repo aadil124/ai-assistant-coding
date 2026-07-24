@@ -487,7 +487,7 @@ export default function Hero() {
                           {'\n\n'}
                           <span className="bullet">*</span> <span className="highlight">NeoSoft (Present)</span>
                           {'\n  '}
-                          - Built core HRMS modules for Bank of Maharashtra.
+                          - Built core HRMS modules for a leading public sector bank.
                           {'\n  '}
                           - Engineered dynamic appraisal forms.
                           {'\n\n'}

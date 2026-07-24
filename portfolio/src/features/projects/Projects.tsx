@@ -29,7 +29,7 @@ interface ProjectItem {
 export default function Projects() {
   const projectsList: ProjectItem[] = [
     {
-      title: 'Bank of Maharashtra – HRMS Portal',
+      title: 'Leading Public Sector Bank – HRMS Portal',
       category: 'Enterprise Fintech',
       company: 'NeoSoft Pvt Ltd',
       icon: <MdComputer size={20} />,
@@ -38,12 +38,12 @@ export default function Projects() {
         'Engineered dynamic forms with custom validation schemas for employee self-evaluations.',
         'Created modular, reusable data table views with built-in export actions and client filtering.'
       ],
-      metrics: ['Used by bank employees state-wide', 'Validated dynamic forms', 'Enterprise appraisal workflows'],
+      metrics: ['Used bank-wide by employees', 'Validated dynamic forms', 'Enterprise appraisal workflows'],
       skills: ['React.js', 'Redux Toolkit', 'Bootstrap', 'Recharts', 'Axios'],
       color: '#818CF8',
     },
     {
-      title: 'White Label 2.0 (Gaming Platform)',
+      title: 'White Label 2.0 (HorasBet Gaming Platform)',
       category: 'High-Traffic Web App',
       company: 'HKB Development',
       icon: <MdTrendingUp size={20} />,
@@ -58,7 +58,7 @@ export default function Projects() {
       liveUrl: 'https://horasbet.com/',
     },
     {
-      title: 'Edjobster (Job Portal Platform)',
+      title: 'Edjobster (Job Portal)',
       category: 'Full-Stack Portal',
       company: 'Wow InfoBiz',
       icon: <MdAccountTree size={20} />,
@@ -73,8 +73,8 @@ export default function Projects() {
       liveUrl: 'https://edjobster.com/',
     },
     {
-      title: 'Gulf Pharmacy (Healthcare App)',
-      category: 'E-commerce & Dispatch',
+      title: 'Enterprise Healthcare Platform',
+      category: 'Healthcare Tech',
       company: 'Wow InfoBiz',
       icon: <MdSecurity size={20} />,
       highlights: [
@@ -91,22 +91,22 @@ export default function Projects() {
 
   // Map metrics text to split numeric values from labels for key stat callouts
   const projectDashboardStats: Record<string, Array<{ value: string; label: string }>> = {
-    'Bank of Maharashtra – HRMS Portal': [
-      { value: 'State-wide', label: 'Deployment' },
+    'Leading Public Sector Bank – HRMS Portal': [
+      { value: 'Bank-wide', label: 'Deployment' },
       { value: 'Appraisal', label: 'Workflows' },
       { value: 'Dynamic', label: 'Forms Engine' }
     ],
-    'White Label 2.0 (Gaming Platform)': [
+    'White Label 2.0 (HorasBet Gaming Platform)': [
       { value: '+30%', label: 'UI Load Speed' },
       { value: '+15%', label: 'User Retention' },
       { value: '4000+', label: 'Games Hosted' }
     ],
-    'Edjobster (Job Portal Platform)': [
+    'Edjobster (Job Portal)': [
       { value: 'MERN', label: 'Full-Stack' },
       { value: '3 Roles', label: 'RBAC Access' },
       { value: 'JWT', label: 'Token Sessions' }
     ],
-    'Gulf Pharmacy (Healthcare App)': [
+    'Enterprise Healthcare Platform': [
       { value: '+30%', label: 'UI Speedup' },
       { value: '+20%', label: 'Organic SEO' },
       { value: 'SEO', label: 'Meta Schema' }
@@ -116,13 +116,13 @@ export default function Projects() {
   // Generate beautiful background gradients for card covers based on project accent color
   const getCoverGradient = (color: string) => {
     switch (color) {
-      case '#818CF8': // Bank of Maharashtra
+      case '#818CF8': // Leading Public Sector Bank
         return 'linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #4338ca 100%)';
       case '#34D399': // White Label
         return 'linear-gradient(135deg, #022c22 0%, #064e3b 60%, #0f766e 100%)';
       case '#C4B5FD': // Edjobster
         return 'linear-gradient(135deg, #2e1065 0%, #4c1d95 60%, #6d28d9 100%)';
-      case '#F9A8D4': // Gulf Pharmacy
+      case '#F9A8D4': // Enterprise Healthcare Platform
         return 'linear-gradient(135deg, #500724 0%, #831843 60%, #9d174d 100%)';
       default:
         return 'linear-gradient(135deg, #09090b 0%, #1e293b 100%)';
@@ -130,10 +130,10 @@ export default function Projects() {
   };
 
   return (
-    <Box 
-      id="projects" 
+    <Box
+      id="projects"
       className="bg-dot"
-      sx={{ 
+      sx={{
         py: { xs: 4, md: 6 },
         position: 'relative',
         overflowX: 'hidden',
