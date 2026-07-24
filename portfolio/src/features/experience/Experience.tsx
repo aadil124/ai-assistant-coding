@@ -17,14 +17,13 @@ export default function Experience() {
       link: 'https://www.neosofttech.com',
       icon: <MdAccountBalance size={16} />,
       description: [
-        'Developed enterprise-grade HRMS modules using React.js for the Bank of Maharashtra.',
-        'Built dynamic forms with validation and modular, reusable UI components.',
-        'Created high-fidelity Admin and Employee dashboards.',
-        'Implemented advanced client-side features including pagination, full-text search, multi-faceted filtering, and visual reporting panels.',
-        'Worked closely on workflows for: Appraisal Management, Promotions, Talent Management, Reward & Recognition, and People Surveys.',
-        'Integrated REST APIs for automated human resources workflows.'
+        'Delivered core enterprise HRMS modules used bank-wide by employees and HR teams, streamlining appraisal, promotion, and recognition workflows for a leading public sector bank.',
+        'Developed enterprise-grade HRMS modules using React.js and Redux Toolkit.',
+        'Built dynamic forms, reusable UI components, and Admin/Employee dashboards.',
+        'Implemented pagination, search, filtering, and reporting dashboards.',
+        'Integrated REST APIs for HR workflows across Appraisal, Promotion, Talent Management, Reward & Recognition, and People Survey modules.'
       ],
-      skills: ['React.js', 'JavaScript', 'Redux Toolkit', 'Bootstrap', 'Axios', 'Recharts', 'REST APIs'],
+      skills: ['React.js', 'JavaScript', 'Redux Toolkit', 'Bootstrap', 'Axios', 'Recharts', 'Replit AI'],
     },
     {
       title: 'Frontend Developer',
@@ -33,14 +32,12 @@ export default function Experience() {
       period: 'Mar 2024 - Mar 2025',
       icon: <MdSportsEsports size={16} />,
       description: [
-        'Designed and developed responsive web/mobile user interfaces for White Label 2.0 (HorasBet Gaming Platform) hosting 4000+ games.',
-        'Created comprehensive Admin and Master Admin control panels for platform operators.',
-        'Integrated backend microservice APIs with frontend modules seamlessly.',
-        'Improved core web vitals and overall application loading speed by 30% through caching and asset optimization.',
-        'Resolved over 20+ critical API integration and UI rendering defects.',
-        'Boosted general user retention and engagement metrics by 15%.'
+        'Designed and developed responsive web/mobile UI for a gaming platform with 4,000+ games.',
+        'Built Admin and Master Admin dashboards; integrated backend APIs with frontend modules.',
+        'Improved application performance by 30% through optimization and fixed 20+ production issues.',
+        'Increased user engagement by 15% through UI/UX improvements.'
       ],
-      skills: ['React.js', 'Redux', 'Redux Saga', 'Bootstrap', 'Axios', 'JavaScript', 'Responsive UI'],
+      skills: ['React.js', 'Redux', 'Redux Saga', 'Bootstrap', 'Axios', 'JavaScript'],
     },
     {
       title: 'MERN Stack Developer',
@@ -49,12 +46,13 @@ export default function Experience() {
       period: 'Dec 2021 – Mar 2024',
       icon: <MdWork size={16} />,
       description: [
-        'Job Portal (Edjobster): Designed full-stack models, collections, and routes using MERN (MongoDB, Express, React, Node). Implemented secure authentication with JWT and role-based access control (RBAC) for candidates, recruiters, and administrators.',
-        'Healthcare App (Gulf Pharmacy): Programmed login flow, password reset, and protected routes. Optimized routing and assets via React.lazy and memoization, leading to a 30% speedup and 20% growth in organic traffic via SEO structure.',
-        'Finance App (HDFC Bank Client Admin Panel): Developed client tables using React Table supporting real-time sorting, pagination, and API search filter bindings.',
-        'Performed thorough API validation, error logging, and backend middleware setup.'
+        'Built and shipped a full-featured job portal end-to-end, enabling job discovery and hiring workflows for candidates, recruiters, and admins, with role-based access control.',
+        'Developed secure authentication (Login, Registration, Forgot Password, Protected Routes) with dynamic, role-based routing using React Router.',
+        'Improved application performance by 30% using lazy loading, memoization, and code optimization; contributed to a 20% increase in organic traffic via SEO-friendly responsive UI.',
+        'Built reusable data tables with sorting, filtering, and pagination using React Table for an HDFC Bank admin dashboard.',
+        'Designed MongoDB schemas, implemented JWT authentication, and integrated REST APIs; tested with Postman.'
       ],
-      skills: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'Redux', 'TypeScript', 'JWT', 'React Table', 'Postman'],
+      skills: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'TypeScript', 'Redux', 'Axios', 'JWT', 'React Table', 'Postman'],
     },
   ];
 

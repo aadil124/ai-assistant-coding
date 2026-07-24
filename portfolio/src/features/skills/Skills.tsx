@@ -12,6 +12,7 @@ import {
   MdLayers,
   MdBuild,
   MdStorage,
+  MdSmartToy,
 } from 'react-icons/md';
 import SectionHeader from '@/components/SectionHeader';
 import GlassCard from '@/components/GlassCard';
@@ -21,7 +22,7 @@ export default function Skills() {
     {
       title: 'Frontend',
       icon: <MdCode size={22} />,
-      skills: ['React.js', 'NextJS', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3'],
+      skills: ['React.js', 'Next.js', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'React Router'],
       color: '#818CF8',
       bgColor: 'rgba(129, 140, 248, 0.06)',
       borderColor: 'rgba(129, 140, 248, 0.15)',
@@ -29,7 +30,7 @@ export default function Skills() {
     {
       title: 'Backend',
       icon: <MdStorage size={22} />,
-      skills: ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'REST API', 'JWT Auth', 'RBAC'],
+      skills: ['Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'Axios', 'JWT'],
       color: '#34D399',
       bgColor: 'rgba(52, 211, 153, 0.06)',
       borderColor: 'rgba(52, 211, 153, 0.15)',
@@ -37,10 +38,18 @@ export default function Skills() {
     {
       title: 'State Management',
       icon: <MdSettings size={22} />,
-      skills: ['Redux Toolkit', 'Redux Saga', 'Context API', 'Redux'],
+      skills: ['Redux Toolkit', 'Redux Saga', 'Context API'],
       color: '#C4B5FD',
       bgColor: 'rgba(196, 181, 253, 0.06)',
       borderColor: 'rgba(196, 181, 253, 0.15)',
+    },
+    {
+      title: 'AI Skills',
+      icon: <MdSmartToy size={22} />,
+      skills: ['LLM APIs (OpenAI, Claude, Gemini)', 'Prompt Engineering', 'AI-Assisted Coding & Debugging', 'Replit AI', 'Cursor', 'Google Antigravity', 'Agentic AI Workflows'],
+      color: '#60A5FA',
+      bgColor: 'rgba(96, 165, 250, 0.06)',
+      borderColor: 'rgba(96, 165, 250, 0.15)',
     },
     {
       title: 'UI Frameworks',
@@ -51,9 +60,9 @@ export default function Skills() {
       borderColor: 'rgba(252, 211, 77, 0.15)',
     },
     {
-      title: 'Dev Tools',
+      title: 'Dev Tools & Agile',
       icon: <MdBuild size={22} />,
-      skills: ['Git & GitHub', 'GitLab', 'Jira', 'Postman', 'VS Code', 'DevTools'],
+      skills: ['Git & GitHub', 'Jira', 'Postman', 'Agile', 'Responsive Design', 'Performance Optimization'],
       color: '#F9A8D4',
       bgColor: 'rgba(249, 168, 212, 0.06)',
       borderColor: 'rgba(249, 168, 212, 0.15)',
@@ -170,6 +179,7 @@ export default function Skills() {
                             : category.color === '#C4B5FD' ? '#6D28D9'
                             : category.color === '#FCD34D' ? '#D97706'
                             : category.color === '#F9A8D4' ? '#DB2777'
+                            : category.color === '#60A5FA' ? '#2563EB'
                             : category.color,
                         px: 0.5,
                         py: 1.5,
